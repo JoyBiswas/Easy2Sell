@@ -44,12 +44,18 @@ class EmployeeSignUp_In: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+   
+    
     @IBAction func registerSelectionPressed(_ sender: Any) {
         userNameTF.isHidden = false
         emailTF.isHidden = false
         employeeKeyTF.isHidden = false
         passwordTF.isHidden = false
         confirmPasswordTF.isHidden = false
+        signUpbtn.backgroundColor = UIColor.red
+        loginBTN.backgroundColor = nil
+        
+        
         
         
     }
@@ -60,6 +66,9 @@ class EmployeeSignUp_In: UIViewController {
         employeeKeyTF.isHidden = false
         passwordTF.isHidden = false
         confirmPasswordTF.isHidden = true
+        loginBTN.backgroundColor = UIColor.red
+        signUpbtn.backgroundColor = nil
+
         
     }
     

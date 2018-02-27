@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32B1AB7F60E1AF67E8EF0FD6 /* Pods_Easy2Sell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D0E7E9A2B6984E20ACD9FF /* Pods_Easy2Sell.framework */; };
 		CE1315702018467000005956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13156F2018467000005956 /* AppDelegate.swift */; };
-		CE1315722018467000005956 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1315712018467000005956 /* ViewController.swift */; };
+		CE1315722018467000005956 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1315712018467000005956 /* HomeVC.swift */; };
 		CE1315782018467000005956 /* Easy2Sell.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE1315762018467000005956 /* Easy2Sell.xcdatamodeld */; };
 		CE13157A2018467000005956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1315792018467000005956 /* Assets.xcassets */; };
 		CE13157D2018467000005956 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE13157B2018467000005956 /* LaunchScreen.storyboard */; };
@@ -20,14 +21,17 @@
 		CE85B986201F618800F806E8 /* loginbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE85B984201F618800F806E8 /* loginbtn.png */; };
 		CE85B987201F618800F806E8 /* signupbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE85B985201F618800F806E8 /* signupbtn.png */; };
 		CE85B98E201F83C800F806E8 /* AdminSignUP_In.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85B98D201F83C800F806E8 /* AdminSignUP_In.swift */; };
+		CE903F8A20458E6D00FAAEA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE903F8920458E6D00FAAEA0 /* GoogleService-Info.plist */; };
 		CEF71BA3201F575600B82C5F /* loginbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF71BA1201F575600B82C5F /* loginbutton.png */; };
 		CEF71BA4201F575600B82C5F /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF71BA2201F575600B82C5F /* register.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		65D0E7E9A2B6984E20ACD9FF /* Pods_Easy2Sell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Easy2Sell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83E363CF90F6F80DCA6E0EE4 /* Pods-Easy2Sell.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy2Sell.release.xcconfig"; path = "Pods/Target Support Files/Pods-Easy2Sell/Pods-Easy2Sell.release.xcconfig"; sourceTree = "<group>"; };
 		CE13156C2018467000005956 /* Easy2Sell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Easy2Sell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE13156F2018467000005956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Easy2Sell/AppDelegate.swift; sourceTree = "<group>"; };
-		CE1315712018467000005956 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE1315712018467000005956 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		CE1315772018467000005956 /* Easy2Sell.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Easy2Sell.xcdatamodel; sourceTree = "<group>"; };
 		CE1315792018467000005956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE13157C2018467000005956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,8 +44,10 @@
 		CE85B984201F618800F806E8 /* loginbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginbtn.png; sourceTree = "<group>"; };
 		CE85B985201F618800F806E8 /* signupbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signupbtn.png; sourceTree = "<group>"; };
 		CE85B98D201F83C800F806E8 /* AdminSignUP_In.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminSignUP_In.swift; sourceTree = "<group>"; };
+		CE903F8920458E6D00FAAEA0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CEF71BA1201F575600B82C5F /* loginbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginbutton.png; sourceTree = "<group>"; };
 		CEF71BA2201F575600B82C5F /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
+		F48494F7B6A81492615AC19A /* Pods-Easy2Sell.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy2Sell.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Easy2Sell/Pods-Easy2Sell.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,17 +55,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32B1AB7F60E1AF67E8EF0FD6 /* Pods_Easy2Sell.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BD5CC1B4BAA396AA125A3E6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F48494F7B6A81492615AC19A /* Pods-Easy2Sell.debug.xcconfig */,
+				83E363CF90F6F80DCA6E0EE4 /* Pods-Easy2Sell.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4401095551D4A1BF0AF12B04 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65D0E7E9A2B6984E20ACD9FF /* Pods_Easy2Sell.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CE1315632018467000005956 = {
 			isa = PBXGroup;
 			children = (
 				CE13156E2018467000005956 /* Easy2Sell */,
 				CE13156D2018467000005956 /* Products */,
+				0BD5CC1B4BAA396AA125A3E6 /* Pods */,
+				4401095551D4A1BF0AF12B04 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,7 +143,7 @@
 		CE85B98B201F82E300F806E8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CE1315712018467000005956 /* ViewController.swift */,
+				CE1315712018467000005956 /* HomeVC.swift */,
 				CE85B98D201F83C800F806E8 /* AdminSignUP_In.swift */,
 				CE6C0AE92020C16600FF6AB6 /* EmployeeSignUp_In.swift */,
 			);
@@ -127,6 +153,7 @@
 		CE85B98C201F830500F806E8 /* SupportingFiels */ = {
 			isa = PBXGroup;
 			children = (
+				CE903F8920458E6D00FAAEA0 /* GoogleService-Info.plist */,
 				CE13156F2018467000005956 /* AppDelegate.swift */,
 				CE13157E2018467000005956 /* Info.plist */,
 				CE1315762018467000005956 /* Easy2Sell.xcdatamodeld */,
@@ -142,9 +169,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE1315812018467000005956 /* Build configuration list for PBXNativeTarget "Easy2Sell" */;
 			buildPhases = (
+				528E5BB802A7CBAD3D285A61 /* [CP] Check Pods Manifest.lock */,
 				CE1315682018467000005956 /* Sources */,
 				CE1315692018467000005956 /* Frameworks */,
 				CE13156A2018467000005956 /* Resources */,
+				B1BA0A33F8613570D9C900BC /* [CP] Embed Pods Frameworks */,
+				C9F678B385A1E7EE51C09E5E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -203,11 +233,74 @@
 				CE85B983201F5D9C00F806E8 /* Main.storyboard in Resources */,
 				CE85B987201F618800F806E8 /* signupbtn.png in Resources */,
 				CEF71BA4201F575600B82C5F /* register.png in Resources */,
+				CE903F8A20458E6D00FAAEA0 /* GoogleService-Info.plist in Resources */,
 				CEF71BA3201F575600B82C5F /* loginbutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		528E5BB802A7CBAD3D285A61 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Easy2Sell-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1BA0A33F8613570D9C900BC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Easy2Sell/Pods-Easy2Sell-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Easy2Sell/Pods-Easy2Sell-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9F678B385A1E7EE51C09E5E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Easy2Sell/Pods-Easy2Sell-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE1315682018467000005956 /* Sources */ = {
@@ -215,7 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE85B98E201F83C800F806E8 /* AdminSignUP_In.swift in Sources */,
-				CE1315722018467000005956 /* ViewController.swift in Sources */,
+				CE1315722018467000005956 /* HomeVC.swift in Sources */,
 				CE6C0AEA2020C16600FF6AB6 /* EmployeeSignUp_In.swift in Sources */,
 				CE1315702018467000005956 /* AppDelegate.swift in Sources */,
 				CE1315782018467000005956 /* Easy2Sell.xcdatamodeld in Sources */,
@@ -341,6 +434,7 @@
 		};
 		CE1315822018467000005956 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F48494F7B6A81492615AC19A /* Pods-Easy2Sell.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
@@ -356,6 +450,7 @@
 		};
 		CE1315832018467000005956 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83E363CF90F6F80DCA6E0EE4 /* Pods-Easy2Sell.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";

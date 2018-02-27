@@ -51,6 +51,8 @@ class AdminSignUP_In: UIViewController {
         adminKeyTF.isHidden = false
         passwordTF.isHidden = false
         confirmPasswordTF.isHidden = false
+        signUpbtn.backgroundColor = UIColor.red
+        loginBTN.backgroundColor = nil
         
         
     }
@@ -61,6 +63,8 @@ class AdminSignUP_In: UIViewController {
         adminKeyTF.isHidden = false
         passwordTF.isHidden = false
         confirmPasswordTF.isHidden = true
+        loginBTN.backgroundColor = UIColor.red
+        signUpbtn.backgroundColor = nil
        
     }
     
