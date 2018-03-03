@@ -16,6 +16,10 @@
 		CE1315AF201E3B8C00005956 /* selectuser1.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1315AE201E3B8C00005956 /* selectuser1.png */; };
 		CE1315B2201E426200005956 /* admin1.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1315B0201E426200005956 /* admin1.png */; };
 		CE1315B3201E426200005956 /* employeebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1315B1201E426200005956 /* employeebutton.png */; };
+		CE39CA122046780800A7B506 /* AdminHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE39CA112046780800A7B506 /* AdminHomeVC.swift */; };
+		CE39CA142046782000A7B506 /* EmployeeHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE39CA132046782000A7B506 /* EmployeeHomeVC.swift */; };
+		CE39CA162046795A00A7B506 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE39CA152046795A00A7B506 /* AlertController.swift */; };
+		CE39CA38204ADB4800A7B506 /* logout-button-md.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39CA37204ADB4800A7B506 /* logout-button-md.png */; };
 		CE6C0AEA2020C16600FF6AB6 /* EmployeeSignUp_In.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C0AE92020C16600FF6AB6 /* EmployeeSignUp_In.swift */; };
 		CE85B983201F5D9C00F806E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE85B981201F5D9C00F806E8 /* Main.storyboard */; };
 		CE85B986201F618800F806E8 /* loginbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE85B984201F618800F806E8 /* loginbtn.png */; };
@@ -39,6 +43,10 @@
 		CE1315AE201E3B8C00005956 /* selectuser1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = selectuser1.png; path = ../selectuser1.png; sourceTree = "<group>"; };
 		CE1315B0201E426200005956 /* admin1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = admin1.png; path = ../admin1.png; sourceTree = "<group>"; };
 		CE1315B1201E426200005956 /* employeebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = employeebutton.png; path = ../employeebutton.png; sourceTree = "<group>"; };
+		CE39CA112046780800A7B506 /* AdminHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminHomeVC.swift; sourceTree = "<group>"; };
+		CE39CA132046782000A7B506 /* EmployeeHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeHomeVC.swift; sourceTree = "<group>"; };
+		CE39CA152046795A00A7B506 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		CE39CA37204ADB4800A7B506 /* logout-button-md.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout-button-md.png"; sourceTree = "<group>"; };
 		CE6C0AE92020C16600FF6AB6 /* EmployeeSignUp_In.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeSignUp_In.swift; sourceTree = "<group>"; };
 		CE85B982201F5D9C00F806E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE85B984201F618800F806E8 /* loginbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginbtn.png; sourceTree = "<group>"; };
@@ -119,6 +127,7 @@
 				CE1315B1201E426200005956 /* employeebutton.png */,
 				CEF71BA1201F575600B82C5F /* loginbutton.png */,
 				CEF71BA2201F575600B82C5F /* register.png */,
+				CE39CA37204ADB4800A7B506 /* logout-button-md.png */,
 				CE1315AE201E3B8C00005956 /* selectuser1.png */,
 			);
 			name = images;
@@ -127,6 +136,7 @@
 		CE85B989201F82CE00F806E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CE39CA152046795A00A7B506 /* AlertController.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -146,6 +156,8 @@
 				CE1315712018467000005956 /* HomeVC.swift */,
 				CE85B98D201F83C800F806E8 /* AdminSignUP_In.swift */,
 				CE6C0AE92020C16600FF6AB6 /* EmployeeSignUp_In.swift */,
+				CE39CA112046780800A7B506 /* AdminHomeVC.swift */,
+				CE39CA132046782000A7B506 /* EmployeeHomeVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -232,6 +244,7 @@
 				CE85B986201F618800F806E8 /* loginbtn.png in Resources */,
 				CE85B983201F5D9C00F806E8 /* Main.storyboard in Resources */,
 				CE85B987201F618800F806E8 /* signupbtn.png in Resources */,
+				CE39CA38204ADB4800A7B506 /* logout-button-md.png in Resources */,
 				CEF71BA4201F575600B82C5F /* register.png in Resources */,
 				CE903F8A20458E6D00FAAEA0 /* GoogleService-Info.plist in Resources */,
 				CEF71BA3201F575600B82C5F /* loginbutton.png in Resources */,
@@ -308,7 +321,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE85B98E201F83C800F806E8 /* AdminSignUP_In.swift in Sources */,
+				CE39CA122046780800A7B506 /* AdminHomeVC.swift in Sources */,
 				CE1315722018467000005956 /* HomeVC.swift in Sources */,
+				CE39CA142046782000A7B506 /* EmployeeHomeVC.swift in Sources */,
+				CE39CA162046795A00A7B506 /* AlertController.swift in Sources */,
 				CE6C0AEA2020C16600FF6AB6 /* EmployeeSignUp_In.swift in Sources */,
 				CE1315702018467000005956 /* AppDelegate.swift in Sources */,
 				CE1315782018467000005956 /* Easy2Sell.xcdatamodeld in Sources */,

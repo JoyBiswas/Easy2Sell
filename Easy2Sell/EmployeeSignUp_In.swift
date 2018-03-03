@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class EmployeeSignUp_In: UIViewController {
     
@@ -24,19 +25,52 @@ class EmployeeSignUp_In: UIViewController {
     
     @IBOutlet weak var signUpbtn: UIButton!
     
+    @IBOutlet weak var forgetPasswordBtn: UIButton!
     
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
+    var databaseRef:DatabaseReference?
+    var datahandel:DatabaseHandle?
+    
+    var employeeKey:[String] = []
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.hidesBackButton = true
         userNameTF.isHidden = true
         emailTF.isHidden = true
         employeeKeyTF.isHidden = true
         passwordTF.isHidden = true
         confirmPasswordTF.isHidden = true
+        forgetPasswordBtn.isHidden = true
+        
+        databaseRef=Database.database().reference()
+        
+        datahandel = databaseRef?.child("employeeKey").observe(.childAdded, with: { (snapshot) in
+            
+            if let item = snapshot.value as? String
+            {
+                
+                self.employeeKey.append(item)
+                
+            }
+            
+        })
+        
+        if Auth.auth().currentUser != nil {
+            
+            Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
+                
+                self.performSegue(withIdentifier: "toEmployeeHome", sender: nil)
+            })
+        }
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.activityIndicator.stopAnimating()
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,8 +88,9 @@ class EmployeeSignUp_In: UIViewController {
         confirmPasswordTF.isHidden = false
         signUpbtn.backgroundColor = UIColor.red
         loginBTN.backgroundColor = nil
-        
-        
+        forgetPasswordBtn.isHidden = true
+        loginBTN.isHidden = true
+        signUpbtn.isHidden = false
         
         
     }
@@ -68,18 +103,191 @@ class EmployeeSignUp_In: UIViewController {
         confirmPasswordTF.isHidden = true
         loginBTN.backgroundColor = UIColor.red
         signUpbtn.backgroundColor = nil
+        forgetPasswordBtn.isHidden = false
+        signUpbtn.isHidden = true
+        loginBTN.isHidden = false
 
         
     }
     
     
     @IBAction func signUpBtnPressed(_ sender: Any) {
+        
+        
+        if let username=userNameTF.text,username == "",let email = emailTF.text,email == "",let password=passwordTF.text,password == "",let employeekey=employeeKeyTF.text,employeekey == ""  {
+            
+            AlertController.showAlert(self, title: "Missing InFo", message: "Please fill up your field")
+            
+            
+            
+            
+            return
+        }
+        
+        
+        
+        if employeeKey.contains(employeeKeyTF.text!){
+            
+            if passwordTF.text == confirmPasswordTF.text {
+                
+                activityIndicator.center = self.view.center
+                activityIndicator.hidesWhenStopped = true
+                activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+                view.addSubview(activityIndicator)
+                activityIndicator.startAnimating()
+                
+                Auth.auth().createUser(withEmail: emailTF.text!, password: passwordTF.text!, completion: { (user, error) in
+                    
+                    guard error == nil else {
+                        AlertController.showAlert(self, title: "Error", message: error!.localizedDescription)
+                        self.activityIndicator.stopAnimating()
+                        return
+                    }
+                    guard let user = user else { return }
+                    print(user.email ?? "MISSING EMAIL")
+                    print(user.uid)
+                    
+                    let changeRequest = user.createProfileChangeRequest()
+                    changeRequest.displayName = self.userNameTF.text!
+                    changeRequest.commitChanges(completion: { (error) in
+                        guard error == nil else {
+                            AlertController.showAlert(self, title: "Error", message: error!.localizedDescription)
+                            self.activityIndicator.stopAnimating()
+                            return
+                        }
+                        
+                        self.performSegue(withIdentifier: "toEmployeeHome", sender: nil)
+                        self.activityIndicator.stopAnimating()
+                        
+                    })
+                    
+                    
+                    
+                })
+                
+                
+                
+                
+            }
+            else {
+                
+                
+                AlertController.showAlert(self, title: "Missing InFo", message: "Password didnt match")
+                
+                self.activityIndicator.stopAnimating()
+                
+            }
+            
+            
+        }  else {
+            
+            
+            AlertController.showAlert(self, title: "Missing InFo", message: "Employee key didnt match")
+            
+            self.activityIndicator.stopAnimating()
+            
+        }
+        
+        
+
     }
     
     @IBAction func loginBTnPressed(_ sender: Any) {
+        
+        
+        if let email = emailTF.text,
+            email == "",
+            let password = passwordTF.text,
+            password == "",let employeekey=employeeKeyTF.text,employeekey == ""
+        {
+            AlertController.showAlert(self, title: "Missing Info", message: "Please fill out all required fields")
+            return
+            
+            
+        }
+        if employeeKey.contains(employeeKeyTF.text!){
+            
+            
+            activityIndicator.center = self.view.center
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+            view.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
+            
+            Auth.auth().signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion: { (user, error) in
+                guard error == nil else {
+                    AlertController.showAlert(self, title: "Error", message: error!.localizedDescription)
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+                self.performSegue(withIdentifier: "toEmployeeHome", sender: nil)
+                
+                
+            })
+            
+        }else {
+            
+            AlertController.showAlert(self, title: "Missing InFo", message: "Employee key didnt match")
+            
+            self.activityIndicator.stopAnimating()
+            
+        }
+        
     }
     
     @IBAction func forgetPasswordPressed(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Reset Password", message: "Enter your mail adress for recovery", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Enter Email Here"
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let send = UIAlertAction(title: "Send", style: .default) { _ in
+            guard var text = alert.textFields?.first?.text else { return }
+            
+            if text == "" {
+                let alertController = UIAlertController(title: "eaaaak!", message: "Please enter an email.", preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+                
+            } else {
+                Auth.auth().sendPasswordReset(withEmail: text, completion: { (error) in
+                    
+                    var title = ""
+                    var message = ""
+                    
+                    if error != nil {
+                        title = "Error!"
+                        message = (error?.localizedDescription)!
+                    } else {
+                        title = "Success!"
+                        message = "Password reset email sent."
+                        text = ""
+                    }
+                    
+                    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                    
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(defaultAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                })
+                
+                
+                
+            }
+            
+            
+            
+            
+        }
+        alert.addAction(cancel)
+        alert.addAction(send)
+        present(alert, animated: true, completion: nil)
     }
     
     
