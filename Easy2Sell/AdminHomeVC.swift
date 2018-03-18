@@ -8,20 +8,34 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
-class AdminHomeVC: UIViewController {
+class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
+    @IBOutlet weak var activeEmployeeBtn: UIButton!
     var menuShow = false
+    var imagePicker:UIImagePickerController!
     
+    @IBOutlet weak var adminProfileImg: CircleView!
+   
     override func viewDidLoad() {
         
         setupMenubar()
         menuLeadingConstraint.constant = 0
         
-        guard let username = Auth.auth().currentUser?.displayName else { return }
+        guard let username = Auth.auth().currentUser?.email else { return }
         
         //successLbl.text = "Hello \(username)"
         navigationItem.title = username
+         //_ = KeychainWrapper.standard.removeObject(forKey: "adminuid")
+        
+        activeEmployeeBtn.backgroundColor = UIColor.cyan
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        
+        
         
     }
     
@@ -65,6 +79,21 @@ class AdminHomeVC: UIViewController {
         
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            adminProfileImg.image = image
+            print("what was my image")
+            
+        } else {
+            print("JESS: A valid image wasn't selected")
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func addImageTapped(_ sender: AnyObject) {
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
     @IBAction func onLogoutTapped(_ sender: Any)
     {
         
@@ -72,7 +101,7 @@ class AdminHomeVC: UIViewController {
             
             
             try Auth.auth().signOut()
-            //performSegue(withIdentifier: "signOutSegue", sender: nil)
+          _ = KeychainWrapper.standard.removeObject(forKey: "adminuid")
             dismiss(animated: true, completion: nil)
              
         } catch {
@@ -82,6 +111,9 @@ class AdminHomeVC: UIViewController {
     }
 
     
+    @IBAction func adminPImgtBtn(_ sender: Any) {
+        print("taped")
+    }
 
 
 }

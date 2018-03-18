@@ -28,7 +28,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectuser1.png" translatesAutoresizingMaskIntoConstraints="NO" id="p7e-dl-Nih">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tkT-LK-sXP">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tkT-LK-sXP" customClass="FancyView" customModule="Easy2Sell" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="270" width="320" height="270"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="503-4c-6iR">
@@ -45,7 +45,7 @@
                                                     <constraint firstAttribute="width" constant="6" id="hjO-TG-8Lo"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELy-lg-Rqc">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELy-lg-Rqc" customClass="RoundBtn" customModule="Easy2Sell" customModuleProvider="target">
                                                 <rect key="frame" x="31" y="79.5" width="111" height="111"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="111" id="F5M-kC-Sv2"/>
@@ -56,7 +56,7 @@
                                                     <segue destination="wDg-71-mfZ" kind="show" id="DXe-aJ-Coo"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVg-vs-VPe">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVg-vs-VPe" customClass="RoundBtn" customModule="Easy2Sell" customModuleProvider="target">
                                                 <rect key="frame" x="178" y="79.5" width="111" height="111"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="111" id="Ato-dp-dKi"/>
@@ -124,9 +124,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="IDi-8y-YZW">
-                                <rect key="frame" x="10" y="30" width="300" height="50"/>
+                                <rect key="frame" x="10" y="74" width="300" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBW-4h-Iy1">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBW-4h-Iy1" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="148.5" height="50"/>
                                         <state key="normal" backgroundImage="loginbutton.png"/>
                                         <connections>
@@ -134,7 +134,7 @@
                                             <action selector="loginSelectionPressed:" destination="wDg-71-mfZ" eventType="touchUpInside" id="ZcQ-Sj-KDJ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQR-tg-GtG">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQR-tg-GtG" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
                                         <rect key="frame" x="151.5" y="0.0" width="148.5" height="50"/>
                                         <state key="normal" backgroundImage="register.png"/>
                                         <connections>
@@ -150,7 +150,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="nP3-3o-Ygb">
                                 <rect key="frame" x="10" y="485" width="300" height="38"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3g-jj-Rym">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3g-jj-Rym" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="148.5" height="38"/>
                                         <state key="normal" backgroundImage="loginbtn.png"/>
                                         <connections>
@@ -158,7 +158,7 @@
                                             <action selector="loginBTnPressed:" destination="dr0-Y3-JVP" eventType="touchUpInside" id="vDo-n1-iql"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3a-MQ-gkS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3a-MQ-gkS" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
                                         <rect key="frame" x="151.5" y="0.0" width="148.5" height="38"/>
                                         <state key="normal" backgroundImage="signupbtn.png"/>
                                         <connections>
@@ -200,14 +200,14 @@
                                     <action selector="backBtnPressed:" destination="wDg-71-mfZ" eventType="touchUpInside" id="bgd-th-84i"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="👤  User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lrA-9T-L5u">
-                                <rect key="frame" x="10" y="90" width="300" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="👤  User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lrA-9T-L5u" customClass="FancyField" customModule="Easy2Sell" customModuleProvider="target">
+                                <rect key="frame" x="10" y="134" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="UTz-c9-MOa"/>
                                 </constraints>
                                 <color key="textColor" red="0.75196433070000002" green="0.60102576019999998" blue="0.29445445539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                         <color key="value" red="0.72149890660000005" green="0.7216190696" blue="0.72147327660000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -215,20 +215,20 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhq-4j-NYF">
-                                <rect key="frame" x="17" y="128" width="286" height="1"/>
+                                <rect key="frame" x="17" y="172" width="286" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="N4v-98-rgq"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="✉️  Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1rP-Kq-5kG">
-                                <rect key="frame" x="10" y="137" width="300" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="✉️  Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1rP-Kq-5kG" customClass="FancyField" customModule="Easy2Sell" customModuleProvider="target">
+                                <rect key="frame" x="10" y="181" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Ovm-ke-T2c"/>
                                 </constraints>
                                 <color key="textColor" red="0.75196433070000002" green="0.60102576019999998" blue="0.29445445539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                         <color key="value" red="0.72149890660000005" green="0.7216190696" blue="0.72147327660000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -236,20 +236,20 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laW-Cg-qkT">
-                                <rect key="frame" x="17" y="175" width="286" height="1"/>
+                                <rect key="frame" x="17" y="219" width="286" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="LVY-W2-4CN"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="🔐  Employee Key  " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Ku-Em-MqW">
-                                <rect key="frame" x="10" y="184" width="300" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="🔐  Employee Key  " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Ku-Em-MqW" customClass="FancyField" customModule="Easy2Sell" customModuleProvider="target">
+                                <rect key="frame" x="10" y="228" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="oW8-Ro-73K"/>
                                 </constraints>
                                 <color key="textColor" red="0.75196433070000002" green="0.60102576019999998" blue="0.29445445539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                         <color key="value" red="0.72149890660000005" green="0.7216190696" blue="0.72147327660000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -257,41 +257,44 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxe-DN-Qrh">
-                                <rect key="frame" x="17" y="222" width="286" height="1"/>
+                                <rect key="frame" x="17" y="266" width="286" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="ohb-2u-aVE"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="🗝  Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bpy-Ne-Pmq">
-                                <rect key="frame" x="10" y="231" width="300" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="🗝  Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bpy-Ne-Pmq" customClass="FancyField" customModule="Easy2Sell" customModuleProvider="target">
+                                <rect key="frame" x="10" y="275" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="oYc-DZ-c0a"/>
                                 </constraints>
                                 <color key="textColor" red="0.75196433070000002" green="0.60102576019999998" blue="0.29445445539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                         <color key="value" red="0.72149890660000005" green="0.7216190696" blue="0.72147327660000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="dr0-Y3-JVP" id="f39-fv-4Fn"/>
+                                </connections>
                             </textField>
                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBz-FK-q1y">
-                                <rect key="frame" x="17" y="269" width="286" height="1"/>
+                                <rect key="frame" x="17" y="313" width="286" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="XbC-ad-Cc4"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="🗝  Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nbm-qd-zN4">
-                                <rect key="frame" x="10" y="269" width="300" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="🗝  Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nbm-qd-zN4" customClass="FancyField" customModule="Easy2Sell" customModuleProvider="target">
+                                <rect key="frame" x="10" y="313" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="wf8-UQ-IBo"/>
                                 </constraints>
                                 <color key="textColor" red="0.75196433070000002" green="0.60102576019999998" blue="0.29445445539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                         <color key="value" red="0.72149890660000005" green="0.7216190696" blue="0.72147327660000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -299,7 +302,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view alpha="0.34999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dg6-Nx-UrD">
-                                <rect key="frame" x="17" y="307" width="286" height="1"/>
+                                <rect key="frame" x="17" y="351" width="286" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Vc6-15-F2W"/>
@@ -376,6 +379,60 @@
             </objects>
             <point key="canvasLocation" x="819" y="604"/>
         </scene>
+        <!--My Visited ComVC-->
+        <scene sceneID="miY-eU-48u">
+            <objects>
+                <viewController id="W1i-HH-Vuh" customClass="MyVisitedComVC" customModule="Easy2Sell" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nO5-bf-41s"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xwl-Pt-Cm0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nEO-YR-F0G">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dZq-uN-VtJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="45" y="2631"/>
+        </scene>
+        <!--Cell HistoryVC-->
+        <scene sceneID="DXc-29-Faa">
+            <objects>
+                <viewController id="zpa-cS-Ye0" customClass="CellHistoryVC" customModule="Easy2Sell" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="g5r-YN-jpT"/>
+                        <viewControllerLayoutGuide type="bottom" id="gJd-kn-hwh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vEp-Vb-wEq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pnw-NZ-lM4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="45" y="1982"/>
+        </scene>
+        <!--Product ListVC-->
+        <scene sceneID="1FE-Ph-9e3">
+            <objects>
+                <viewController id="p1J-Ni-Cgc" customClass="ProductListVC" customModule="Easy2Sell" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mrl-7W-45D"/>
+                        <viewControllerLayoutGuide type="bottom" id="Np2-q9-7n8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SXO-RY-LAC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lXg-4B-tGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23" y="1295"/>
+        </scene>
         <!--Employee HomeVC-->
         <scene sceneID="YcF-dF-ETi">
             <objects>
@@ -388,42 +445,347 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfb-cG-zLw">
-                                <rect key="frame" x="41" y="497" width="56" height="56"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="buD-yp-PRc">
+                                <rect key="frame" x="26" y="74" width="65" height="484"/>
+                                <subviews>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="employeebutton.png" translatesAutoresizingMaskIntoConstraints="NO" id="jby-Ac-naX" customClass="CircleView" customModule="Easy2Sell" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="69"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Hnr-oX-dVC" appends="YES" id="tLi-R4-qXf"/>
+                                        </connections>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QkW-th-JoZ" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="104" width="65" height="68.5"/>
+                                        <state key="normal" image="productList.png"/>
+                                        <connections>
+                                            <segue destination="p1J-Ni-Cgc" kind="show" id="ZBQ-v6-lm8"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f67-3v-CgI" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="207.5" width="65" height="69"/>
+                                        <state key="normal" image="MySellHistory.png"/>
+                                        <connections>
+                                            <segue destination="zpa-cS-Ye0" kind="show" id="0BI-y2-5Rg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xad-q4-g0V" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="311.5" width="65" height="68.5"/>
+                                        <state key="normal" image="MyVisitedCompany.png"/>
+                                        <connections>
+                                            <segue destination="W1i-HH-Vuh" kind="show" id="5BK-tG-dKX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfb-cG-zLw" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="415" width="65" height="69"/>
+                                        <state key="normal" image="logout-button-md.png"/>
+                                        <connections>
+                                            <action selector="onLogoutTapped:" destination="kcP-gX-zCR" eventType="touchUpInside" id="8tc-Tb-xwX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="Rlu-Pz-jKD"/>
-                                    <constraint firstAttribute="width" constant="56" id="UcM-w9-eaC"/>
+                                    <constraint firstAttribute="width" constant="65" id="at2-4K-09m"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="logout-button-md.png"/>
-                                <connections>
-                                    <action selector="onLogoutTapped:" destination="kcP-gX-zCR" eventType="touchUpInside" id="8tc-Tb-xwX"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FXx-XX-SiC">
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FXx-XX-SiC" customClass="FancyView" customModule="Easy2Sell" customModuleProvider="target">
                                 <rect key="frame" x="124" y="64" width="196" height="504"/>
-                                <color key="backgroundColor" red="0.44372636079788208" green="0.48921549320220947" blue="0.56103736162185669" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.20308393239974976" green="0.27149355411529541" blue="0.36819726228713989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.20308393239974976" green="0.27149355411529541" blue="0.36819726228713989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.44372636079788208" green="0.48921549320220947" blue="0.56103736162185669" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FXx-XX-SiC" secondAttribute="trailing" id="0ap-ge-LrM"/>
-                            <constraint firstItem="Qfb-cG-zLw" firstAttribute="leading" secondItem="uZs-jW-D7m" secondAttribute="leadingMargin" constant="25" id="9Pk-Lq-JFl"/>
+                            <constraint firstItem="buD-yp-PRc" firstAttribute="leading" secondItem="uZs-jW-D7m" secondAttribute="leadingMargin" constant="10" id="9HC-zJ-A1Y"/>
                             <constraint firstItem="FXx-XX-SiC" firstAttribute="top" secondItem="qsT-gZ-s2U" secondAttribute="bottom" id="Bpl-W4-c4n"/>
+                            <constraint firstItem="buD-yp-PRc" firstAttribute="top" secondItem="qsT-gZ-s2U" secondAttribute="bottom" constant="10" id="KK4-O3-04I"/>
                             <constraint firstItem="Ski-Ra-053" firstAttribute="top" secondItem="FXx-XX-SiC" secondAttribute="bottom" id="g6b-8a-2Ue"/>
-                            <constraint firstItem="Ski-Ra-053" firstAttribute="top" secondItem="Qfb-cG-zLw" secondAttribute="bottom" constant="15" id="j25-6l-EqY"/>
+                            <constraint firstItem="Ski-Ra-053" firstAttribute="top" secondItem="buD-yp-PRc" secondAttribute="bottom" constant="10" id="qJ9-pt-tpP"/>
                             <constraint firstItem="FXx-XX-SiC" firstAttribute="leading" secondItem="uZs-jW-D7m" secondAttribute="leading" constant="124" id="qgl-T5-gzE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9Kf-qL-t6z"/>
                     <connections>
+                        <outlet property="employeeProfileImg" destination="jby-Ac-naX" id="MMf-tj-4DX"/>
                         <outlet property="mainView" destination="FXx-XX-SiC" id="iFD-Ug-48Y"/>
                         <outlet property="menuLeadingConstraint" destination="qgl-T5-gzE" id="TOc-oh-tAK"/>
                         <segue destination="dr0-Y3-JVP" kind="show" identifier="signOutSegue" id="SvL-1f-0Ba"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y01-7Z-eQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Hnr-oX-dVC">
+                    <connections>
+                        <action selector="addImageTapped:" destination="kcP-gX-zCR" id="fNS-Ce-PeK"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="818" y="1409"/>
+        </scene>
+        <!--Add EmployeeVC-->
+        <scene sceneID="ygr-jd-kJV">
+            <objects>
+                <viewController id="RaT-rl-qyu" customClass="AddEmployeeVC" customModule="Easy2Sell" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SOw-04-dxy"/>
+                        <viewControllerLayoutGuide type="bottom" id="gYk-d1-1l4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HCM-cL-jcw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KAo-h8-xmv">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
+                                <color key="backgroundColor" red="0.84071296453475952" green="0.89630037546157837" blue="0.92645788192749023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="7He-7j-MnS"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pga-Ub-Nnt" customClass="FancyView" customModule="Easy2Sell" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="320" height="150"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SNm-ke-IgB" customClass="FancyView" customModule="Easy2Sell" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="11" width="290" height="128"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage your Employees" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KwM-Sr-7hl">
+                                                <rect key="frame" x="1" y="2" width="288" height="25"/>
+                                                <color key="backgroundColor" red="0.92148083448410034" green="0.92163199186325073" blue="0.92144864797592163" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="c8o-9H-G5v"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="AFO-De-TUL">
+                                                <rect key="frame" x="1" y="29" width="288" height="74"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="@employee_name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vSq-29-wxN" customClass="FancyField" customModule="Easy2Sell" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="288" height="36"/>
+                                                        <color key="backgroundColor" red="0.79992324113845825" green="0.80005550384521484" blue="0.79989498853683472" alpha="0.076011344178082196" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="@employee_Key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uel-QY-xvM" customClass="FancyField" customModule="Easy2Sell" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="38" width="288" height="36"/>
+                                                        <color key="backgroundColor" red="0.79992324110000002" green="0.80005550380000001" blue="0.79989498849999996" alpha="0.076011344179999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66e-zX-ajT">
+                                                <rect key="frame" x="1" y="105" width="288" height="21"/>
+                                                <color key="backgroundColor" red="0.85089898109436035" green="0.85103923082351685" blue="0.85086923837661743" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" red="0.22271181471275639" green="0.31631371005121844" blue="0.37381931791450773" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="employeeSave:" destination="RaT-rl-qyu" eventType="touchUpInside" id="SoA-DD-nWd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="AFO-De-TUL" firstAttribute="leading" secondItem="SNm-ke-IgB" secondAttribute="leading" constant="1" id="CCB-oS-tmF"/>
+                                            <constraint firstAttribute="bottom" secondItem="AFO-De-TUL" secondAttribute="bottom" constant="25" id="Hda-kt-HwO"/>
+                                            <constraint firstItem="66e-zX-ajT" firstAttribute="leading" secondItem="SNm-ke-IgB" secondAttribute="leading" constant="1" id="MAI-5Q-jFf"/>
+                                            <constraint firstAttribute="trailing" secondItem="KwM-Sr-7hl" secondAttribute="trailing" constant="1" id="SKU-6H-q46"/>
+                                            <constraint firstItem="KwM-Sr-7hl" firstAttribute="leading" secondItem="SNm-ke-IgB" secondAttribute="leading" constant="1" id="XCc-CU-Hev"/>
+                                            <constraint firstItem="KwM-Sr-7hl" firstAttribute="top" secondItem="SNm-ke-IgB" secondAttribute="top" constant="2" id="axD-GB-ikT"/>
+                                            <constraint firstAttribute="bottom" secondItem="66e-zX-ajT" secondAttribute="bottom" constant="2" id="dDl-EJ-C9H"/>
+                                            <constraint firstItem="AFO-De-TUL" firstAttribute="top" secondItem="KwM-Sr-7hl" secondAttribute="bottom" constant="2" id="eBP-NW-EBg"/>
+                                            <constraint firstItem="66e-zX-ajT" firstAttribute="top" secondItem="AFO-De-TUL" secondAttribute="bottom" constant="2" id="qoR-pI-V67"/>
+                                            <constraint firstAttribute="trailing" secondItem="AFO-De-TUL" secondAttribute="trailing" constant="1" id="ulR-kA-UAw"/>
+                                            <constraint firstAttribute="trailing" secondItem="66e-zX-ajT" secondAttribute="trailing" constant="1" id="zaJ-ze-7Mh"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.84071296453475952" green="0.89630037546157837" blue="0.92645788192749023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="SNm-ke-IgB" secondAttribute="trailing" constant="15" id="IVn-Yd-ROo"/>
+                                    <constraint firstItem="SNm-ke-IgB" firstAttribute="leading" secondItem="Pga-Ub-Nnt" secondAttribute="leading" constant="15" id="OVu-4i-VVa"/>
+                                    <constraint firstAttribute="bottom" secondItem="SNm-ke-IgB" secondAttribute="bottom" constant="11" id="e53-nK-1ZS"/>
+                                    <constraint firstItem="SNm-ke-IgB" firstAttribute="top" secondItem="Pga-Ub-Nnt" secondAttribute="top" constant="11" id="fLT-jX-AH2"/>
+                                    <constraint firstAttribute="height" constant="150" id="nqH-kc-3Do"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="104" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sVY-lC-qJH">
+                                <rect key="frame" x="0.0" y="237" width="320" height="331"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="104" id="2BY-aP-4Vl" customClass="AddEmployeeTableCell" customModule="Easy2Sell" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="104"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2BY-aP-4Vl" id="UDD-9y-qph">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ait-yU-Zxn" customClass="FancyView" customModule="Easy2Sell" customModuleProvider="target">
+                                                    <rect key="frame" x="1" y="1" width="318" height="101.5"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQB-v9-CMT" customClass="FancyView" customModule="Easy2Sell" customModuleProvider="target">
+                                                            <rect key="frame" x="5" y="5" width="308" height="91.5"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="E37-xL-Hai">
+                                                                    <rect key="frame" x="2" y="2" width="304" height="87.5"/>
+                                                                    <subviews>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6cT-eL-Q41">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="65" height="87.5"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KqQ-nh-Grb">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="65" height="41.5"/>
+                                                                                    <color key="backgroundColor" red="0.59747141599999998" green="0.68820434809999997" blue="0.82466977829999999" alpha="0.3829195205479452" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <nil key="textColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Key" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCD-fc-DFS">
+                                                                                    <rect key="frame" x="0.0" y="46.5" width="65" height="41"/>
+                                                                                    <color key="backgroundColor" red="0.59747141599999998" green="0.68820434809999997" blue="0.82466977829999999" alpha="0.3829195205479452" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <nil key="textColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="65" id="w8M-xg-rmK"/>
+                                                                            </constraints>
+                                                                        </stackView>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="LbG-vK-2x0">
+                                                                            <rect key="frame" x="70" y="0.0" width="234" height="87.5"/>
+                                                                            <subviews>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="put-s1-g8o">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="234" height="41.5"/>
+                                                                                    <color key="backgroundColor" red="0.59747141599999998" green="0.68820434809999997" blue="0.82466977829999999" alpha="0.3829195205" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <nil key="textColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sn-ta-6fk">
+                                                                                    <rect key="frame" x="0.0" y="46.5" width="234" height="41"/>
+                                                                                    <color key="backgroundColor" red="0.59747141599999998" green="0.68820434809999997" blue="0.82466977829999999" alpha="0.3829195205" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <nil key="textColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                        </stackView>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.82924885965228923" green="0.8374592444013218" blue="0.8374592444013218" alpha="0.71778681506849318" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="E37-xL-Hai" firstAttribute="leading" secondItem="iQB-v9-CMT" secondAttribute="leading" constant="2" id="IOz-AU-AiL"/>
+                                                                <constraint firstItem="E37-xL-Hai" firstAttribute="top" secondItem="iQB-v9-CMT" secondAttribute="top" constant="2" id="RoB-lb-Woq"/>
+                                                                <constraint firstAttribute="trailing" secondItem="E37-xL-Hai" secondAttribute="trailing" constant="2" id="Sgw-X7-c9W"/>
+                                                                <constraint firstAttribute="bottom" secondItem="E37-xL-Hai" secondAttribute="bottom" constant="2" id="reZ-aM-5XS"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.76630850094277358" green="0.82390454033425919" blue="0.85677682233945973" alpha="0.48563249143835618" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="iQB-v9-CMT" firstAttribute="leading" secondItem="Ait-yU-Zxn" secondAttribute="leading" constant="5" id="0zm-He-lFL"/>
+                                                        <constraint firstAttribute="bottom" secondItem="iQB-v9-CMT" secondAttribute="bottom" constant="5" id="bKf-AI-3Z1"/>
+                                                        <constraint firstAttribute="trailing" secondItem="iQB-v9-CMT" secondAttribute="trailing" constant="5" id="gij-1C-jTS"/>
+                                                        <constraint firstItem="iQB-v9-CMT" firstAttribute="top" secondItem="Ait-yU-Zxn" secondAttribute="top" constant="5" id="rLU-9X-YZv"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ait-yU-Zxn" firstAttribute="top" secondItem="UDD-9y-qph" secondAttribute="top" constant="1" id="HEP-gL-6uq"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ait-yU-Zxn" secondAttribute="bottom" constant="1" id="LpN-vw-P43"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ait-yU-Zxn" secondAttribute="trailing" constant="1" id="VqW-DD-EvN"/>
+                                                <constraint firstItem="Ait-yU-Zxn" firstAttribute="leading" secondItem="UDD-9y-qph" secondAttribute="leading" constant="1" id="dyo-l5-NO0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="employeeKey" destination="7sn-ta-6fk" id="m9A-9q-msp"/>
+                                            <outlet property="employeeName" destination="put-s1-g8o" id="jtk-fB-oub"/>
+                                            <outlet property="lblKey" destination="KCD-fc-DFS" id="Xcq-4q-X9d"/>
+                                            <outlet property="lblName" destination="KqQ-nh-Grb" id="8V4-iQ-wND"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="RaT-rl-qyu" id="ePZ-tg-zul"/>
+                                    <outlet property="delegate" destination="RaT-rl-qyu" id="G9C-tN-kpl"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Employees List and Key" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9u4-fn-yyk">
+                                <rect key="frame" x="0.0" y="215" width="320" height="21"/>
+                                <color key="backgroundColor" red="0.94455498456954956" green="0.96360892057418823" blue="0.96770018339157104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="o4K-7b-Mrt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="15"/>
+                                <color key="textColor" red="0.20418342828741451" green="0.21443543695038433" blue="0.22475919354385532" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Pga-Ub-Nnt" firstAttribute="top" secondItem="SOw-04-dxy" secondAttribute="bottom" id="2vH-Rf-9XC"/>
+                            <constraint firstItem="9u4-fn-yyk" firstAttribute="leading" secondItem="HCM-cL-jcw" secondAttribute="leading" id="3LO-IV-cIL"/>
+                            <constraint firstItem="9u4-fn-yyk" firstAttribute="top" secondItem="Pga-Ub-Nnt" secondAttribute="bottom" constant="1" id="5jM-Jj-4NW"/>
+                            <constraint firstItem="sVY-lC-qJH" firstAttribute="top" secondItem="9u4-fn-yyk" secondAttribute="bottom" constant="1" id="AeQ-51-MDJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Pga-Ub-Nnt" secondAttribute="trailing" id="C1K-8t-OsH"/>
+                            <constraint firstItem="gYk-d1-1l4" firstAttribute="top" secondItem="sVY-lC-qJH" secondAttribute="bottom" id="D4Y-xP-UpO"/>
+                            <constraint firstAttribute="trailing" secondItem="KAo-h8-xmv" secondAttribute="trailing" id="Eeb-uL-izd"/>
+                            <constraint firstItem="KAo-h8-xmv" firstAttribute="top" secondItem="HCM-cL-jcw" secondAttribute="top" id="NMD-Nc-Jwf"/>
+                            <constraint firstAttribute="trailing" secondItem="sVY-lC-qJH" secondAttribute="trailing" id="OcE-Du-EPx"/>
+                            <constraint firstAttribute="trailing" secondItem="9u4-fn-yyk" secondAttribute="trailing" id="Yds-p0-caK"/>
+                            <constraint firstItem="sVY-lC-qJH" firstAttribute="leading" secondItem="HCM-cL-jcw" secondAttribute="leading" id="YkG-5W-lzD"/>
+                            <constraint firstItem="KAo-h8-xmv" firstAttribute="leading" secondItem="HCM-cL-jcw" secondAttribute="leading" id="e3C-mv-w1f"/>
+                            <constraint firstItem="Pga-Ub-Nnt" firstAttribute="leading" secondItem="HCM-cL-jcw" secondAttribute="leading" id="vkj-le-LEL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="employeeKey" destination="uel-QY-xvM" id="lBq-Un-ZB4"/>
+                        <outlet property="employeeName" destination="vSq-29-wxN" id="GQj-Oh-0nS"/>
+                        <outlet property="employeeTableView" destination="sVY-lC-qJH" id="pVp-bG-XnC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4ff-kr-ZkA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3157.5" y="1080.6338028169014"/>
+        </scene>
+        <!--Add ProductVC-->
+        <scene sceneID="Fp1-oI-pAS">
+            <objects>
+                <viewController id="gfo-qb-IEg" customClass="AddProductVC" customModule="Easy2Sell" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="R8S-Yv-Fh1"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xmv-ib-wTe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZX9-Sc-j2v">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8eO-lo-hiu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3158" y="1763"/>
+        </scene>
+        <!--Product RequestVC-->
+        <scene sceneID="7Jz-cz-6jG">
+            <objects>
+                <viewController id="Ydw-mP-8QO" customClass="ProductRequestVC" customModule="Easy2Sell" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5k3-eL-QQK"/>
+                        <viewControllerLayoutGuide type="bottom" id="gff-HR-i2o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TPg-Xw-DDu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pIS-qV-BCJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3158" y="2426"/>
         </scene>
         <!--Admin HomeVC-->
         <scene sceneID="rUX-zk-xJI">
@@ -437,42 +799,110 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLD-pC-xBi">
-                                <rect key="frame" x="25" y="502" width="56" height="56"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="E0Y-cc-F72">
+                                <rect key="frame" x="26" y="74" width="65" height="484"/>
+                                <subviews>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="admin1.png" translatesAutoresizingMaskIntoConstraints="NO" id="tnv-fc-4q1" customClass="CircleView" customModule="Easy2Sell" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="64"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="iGv-pr-pAE" appends="YES" id="i2g-Ty-mN5"/>
+                                        </connections>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzg-XV-TGN" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="84" width="65" height="64"/>
+                                        <state key="normal" backgroundImage="acEmplyBTN.png"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ro9-GG-Zv0" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="168" width="65" height="64"/>
+                                        <state key="normal" backgroundImage="addEplyBTN.png"/>
+                                        <connections>
+                                            <segue destination="RaT-rl-qyu" kind="show" id="Asu-tv-ggu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zI-Q7-576" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="252" width="65" height="64"/>
+                                        <state key="normal" backgroundImage="addProBtn.png"/>
+                                        <connections>
+                                            <segue destination="gfo-qb-IEg" kind="show" id="jdL-8C-Lll"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLZ-Y2-id5" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="336" width="65" height="64"/>
+                                        <state key="normal" image="proreqstBTN.png"/>
+                                        <connections>
+                                            <segue destination="Ydw-mP-8QO" kind="show" id="xBd-MN-NPw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLD-pC-xBi" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="420" width="65" height="64"/>
+                                        <state key="normal" backgroundImage="logout-button-md.png"/>
+                                        <connections>
+                                            <action selector="onLogoutTapped:" destination="qzF-ON-VLF" eventType="touchUpInside" id="adg-IL-77D"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="jdW-0c-2Ee"/>
-                                    <constraint firstAttribute="height" constant="56" id="o8T-Gp-y1m"/>
+                                    <constraint firstAttribute="width" constant="65" id="dLp-g4-fnI"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="logout-button-md.png"/>
-                                <connections>
-                                    <action selector="onLogoutTapped:" destination="qzF-ON-VLF" eventType="touchUpInside" id="adg-IL-77D"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPv-l9-flW">
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPv-l9-flW" customClass="FancyView" customModule="Easy2Sell" customModuleProvider="target">
                                 <rect key="frame" x="124" y="64" width="196" height="504"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active Employee" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lI-3r-B3b">
+                                        <rect key="frame" x="0.0" y="0.0" width="196" height="25"/>
+                                        <color key="backgroundColor" red="0.77924740314483643" green="0.76790899038314819" blue="0.74620145559310913" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="OYU-jH-g54"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.7327997088432312" green="0.20918986201286316" blue="0.13732698559761047" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapView.png" translatesAutoresizingMaskIntoConstraints="NO" id="loa-e3-hs2">
+                                        <rect key="frame" x="0.0" y="30" width="196" height="474"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.44372636079788208" green="0.48921549320220947" blue="0.56103736162185669" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="0lI-3r-B3b" firstAttribute="top" secondItem="wPv-l9-flW" secondAttribute="top" id="5cz-AA-CGy"/>
+                                    <constraint firstItem="loa-e3-hs2" firstAttribute="top" secondItem="0lI-3r-B3b" secondAttribute="bottom" constant="5" id="GkV-Kb-hth"/>
+                                    <constraint firstItem="loa-e3-hs2" firstAttribute="leading" secondItem="wPv-l9-flW" secondAttribute="leading" id="KrP-UQ-TTq"/>
+                                    <constraint firstAttribute="trailing" secondItem="0lI-3r-B3b" secondAttribute="trailing" id="LuE-kv-l2c"/>
+                                    <constraint firstItem="0lI-3r-B3b" firstAttribute="leading" secondItem="wPv-l9-flW" secondAttribute="leading" id="LyQ-xu-t9h"/>
+                                    <constraint firstAttribute="trailing" secondItem="loa-e3-hs2" secondAttribute="trailing" id="Ufo-xO-8pQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="loa-e3-hs2" secondAttribute="bottom" id="Z0C-f1-c38"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.20308393239974976" green="0.27149355411529541" blue="0.36819726228713989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="dLD-pC-xBi" firstAttribute="leading" secondItem="Jbm-ru-BsR" secondAttribute="leading" constant="25" id="AYQ-6l-OkW"/>
+                            <constraint firstItem="qkS-iE-h6G" firstAttribute="top" secondItem="E0Y-cc-F72" secondAttribute="bottom" constant="10" id="H59-F9-gqx"/>
                             <constraint firstAttribute="trailing" secondItem="wPv-l9-flW" secondAttribute="trailing" id="M1U-QG-It8"/>
+                            <constraint firstItem="E0Y-cc-F72" firstAttribute="leading" secondItem="Jbm-ru-BsR" secondAttribute="leadingMargin" constant="10" id="Rcq-tn-bBf"/>
                             <constraint firstItem="wPv-l9-flW" firstAttribute="leading" secondItem="Jbm-ru-BsR" secondAttribute="leading" constant="124" id="TrQ-1r-GWN"/>
-                            <constraint firstItem="qkS-iE-h6G" firstAttribute="top" secondItem="dLD-pC-xBi" secondAttribute="bottom" constant="10" id="ZCH-FY-zea"/>
+                            <constraint firstItem="E0Y-cc-F72" firstAttribute="top" secondItem="Lw0-OZ-bqN" secondAttribute="bottom" constant="10" id="lmX-bx-R1B"/>
                             <constraint firstItem="qkS-iE-h6G" firstAttribute="top" secondItem="wPv-l9-flW" secondAttribute="bottom" id="v0M-xg-aqU"/>
                             <constraint firstItem="wPv-l9-flW" firstAttribute="top" secondItem="Lw0-OZ-bqN" secondAttribute="bottom" id="vbU-dv-SGl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="L8n-LM-GC0"/>
                     <connections>
+                        <outlet property="activeEmployeeBtn" destination="zzg-XV-TGN" id="01n-RZ-EwM"/>
+                        <outlet property="adminProfileImg" destination="tnv-fc-4q1" id="y80-6j-MFM"/>
                         <outlet property="mainView" destination="wPv-l9-flW" id="548-nv-ZE9"/>
                         <outlet property="menuLeadingConstraint" destination="TrQ-1r-GWN" id="x4U-MX-qbB"/>
                         <segue destination="wDg-71-mfZ" kind="show" identifier="signOutSegue" id="CuQ-uY-D63"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7Y-YG-Csn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="iGv-pr-pAE">
+                    <connections>
+                        <action selector="addImageTapped:" destination="qzF-ON-VLF" id="VkQ-eD-5Qy"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1873" y="1408"/>
+            <point key="canvasLocation" x="-1873.125" y="1407.0422535211267"/>
         </scene>
         <!--Admin SignUP In-->
         <scene sceneID="ncn-Xe-kqF">
@@ -487,16 +917,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="I5t-50-dfN">
-                                <rect key="frame" x="10" y="30" width="300" height="50"/>
+                                <rect key="frame" x="10" y="74" width="300" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YbN-qr-AHf">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YbN-qr-AHf" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="148.5" height="50"/>
                                         <state key="normal" backgroundImage="loginbutton.png"/>
                                         <connections>
                                             <action selector="loginSelectionPressed:" destination="wDg-71-mfZ" eventType="touchUpInside" id="XPc-dh-eyt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXR-Ub-h2V">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXR-Ub-h2V" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
                                         <rect key="frame" x="151.5" y="0.0" width="148.5" height="50"/>
                                         <state key="normal" backgroundImage="register.png"/>
                                         <connections>
@@ -508,14 +938,14 @@
                                     <constraint firstAttribute="height" constant="50" id="HDm-4a-ZOc"/>
                                 </constraints>
                             </stackView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="👤  User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vEP-Ah-qJ5">
-                                <rect key="frame" x="10" y="90" width="300" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="👤  User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vEP-Ah-qJ5" customClass="FancyField" customModule="Easy2Sell" customModuleProvider="target">
+                                <rect key="frame" x="10" y="134" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5Ld-EQ-TVf"/>
                                 </constraints>
                                 <color key="textColor" red="0.75196433067321777" green="0.60102576017379761" blue="0.29445445537567139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                         <color key="value" red="0.72149890661239624" green="0.72161906957626343" blue="0.72147327661514282" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -523,20 +953,20 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUA-71-qNp">
-                                <rect key="frame" x="18" y="128" width="286" height="1"/>
+                                <rect key="frame" x="18" y="172" width="286" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="N2N-js-wSF"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="✉️  Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fwi-wI-fqg">
-                                <rect key="frame" x="10" y="137" width="300" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="✉️  Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fwi-wI-fqg" customClass="FancyField" customModule="Easy2Sell" customModuleProvider="target">
+                                <rect key="frame" x="10" y="181" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="V04-VX-4z3"/>
                                 </constraints>
                                 <color key="textColor" red="0.75196433067321777" green="0.60102576017379761" blue="0.29445445537567139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                         <color key="value" red="0.72149890660000005" green="0.7216190696" blue="0.72147327660000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -544,20 +974,20 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QtQ-mP-Rki">
-                                <rect key="frame" x="18" y="166" width="286" height="1"/>
+                                <rect key="frame" x="18" y="210" width="286" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="vXM-zK-fxh"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="🔐  Admin Key " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MNc-gX-Oib">
-                                <rect key="frame" x="10" y="175" width="300" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="🔐  Admin Key " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MNc-gX-Oib" customClass="FancyField" customModule="Easy2Sell" customModuleProvider="target">
+                                <rect key="frame" x="10" y="219" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="tyl-Dg-5Cj"/>
                                 </constraints>
                                 <color key="textColor" red="0.75196433067321777" green="0.60102576017379761" blue="0.29445445537567139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                         <color key="value" red="0.72149890660000005" green="0.7216190696" blue="0.72147327660000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -565,41 +995,44 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ajj-08-0ph">
-                                <rect key="frame" x="18" y="204" width="286" height="1"/>
+                                <rect key="frame" x="18" y="248" width="286" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="aTS-HV-34p"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="🗝  Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i3M-H7-k0d">
-                                <rect key="frame" x="10" y="213" width="300" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="🗝  Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i3M-H7-k0d" customClass="FancyField" customModule="Easy2Sell" customModuleProvider="target">
+                                <rect key="frame" x="10" y="257" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Q0w-Rt-JBb"/>
                                 </constraints>
                                 <color key="textColor" red="0.75196433067321777" green="0.60102576017379761" blue="0.29445445537567139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                         <color key="value" red="0.72149890660000005" green="0.7216190696" blue="0.72147327660000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="wDg-71-mfZ" id="AUt-eg-aGs"/>
+                                </connections>
                             </textField>
                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMy-lh-P2F">
-                                <rect key="frame" x="18" y="253" width="286" height="1"/>
+                                <rect key="frame" x="18" y="297" width="286" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="o7a-Ds-ltt"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="🗝  Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qN1-5b-CkH">
-                                <rect key="frame" x="10" y="262" width="300" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="🗝  Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qN1-5b-CkH" customClass="FancyField" customModule="Easy2Sell" customModuleProvider="target">
+                                <rect key="frame" x="10" y="306" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="vMO-X5-1Al"/>
                                 </constraints>
                                 <color key="textColor" red="0.75196433067321777" green="0.60102576017379761" blue="0.29445445537567139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                         <color key="value" red="0.72149890660000005" green="0.7216190696" blue="0.72147327660000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -607,7 +1040,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adb-qC-lsA">
-                                <rect key="frame" x="18" y="300" width="286" height="1"/>
+                                <rect key="frame" x="18" y="344" width="286" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Cya-61-eNR"/>
@@ -616,14 +1049,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="BPt-uR-c8T">
                                 <rect key="frame" x="10" y="485" width="300" height="38"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YD4-dA-kwv">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YD4-dA-kwv" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="148.5" height="38"/>
                                         <state key="normal" backgroundImage="loginbtn.png"/>
                                         <connections>
                                             <action selector="loginBTnPressed:" destination="wDg-71-mfZ" eventType="touchUpInside" id="tDD-sO-SL9"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erj-sb-3cf">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erj-sb-3cf" customClass="FancyBtn" customModule="Easy2Sell" customModuleProvider="target">
                                         <rect key="frame" x="151.5" y="0.0" width="148.5" height="38"/>
                                         <state key="normal" backgroundImage="signupbtn.png"/>
                                         <connections>
@@ -771,17 +1204,25 @@
         </scene>
     </scenes>
     <resources>
+        <image name="MapView.png" width="415" height="667"/>
+        <image name="MySellHistory.png" width="212" height="212"/>
+        <image name="MyVisitedCompany.png" width="212" height="212"/>
+        <image name="acEmplyBTN.png" width="212" height="212"/>
+        <image name="addEplyBTN.png" width="212" height="212"/>
+        <image name="addProBtn.png" width="212" height="212"/>
         <image name="admin1.png" width="212" height="212"/>
         <image name="employeebutton.png" width="222" height="222"/>
         <image name="loginbtn.png" width="159" height="38"/>
         <image name="loginbutton.png" width="284" height="95"/>
         <image name="logout-button-md.png" width="300" height="300"/>
+        <image name="productList.png" width="212" height="212"/>
+        <image name="proreqstBTN.png" width="212" height="212"/>
         <image name="register.png" width="210" height="63"/>
         <image name="selectuser1.png" width="481" height="232"/>
         <image name="signupbtn.png" width="159" height="38"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CuQ-uY-D63"/>
         <segue reference="SvL-1f-0Ba"/>
+        <segue reference="CuQ-uY-D63"/>
     </inferredMetricsTieBreakers>
 </document>

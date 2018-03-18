@@ -8,9 +8,16 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
-class EmployeeHomeVC: UIViewController {
+class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
         var menuShow = false
+    
+    var imagePicker:UIImagePickerController!
+    //var removeSuccessful: Bool = KeychainWrapper.standard.removeObject(forKey: "uid")
+    
+    
+    @IBOutlet weak var employeeProfileImg: CircleView!
 
     override func viewDidLoad() {
         
@@ -21,6 +28,10 @@ class EmployeeHomeVC: UIViewController {
         
         //successLbl.text = "Hello \(username)"
         navigationItem.title = username
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
         
     }
     
@@ -64,6 +75,22 @@ class EmployeeHomeVC: UIViewController {
         
     }
     
+   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            employeeProfileImg.image = image
+            print("what was my image")
+            
+        } else {
+            print("JESS: A valid image wasn't selected")
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func addImageTapped(_ sender: AnyObject) {
+        present(imagePicker, animated: true, completion: nil)
+    }
+
+    
     @IBAction func onLogoutTapped(_ sender: Any)
     {
         
@@ -71,7 +98,7 @@ class EmployeeHomeVC: UIViewController {
             
             
             try Auth.auth().signOut()
-           // performSegue(withIdentifier: "signOutSegue", sender: nil)
+          _ = KeychainWrapper.standard.removeObject(forKey: "uid")
             dismiss(animated: true, completion: nil)
             
         } catch {

@@ -20,12 +20,35 @@
 		CE39CA142046782000A7B506 /* EmployeeHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE39CA132046782000A7B506 /* EmployeeHomeVC.swift */; };
 		CE39CA162046795A00A7B506 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE39CA152046795A00A7B506 /* AlertController.swift */; };
 		CE39CA38204ADB4800A7B506 /* logout-button-md.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39CA37204ADB4800A7B506 /* logout-button-md.png */; };
+		CE39CA862057AD6100A7B506 /* acEmplyBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39CA822057AD6100A7B506 /* acEmplyBTN.png */; };
+		CE39CA872057AD6100A7B506 /* addEplyBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39CA832057AD6100A7B506 /* addEplyBTN.png */; };
+		CE39CA882057AD6100A7B506 /* addProBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39CA842057AD6100A7B506 /* addProBtn.png */; };
+		CE39CA892057AD6100A7B506 /* proreqstBTN.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39CA852057AD6100A7B506 /* proreqstBTN.png */; };
+		CE39CA8B2057B67D00A7B506 /* MapView.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39CA8A2057B67D00A7B506 /* MapView.png */; };
+		CE39CA8F20582A1200A7B506 /* MySellHistory.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39CA8C20582A1200A7B506 /* MySellHistory.png */; };
+		CE39CA9020582A1200A7B506 /* MyVisitedCompany.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39CA8D20582A1200A7B506 /* MyVisitedCompany.png */; };
+		CE39CA9120582A1200A7B506 /* productList.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39CA8E20582A1200A7B506 /* productList.png */; };
+		CE39CA93205831EE00A7B506 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39CA92205831EE00A7B506 /* logout.png */; };
+		CE695568205A93BB00529BB6 /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE695567205A93BB00529BB6 /* FancyView.swift */; };
+		CE69556A205A93C500529BB6 /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE695569205A93C500529BB6 /* RoundBtn.swift */; };
+		CE69556C205A93CB00529BB6 /* FancyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69556B205A93CB00529BB6 /* FancyField.swift */; };
+		CE69556E205A93D100529BB6 /* FancyBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69556D205A93D100529BB6 /* FancyBtn.swift */; };
+		CE695570205A93D700529BB6 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69556F205A93D700529BB6 /* CircleView.swift */; };
+		CE695573205A946B00529BB6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE695572205A946B00529BB6 /* Constants.swift */; };
 		CE6C0AEA2020C16600FF6AB6 /* EmployeeSignUp_In.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C0AE92020C16600FF6AB6 /* EmployeeSignUp_In.swift */; };
 		CE85B983201F5D9C00F806E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE85B981201F5D9C00F806E8 /* Main.storyboard */; };
 		CE85B986201F618800F806E8 /* loginbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE85B984201F618800F806E8 /* loginbtn.png */; };
 		CE85B987201F618800F806E8 /* signupbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE85B985201F618800F806E8 /* signupbtn.png */; };
 		CE85B98E201F83C800F806E8 /* AdminSignUP_In.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85B98D201F83C800F806E8 /* AdminSignUP_In.swift */; };
 		CE903F8A20458E6D00FAAEA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE903F8920458E6D00FAAEA0 /* GoogleService-Info.plist */; };
+		CEB496F1205CFD6F00C2E1DA /* AddEmployeeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB496F0205CFD6F00C2E1DA /* AddEmployeeVC.swift */; };
+		CEB496F5205D02E600C2E1DA /* AddProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB496F4205D02E600C2E1DA /* AddProductVC.swift */; };
+		CEB496F7205D03A700C2E1DA /* ProductRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB496F6205D03A700C2E1DA /* ProductRequestVC.swift */; };
+		CEB496F9205D04AF00C2E1DA /* ProductListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB496F8205D04AF00C2E1DA /* ProductListVC.swift */; };
+		CEB496FB205D04F200C2E1DA /* MyVisitedComVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB496FA205D04F200C2E1DA /* MyVisitedComVC.swift */; };
+		CEB496FD205D052700C2E1DA /* CellHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB496FC205D052700C2E1DA /* CellHistoryVC.swift */; };
+		CEB49701205E33C700C2E1DA /* AddEmployeeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB49700205E33C700C2E1DA /* AddEmployeeTableCell.swift */; };
+		CEB49705205E38D100C2E1DA /* AddEmployeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB49704205E38D100C2E1DA /* AddEmployeeModel.swift */; };
 		CEF71BA3201F575600B82C5F /* loginbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF71BA1201F575600B82C5F /* loginbutton.png */; };
 		CEF71BA4201F575600B82C5F /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF71BA2201F575600B82C5F /* register.png */; };
 /* End PBXBuildFile section */
@@ -47,12 +70,35 @@
 		CE39CA132046782000A7B506 /* EmployeeHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeHomeVC.swift; sourceTree = "<group>"; };
 		CE39CA152046795A00A7B506 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		CE39CA37204ADB4800A7B506 /* logout-button-md.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout-button-md.png"; sourceTree = "<group>"; };
+		CE39CA822057AD6100A7B506 /* acEmplyBTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = acEmplyBTN.png; sourceTree = "<group>"; };
+		CE39CA832057AD6100A7B506 /* addEplyBTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addEplyBTN.png; sourceTree = "<group>"; };
+		CE39CA842057AD6100A7B506 /* addProBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addProBtn.png; sourceTree = "<group>"; };
+		CE39CA852057AD6100A7B506 /* proreqstBTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = proreqstBTN.png; sourceTree = "<group>"; };
+		CE39CA8A2057B67D00A7B506 /* MapView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapView.png; sourceTree = "<group>"; };
+		CE39CA8C20582A1200A7B506 /* MySellHistory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MySellHistory.png; sourceTree = "<group>"; };
+		CE39CA8D20582A1200A7B506 /* MyVisitedCompany.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyVisitedCompany.png; sourceTree = "<group>"; };
+		CE39CA8E20582A1200A7B506 /* productList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = productList.png; sourceTree = "<group>"; };
+		CE39CA92205831EE00A7B506 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
+		CE695567205A93BB00529BB6 /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
+		CE695569205A93C500529BB6 /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
+		CE69556B205A93CB00529BB6 /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
+		CE69556D205A93D100529BB6 /* FancyBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyBtn.swift; sourceTree = "<group>"; };
+		CE69556F205A93D700529BB6 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		CE695572205A946B00529BB6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE6C0AE92020C16600FF6AB6 /* EmployeeSignUp_In.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeSignUp_In.swift; sourceTree = "<group>"; };
 		CE85B982201F5D9C00F806E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE85B984201F618800F806E8 /* loginbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginbtn.png; sourceTree = "<group>"; };
 		CE85B985201F618800F806E8 /* signupbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signupbtn.png; sourceTree = "<group>"; };
 		CE85B98D201F83C800F806E8 /* AdminSignUP_In.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminSignUP_In.swift; sourceTree = "<group>"; };
 		CE903F8920458E6D00FAAEA0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CEB496F0205CFD6F00C2E1DA /* AddEmployeeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEmployeeVC.swift; sourceTree = "<group>"; };
+		CEB496F4205D02E600C2E1DA /* AddProductVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductVC.swift; sourceTree = "<group>"; };
+		CEB496F6205D03A700C2E1DA /* ProductRequestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductRequestVC.swift; sourceTree = "<group>"; };
+		CEB496F8205D04AF00C2E1DA /* ProductListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListVC.swift; sourceTree = "<group>"; };
+		CEB496FA205D04F200C2E1DA /* MyVisitedComVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVisitedComVC.swift; sourceTree = "<group>"; };
+		CEB496FC205D052700C2E1DA /* CellHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellHistoryVC.swift; sourceTree = "<group>"; };
+		CEB49700205E33C700C2E1DA /* AddEmployeeTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEmployeeTableCell.swift; sourceTree = "<group>"; };
+		CEB49704205E38D100C2E1DA /* AddEmployeeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEmployeeModel.swift; sourceTree = "<group>"; };
 		CEF71BA1201F575600B82C5F /* loginbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginbutton.png; sourceTree = "<group>"; };
 		CEF71BA2201F575600B82C5F /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
 		F48494F7B6A81492615AC19A /* Pods-Easy2Sell.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy2Sell.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Easy2Sell/Pods-Easy2Sell.debug.xcconfig"; sourceTree = "<group>"; };
@@ -108,6 +154,7 @@
 		CE13156E2018467000005956 /* Easy2Sell */ = {
 			isa = PBXGroup;
 			children = (
+				CE695571205A945F00529BB6 /* Util */,
 				CE85B98B201F82E300F806E8 /* Controller */,
 				CE85B98A201F82D600F806E8 /* View */,
 				CE85B989201F82CE00F806E8 /* Model */,
@@ -118,6 +165,14 @@
 			path = Easy2Sell;
 			sourceTree = "<group>";
 		};
+		CE695571205A945F00529BB6 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				CE695572205A946B00529BB6 /* Constants.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		CE85B988201F82B900F806E8 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,7 +181,16 @@
 				CE1315B0201E426200005956 /* admin1.png */,
 				CE1315B1201E426200005956 /* employeebutton.png */,
 				CEF71BA1201F575600B82C5F /* loginbutton.png */,
+				CE39CA822057AD6100A7B506 /* acEmplyBTN.png */,
+				CE39CA832057AD6100A7B506 /* addEplyBTN.png */,
+				CE39CA8C20582A1200A7B506 /* MySellHistory.png */,
+				CE39CA8D20582A1200A7B506 /* MyVisitedCompany.png */,
+				CE39CA8E20582A1200A7B506 /* productList.png */,
+				CE39CA842057AD6100A7B506 /* addProBtn.png */,
+				CE39CA852057AD6100A7B506 /* proreqstBTN.png */,
 				CEF71BA2201F575600B82C5F /* register.png */,
+				CE39CA8A2057B67D00A7B506 /* MapView.png */,
+				CE39CA92205831EE00A7B506 /* logout.png */,
 				CE39CA37204ADB4800A7B506 /* logout-button-md.png */,
 				CE1315AE201E3B8C00005956 /* selectuser1.png */,
 			);
@@ -136,6 +200,8 @@
 		CE85B989201F82CE00F806E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CEB49703205E388500C2E1DA /* Employee-panel */,
+				CEB49702205E387900C2E1DA /* Admin-panel */,
 				CE39CA152046795A00A7B506 /* AlertController.swift */,
 			);
 			name = Model;
@@ -144,6 +210,13 @@
 		CE85B98A201F82D600F806E8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CEB496FF205E338600C2E1DA /* Employee-panel */,
+				CEB496FE205E337100C2E1DA /* Admin-panel */,
+				CE695567205A93BB00529BB6 /* FancyView.swift */,
+				CE695569205A93C500529BB6 /* RoundBtn.swift */,
+				CE69556B205A93CB00529BB6 /* FancyField.swift */,
+				CE69556D205A93D100529BB6 /* FancyBtn.swift */,
+				CE69556F205A93D700529BB6 /* CircleView.swift */,
 				CE85B981201F5D9C00F806E8 /* Main.storyboard */,
 				CE13157B2018467000005956 /* LaunchScreen.storyboard */,
 			);
@@ -153,11 +226,9 @@
 		CE85B98B201F82E300F806E8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CEB496F3205CFD9000C2E1DA /* EmployeeVC */,
+				CEB496F2205CFD7D00C2E1DA /* AdminVC */,
 				CE1315712018467000005956 /* HomeVC.swift */,
-				CE85B98D201F83C800F806E8 /* AdminSignUP_In.swift */,
-				CE6C0AE92020C16600FF6AB6 /* EmployeeSignUp_In.swift */,
-				CE39CA112046780800A7B506 /* AdminHomeVC.swift */,
-				CE39CA132046782000A7B506 /* EmployeeHomeVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -172,6 +243,60 @@
 			);
 			name = SupportingFiels;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		CEB496F2205CFD7D00C2E1DA /* AdminVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE85B98D201F83C800F806E8 /* AdminSignUP_In.swift */,
+				CE39CA112046780800A7B506 /* AdminHomeVC.swift */,
+				CEB496F0205CFD6F00C2E1DA /* AddEmployeeVC.swift */,
+				CEB496F4205D02E600C2E1DA /* AddProductVC.swift */,
+				CEB496F6205D03A700C2E1DA /* ProductRequestVC.swift */,
+			);
+			name = AdminVC;
+			sourceTree = "<group>";
+		};
+		CEB496F3205CFD9000C2E1DA /* EmployeeVC */ = {
+			isa = PBXGroup;
+			children = (
+				CE6C0AE92020C16600FF6AB6 /* EmployeeSignUp_In.swift */,
+				CE39CA132046782000A7B506 /* EmployeeHomeVC.swift */,
+				CEB496F8205D04AF00C2E1DA /* ProductListVC.swift */,
+				CEB496FA205D04F200C2E1DA /* MyVisitedComVC.swift */,
+				CEB496FC205D052700C2E1DA /* CellHistoryVC.swift */,
+			);
+			name = EmployeeVC;
+			sourceTree = "<group>";
+		};
+		CEB496FE205E337100C2E1DA /* Admin-panel */ = {
+			isa = PBXGroup;
+			children = (
+				CEB49700205E33C700C2E1DA /* AddEmployeeTableCell.swift */,
+			);
+			name = "Admin-panel";
+			sourceTree = "<group>";
+		};
+		CEB496FF205E338600C2E1DA /* Employee-panel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Employee-panel";
+			sourceTree = "<group>";
+		};
+		CEB49702205E387900C2E1DA /* Admin-panel */ = {
+			isa = PBXGroup;
+			children = (
+				CEB49704205E38D100C2E1DA /* AddEmployeeModel.swift */,
+			);
+			name = "Admin-panel";
+			sourceTree = "<group>";
+		};
+		CEB49703205E388500C2E1DA /* Employee-panel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Employee-panel";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +334,7 @@
 				TargetAttributes = {
 					CE13156B2018467000005956 = {
 						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 8MBSDR4W6C;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -237,17 +363,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE1315B2201E426200005956 /* admin1.png in Resources */,
+				CE39CA862057AD6100A7B506 /* acEmplyBTN.png in Resources */,
 				CE13157D2018467000005956 /* LaunchScreen.storyboard in Resources */,
 				CE13157A2018467000005956 /* Assets.xcassets in Resources */,
+				CE39CA8F20582A1200A7B506 /* MySellHistory.png in Resources */,
+				CE39CA872057AD6100A7B506 /* addEplyBTN.png in Resources */,
 				CE1315B3201E426200005956 /* employeebutton.png in Resources */,
+				CE39CA8B2057B67D00A7B506 /* MapView.png in Resources */,
+				CE39CA892057AD6100A7B506 /* proreqstBTN.png in Resources */,
 				CE1315AF201E3B8C00005956 /* selectuser1.png in Resources */,
 				CE85B986201F618800F806E8 /* loginbtn.png in Resources */,
+				CE39CA93205831EE00A7B506 /* logout.png in Resources */,
+				CE39CA9020582A1200A7B506 /* MyVisitedCompany.png in Resources */,
 				CE85B983201F5D9C00F806E8 /* Main.storyboard in Resources */,
 				CE85B987201F618800F806E8 /* signupbtn.png in Resources */,
 				CE39CA38204ADB4800A7B506 /* logout-button-md.png in Resources */,
 				CEF71BA4201F575600B82C5F /* register.png in Resources */,
 				CE903F8A20458E6D00FAAEA0 /* GoogleService-Info.plist in Resources */,
+				CE39CA882057AD6100A7B506 /* addProBtn.png in Resources */,
 				CEF71BA3201F575600B82C5F /* loginbutton.png in Resources */,
+				CE39CA9120582A1200A7B506 /* productList.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,13 +455,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB496F5205D02E600C2E1DA /* AddProductVC.swift in Sources */,
+				CEB496FD205D052700C2E1DA /* CellHistoryVC.swift in Sources */,
 				CE85B98E201F83C800F806E8 /* AdminSignUP_In.swift in Sources */,
+				CEB49701205E33C700C2E1DA /* AddEmployeeTableCell.swift in Sources */,
+				CE69556A205A93C500529BB6 /* RoundBtn.swift in Sources */,
 				CE39CA122046780800A7B506 /* AdminHomeVC.swift in Sources */,
+				CEB496FB205D04F200C2E1DA /* MyVisitedComVC.swift in Sources */,
+				CE695568205A93BB00529BB6 /* FancyView.swift in Sources */,
 				CE1315722018467000005956 /* HomeVC.swift in Sources */,
 				CE39CA142046782000A7B506 /* EmployeeHomeVC.swift in Sources */,
+				CE69556E205A93D100529BB6 /* FancyBtn.swift in Sources */,
 				CE39CA162046795A00A7B506 /* AlertController.swift in Sources */,
+				CEB496F1205CFD6F00C2E1DA /* AddEmployeeVC.swift in Sources */,
+				CE695570205A93D700529BB6 /* CircleView.swift in Sources */,
+				CEB496F7205D03A700C2E1DA /* ProductRequestVC.swift in Sources */,
 				CE6C0AEA2020C16600FF6AB6 /* EmployeeSignUp_In.swift in Sources */,
 				CE1315702018467000005956 /* AppDelegate.swift in Sources */,
+				CEB496F9205D04AF00C2E1DA /* ProductListVC.swift in Sources */,
+				CE695573205A946B00529BB6 /* Constants.swift in Sources */,
+				CEB49705205E38D100C2E1DA /* AddEmployeeModel.swift in Sources */,
+				CE69556C205A93CB00529BB6 /* FancyField.swift in Sources */,
 				CE1315782018467000005956 /* Easy2Sell.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,7 +602,7 @@
 			baseConfigurationReference = F48494F7B6A81492615AC19A /* Pods-Easy2Sell.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8MBSDR4W6C;
 				INFOPLIST_FILE = Easy2Sell/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -469,7 +618,7 @@
 			baseConfigurationReference = 83E363CF90F6F80DCA6E0EE4 /* Pods-Easy2Sell.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8MBSDR4W6C;
 				INFOPLIST_FILE = Easy2Sell/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

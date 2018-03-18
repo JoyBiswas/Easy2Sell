@@ -8,8 +8,9 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
-class AdminSignUP_In: UIViewController {
+class AdminSignUP_In: UIViewController,UITextFieldDelegate {
     
     
     @IBOutlet weak var userNameTF: UITextField!
@@ -61,18 +62,25 @@ class AdminSignUP_In: UIViewController {
             }
         })
         
-        if Auth.auth().currentUser != nil {
-            
+        if let _ = KeychainWrapper.standard.string(forKey: "adminuid") {
             Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
                 
+                print("JESS: ID found in keychain")
                 self.performSegue(withIdentifier: "toAdminHome", sender: nil)
+                
+                
             })
         }
+
+        
+
       
     }
     override func viewDidAppear(_ animated: Bool) {
         
         self.activityIndicator.stopAnimating()
+        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -138,6 +146,7 @@ class AdminSignUP_In: UIViewController {
                     
                     guard error == nil else {
                         AlertController.showAlert(self, title: "Error", message: error!.localizedDescription)
+                     self.completeSignIn(id: (user?.email)!)
                         self.activityIndicator.stopAnimating()
                         return
                     }
@@ -148,10 +157,11 @@ class AdminSignUP_In: UIViewController {
                     changeRequest.commitChanges(completion: { (error) in
                         guard error == nil else {
                             AlertController.showAlert(self, title: "Error", message: error!.localizedDescription)
+                            self.completeSignIn(id: (user.email!))
                             self.activityIndicator.stopAnimating()
                             return
                         }
-                        
+                        self.completeSignIn(id: (user.email)!)
                         self.performSegue(withIdentifier: "toAdminHome", sender: nil)
                         
                     })
@@ -209,10 +219,12 @@ class AdminSignUP_In: UIViewController {
         Auth.auth().signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion: { (user, error) in
             guard error == nil else {
                 AlertController.showAlert(self, title: "Error", message: error!.localizedDescription)
+                
                 self.activityIndicator.stopAnimating()
                 return
             }
-            
+            self.completeSignIn(id: (user?.email)!)
+            print("saved")
             self.performSegue(withIdentifier: "toAdminHome", sender: nil)
             
                       })
@@ -225,6 +237,14 @@ class AdminSignUP_In: UIViewController {
             
         }
 
+    }
+    
+    func completeSignIn(id: String) {
+        
+        let keychainResult = KeychainWrapper.standard.set(id, forKey: "adminuid")
+        
+        print("JESS: Data saved to keychain \(keychainResult)")
+        performSegue(withIdentifier: "toAdminHome", sender: nil)
     }
     
     @IBAction func forgetPasswordPressed(_ sender: Any) {
@@ -286,6 +306,18 @@ class AdminSignUP_In: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        return true
+        
+    }
 
 }

@@ -8,8 +8,9 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
-class EmployeeSignUp_In: UIViewController {
+class EmployeeSignUp_In: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var userNameTF: UITextField!
     
@@ -31,6 +32,7 @@ class EmployeeSignUp_In: UIViewController {
     
     var databaseRef:DatabaseReference?
     var datahandel:DatabaseHandle?
+    var refemployee:DatabaseReference?
     
     var employeeKey:[String] = []
     
@@ -46,31 +48,51 @@ class EmployeeSignUp_In: UIViewController {
         confirmPasswordTF.isHidden = true
         forgetPasswordBtn.isHidden = true
         
-        databaseRef=Database.database().reference()
+
+        refemployee = Database.database().reference().child("employees");
         
-        datahandel = databaseRef?.child("employeeKey").observe(.childAdded, with: { (snapshot) in
+        refemployee?.observe(DataEventType.value, with: { (snapshot) in
             
-            if let item = snapshot.value as? String
-            {
+            //if the reference have some values
+            if snapshot.childrenCount > 0 {
+           
                 
-                self.employeeKey.append(item)
-                
+                //iterating through all the values
+                for employees in snapshot.children.allObjects as! [DataSnapshot] {
+                    //getting values
+                    let employeeObject = employees.value as? [String: AnyObject]
+                   
+                    if let employeeKey = employeeObject?["employeeKey"] as? String{
+                        
+                        self.employeeKey.append(employeeKey)
+                        
+                    }
+                    
+                   
+                    
+                }
             }
-            
         })
         
-        if Auth.auth().currentUser != nil {
-            
-            Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
-                
-                self.performSegue(withIdentifier: "toEmployeeHome", sender: nil)
-            })
-        }
         
+
+        
+                if let _ = KeychainWrapper.standard.string(forKey: "uid") {
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
+            
+                self.performSegue(withIdentifier: "toEmployeeHome", sender: nil)
+            
+            
+        })
+    }
+        
+      
+
     }
     override func viewDidAppear(_ animated: Bool) {
         
         self.activityIndicator.stopAnimating()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -140,6 +162,7 @@ class EmployeeSignUp_In: UIViewController {
                     
                     guard error == nil else {
                         AlertController.showAlert(self, title: "Error", message: error!.localizedDescription)
+                        
                         self.activityIndicator.stopAnimating()
                         return
                     }
@@ -152,9 +175,11 @@ class EmployeeSignUp_In: UIViewController {
                     changeRequest.commitChanges(completion: { (error) in
                         guard error == nil else {
                             AlertController.showAlert(self, title: "Error", message: error!.localizedDescription)
+                            self.completeSignIn(id: user.email!)
                             self.activityIndicator.stopAnimating()
                             return
                         }
+                        self.completeSignIn(id: user.email!)
                         
                         self.performSegue(withIdentifier: "toEmployeeHome", sender: nil)
                         self.activityIndicator.stopAnimating()
@@ -218,10 +243,13 @@ class EmployeeSignUp_In: UIViewController {
                 guard error == nil else {
                     AlertController.showAlert(self, title: "Error", message: error!.localizedDescription)
                     self.activityIndicator.stopAnimating()
+                
                     return
                 }
-                
+                self.completeSignIn(id: (user?.email)!)
+              
                 self.performSegue(withIdentifier: "toEmployeeHome", sender: nil)
+              
                 
                 
             })
@@ -235,6 +263,17 @@ class EmployeeSignUp_In: UIViewController {
         }
         
     }
+    
+    
+    func completeSignIn(id: String) {
+        //DataService.ds.createFirbaseDBUser(uid: id, userData: userData)
+        let keychainResult = KeychainWrapper.standard.set(id, forKey: "uid")
+        //KeychainWrapper.standard.set("Some String", forKey: "myKey")
+        print("JESS: Data saved to keychain \(keychainResult)")
+        performSegue(withIdentifier: "toEmployeeHome", sender: nil)
+    }
+    
+    
     
     @IBAction func forgetPasswordPressed(_ sender: Any) {
         
@@ -295,6 +334,18 @@ class EmployeeSignUp_In: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
+        
+    }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        return true
+        
+    }
 
 }
