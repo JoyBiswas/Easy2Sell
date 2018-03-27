@@ -13,11 +13,16 @@ class AddEmployeeModel {
 var id: String?
 var name: String?
 var key: String?
+var email:String?
+    var phn:String?
+    
 
-init(id: String?, name: String?, key: String?){
+    init(id: String?, name: String?, key: String?, email:String?,phn:String?){
     self.id = id
     self.name = name
     self.key = key
+    self.email = email
+    self.phn = phn
 }
 
 }

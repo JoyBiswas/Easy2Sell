@@ -28,6 +28,9 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var signUpbtn: UIButton!
     
     
+    @IBOutlet weak var bottomView: UIView!
+    
+    
     @IBOutlet weak var forgetPasswordBTn: UIButton!
     
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
@@ -65,13 +68,23 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
         if let _ = KeychainWrapper.standard.string(forKey: "adminuid") {
             Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
                 
-                print("JESS: ID found in keychain")
                 self.performSegue(withIdentifier: "toAdminHome", sender: nil)
                 
                 
             })
         }
-
+ 
+//        Timer.scheduledTimer(withTimeInterval:
+//            2, repeats: false) { (timer) in
+//                
+//                    self.performSegue(withIdentifier: "toAdminHome", sender: nil)
+//                    
+//                
+//                
+//                
+//        }
+//        
+        
         
 
       
@@ -99,6 +112,7 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
         forgetPasswordBTn.isHidden = true
         loginBTN.isHidden = true
         signUpbtn.isHidden = false
+        bottomView.isHidden = false
         
         
     }
@@ -114,6 +128,7 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
         forgetPasswordBTn.isHidden = false
         signUpbtn.isHidden = true
         loginBTN.isHidden = false
+        bottomView.isHidden = true
        
     }
     
@@ -146,7 +161,7 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
                     
                     guard error == nil else {
                         AlertController.showAlert(self, title: "Error", message: error!.localizedDescription)
-                     self.completeSignIn(id: (user?.email)!)
+ 
                         self.activityIndicator.stopAnimating()
                         return
                     }
@@ -165,14 +180,7 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
                         self.performSegue(withIdentifier: "toAdminHome", sender: nil)
                         
                     })
-                    
-                    print("saved ")
-                    
                 })
-                
-                
-                
-                
                 
             }
             else {
