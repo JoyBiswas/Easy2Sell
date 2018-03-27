@@ -17,23 +17,71 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
     var imagePicker:UIImagePickerController!
     
     @IBOutlet weak var adminProfileImg: CircleView!
+    
+    @IBOutlet weak var addemployeeBtn: FancyBtn!
+    
+    @IBOutlet weak var addProductBtn: FancyBtn!
+    
+    
+    @IBOutlet weak var productReguestBtn: FancyBtn!
+    
+    
+    var imageSelected = false
    
     override func viewDidLoad() {
         
         setupMenubar()
         menuLeadingConstraint.constant = 0
         
-        guard let username = Auth.auth().currentUser?.email else { return }
+        guard let username = Auth.auth().currentUser?.displayName else { return }
         
-        //successLbl.text = "Hello \(username)"
+        
         navigationItem.title = username
          //_ = KeychainWrapper.standard.removeObject(forKey: "adminuid")
         
-        activeEmployeeBtn.backgroundColor = UIColor.cyan
+        //activeEmployeeBtn.backgroundColor = UIColor.cyan
         
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
+        
+        
+        
+        // profile picture calling
+        
+        let user = Auth.auth().currentUser
+        
+        func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                completion(data, response, error)
+                }.resume()
+        }
+        
+        func downloadImage(url: URL) {
+            print("Download Started")
+            getDataFromUrl(url: url) { data, response, error in
+                guard let data = data, error == nil else { return }
+                print(response?.suggestedFilename ?? url.lastPathComponent)
+                print("Download Finished")
+                DispatchQueue.main.async() {
+                    self.adminProfileImg.image = UIImage(data: data)
+                }
+            }
+        }
+        
+        
+        if Auth.auth().currentUser != nil {
+            
+            if let url = user?.photoURL {
+                
+                
+                downloadImage(url: url)
+                
+                
+            }
+            
+            
+        }
         
         
         
@@ -79,9 +127,53 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
         
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             adminProfileImg.image = image
+            
+            imageSelected = true
+            
+            guard let img = adminProfileImg.image, imageSelected == true else {
+                print("JESS: An image must be selected")
+                return
+            }
+            
+            if let imgData = UIImageJPEGRepresentation(img, 0.2) {
+                
+                let imgUid = Auth.auth().currentUser?.email
+                let metadata = StorageMetadata()
+                metadata.contentType = "image/jpeg"
+                
+                DataService.ds.Ref_Emp_ProFile_Images.child(imgUid!).putData(imgData, metadata: metadata) { (metadata, error) in
+                    if error != nil {
+                        print("JESS: Unable to upload image to Firebasee torage")
+                    } else {
+                        print("JESS: Successfully uploaded image to Firebase storage")
+                        let downloadURL = metadata?.downloadURL()?.absoluteString
+                        if let url = downloadURL {
+                            
+                            let user = Auth.auth().currentUser
+                            if let user = user {
+                                let changeRequest = user.createProfileChangeRequest()
+        
+                                            changeRequest.photoURL =
+                                                NSURL(string: url) as URL?
+                                            changeRequest.commitChanges { error in
+                                                if let error = error {
+                                                    
+                                                    AlertController.showAlert(self, title: "Error", message: "\(error.localizedDescription)")
+                                                    return
+                                                    
+                                                } else {
+                                                    AlertController.showAlert(self, title: "Profile Picture Set", message: "You can change again")
+                                                    return
+                                                }
+                                            }
+                        }
+                    }
+                }
+            }
+
             print("what was my image")
             
         } else {
@@ -89,11 +181,26 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
         }
         imagePicker.dismiss(animated: true, completion: nil)
     }
-    
+    }
     @IBAction func addImageTapped(_ sender: AnyObject) {
         present(imagePicker, animated: true, completion: nil)
+      
     }
     
+    
+    
+    @IBAction func tappedActiveEmployee(_ sender: Any) {
+        
+        menuLeadingConstraint.constant = 0
+        
+        UIView.animate(withDuration:
+            0.3) {
+                
+                self.view.layoutIfNeeded()
+        }
+        
+    }
+        
     @IBAction func onLogoutTapped(_ sender: Any)
     {
         
@@ -111,9 +218,5 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
     }
 
     
-    @IBAction func adminPImgtBtn(_ sender: Any) {
-        print("taped")
-    }
-
-
+  
 }
