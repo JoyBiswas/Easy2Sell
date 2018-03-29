@@ -23,6 +23,8 @@ class AddProductTableCell: UITableViewCell {
     @IBOutlet weak var productPrice: UILabel!
     
     
+    @IBOutlet weak var pricePerQuantity: UILabel!
+    
     @IBOutlet weak var productDescription: UITextView!
     
     var product:AddProductModel!
@@ -36,6 +38,7 @@ class AddProductTableCell: UITableViewCell {
         self.productCode.text = product.productCode
         self.productType.text = product.productType
         self.productPrice.text =  String(product.productPrice)
+        self.pricePerQuantity.text = String(product.pricePerQuantity)
         self.productDescription.text = product.productDescription
         if img != nil {
             self.productImg.image = img

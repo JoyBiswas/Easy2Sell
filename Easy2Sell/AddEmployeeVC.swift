@@ -87,7 +87,7 @@ class AddEmployeeVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
                     let employee = AddEmployeeModel(id: employeeId as! String?, name: employeeName as! String?, key: employeeKey as! String?, email: employeeEmail as! String?, phn: employeeCon_No as! String?)
                     
                     //appending it to list
-                    self.employeeList.append(employee)
+                    self.employeeList.insert(employee, at: 0)
                     
                 }
                 

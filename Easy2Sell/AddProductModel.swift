@@ -17,11 +17,17 @@ class AddProductModel {
     private var _productPrice:String!
     private var _productDescription:String!
     private var _productKey: String!
+    private var _pricePerQuantity:String!
     private var _productRef: DatabaseReference!
     
     var productName: String {
         
         return _productName
+        
+    }
+    var pricePerQuantity: String {
+        
+        return _pricePerQuantity
         
     }
     
@@ -52,13 +58,14 @@ class AddProductModel {
         return _productKey
     }
     
-    init(productName: String, productimageUrl: String, productCode:String, productType:String, productPrice:String, productDescription:String) {
+    init(productName: String, productimageUrl: String, productCode:String, productType:String, productPrice:String, productDescription:String,pricePerQuantity: String) {
         self._productName = productName
         self._productimageUrl = productimageUrl
         self._productCode = productCode
         self._productType = productType
         self._productPrice = productPrice
         self._productDescription = productDescription
+        self._pricePerQuantity = pricePerQuantity
     }
     
     init(productKey: String, productData: Dictionary<String, AnyObject>) {
@@ -83,6 +90,12 @@ class AddProductModel {
             self._productPrice = productPrice
         }
         
+        if let pricePerQuantity = productData["pricePerQuantity"] as? String {
+            self._pricePerQuantity = pricePerQuantity
+        }
+        
+        
+        
         if let productDescription = productData["productDescription"] as? String {
             self._productDescription = productDescription
         }
@@ -94,12 +107,5 @@ class AddProductModel {
         
 }
     
-    class func generateProductArray() -> [AddProductModel]{
-        let modelAry = [AddProductModel]()
- 
-        
-        return modelAry
-    }
-
 
 }

@@ -22,6 +22,9 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
     
     @IBOutlet weak var productPriceTF: FancyField!
     
+    
+    @IBOutlet weak var pricePerQuantity: FancyField!
+    
     @IBOutlet weak var productDescriptionTF: FancyField!
     
     @IBOutlet weak var productTable: UITableView!
@@ -67,12 +70,7 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
         
         if let cell = productTable.dequeueReusableCell(withIdentifier: "ProductCell") as? AddProductTableCell {
             
-//            if tableView == resultController.tableView {
-//                let produc = produtsArray[indexPath.row]
-//                
-//                cell.textLabel?.text = produc
-//                
-//            }
+
             
             
             if let img = AddProductVC.imageCache.object(forKey: product.productimageUrl as NSString) {
@@ -139,7 +137,7 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
     @IBAction func tappedAddProductSave(_ sender: Any) {
         
         
-        guard let productName = productNameTF.text, productName != "",let productCode = productCodeTF.text, productCode != "",let productType = productTypeTF.text, productType != "", let productPrice = productPriceTF.text, productPrice != "",let productDescription = productDescriptionTF.text, productDescription != "" else {
+        guard let productName = productNameTF.text, productName != "",let productCode = productCodeTF.text, productCode != "",let productType = productTypeTF.text, productType != "", let productPrice = productPriceTF.text, productPrice != "",let productDescription = productDescriptionTF.text, productDescription != "",let pricePerQuantity = pricePerQuantity.text, pricePerQuantity != "" else {
             
             return
         }
@@ -163,7 +161,8 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
             "productCode": productCodeTF.text! as AnyObject,
             "productType": productTypeTF.text! as AnyObject,
             "productPrice":productPriceTF.text! as AnyObject,
-            "productDescription":productDescriptionTF.text! as AnyObject
+            "productDescription":productDescriptionTF.text! as AnyObject,
+            "pricePerQuantity":pricePerQuantity.text! as AnyObject
         ]
         
         let firebasePost = DataService.ds.REF_Products.childByAutoId()
@@ -175,6 +174,7 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
         productTypeTF.text = ""
         productPriceTF.text = ""
         productDescriptionTF.text = ""
+        pricePerQuantity.text = ""
         
 
     }
@@ -190,17 +190,6 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
         imagePicker.delegate = self
         
         
-//        searchController = UISearchController(searchResultsController: resultController)
-//        productTable.tableHeaderView = searchController.searchBar
-        
-//        searchController.searchResultsUpdater = self
-//        resultController.tableView.delegate = self
-//        resultController.tableView.dataSource = self
-//        
-        
-        
-        
-        
         DataService.ds.REF_Products.observe(.value, with: { (snapshot) in
             
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
@@ -210,10 +199,9 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
                        // let productName = productDict["productName"]
                         let key = snap.key
                         let product = AddProductModel(productKey: key, productData: productDict)
-                        self.products.append(product)
+                        self.products.insert(product, at: 0)
                         
-//                        self.produtsArray.append(productName as! String)
-//                        print(self.produtsArray)
+
                      }
                     
                 }
@@ -228,23 +216,5 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
 
     }
     
-//    func updateSearchResults(for searchController: UISearchController) {
-//        
-//         filterdArray = produtsArray.filter({ (array:String) -> Bool in
-//            
-//            if produtsArray.contains(searchController.searchBar.text!) {
-//                
-//                return true
-//            }else {
-//                
-//                return false
-//            }
-//            
-//        })
-//        resultController.tableView.reloadData()
-//        
-//        
-//    }
-//
     
 }

@@ -22,6 +22,8 @@ class ProductListTableCell: UITableViewCell {
     @IBOutlet weak var productTypeLbl: UILabel!
     
     @IBOutlet weak var productPriceLbl: UILabel!
+    @IBOutlet weak var pricePerQuantity: UILabel!
+    
     
     @IBOutlet weak var productDescription: UITextView!
     
@@ -44,6 +46,7 @@ class ProductListTableCell: UITableViewCell {
         self.productCodeLbl.text = product.productCode
         self.productTypeLbl.text = product.productType
         self.productPriceLbl.text =  String(product.productPrice)
+        self.pricePerQuantity.text = product.pricePerQuantity
         self.productDescription.text = product.productDescription
         if img != nil {
             self.productImage.image = img

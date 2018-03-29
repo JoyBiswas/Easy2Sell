@@ -15,6 +15,10 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         var imageSelected = false
         var products = [AddProductModel]()
     
+        var productType = [String]()
+        var productPrice = [String]()
+    
+    
     static var imageCache:NSCache<NSString, UIImage> = NSCache()
     
     var imagePicker:UIImagePickerController!
@@ -24,11 +28,18 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     @IBOutlet weak var employeeProfileImg: CircleView!
     
+    @IBOutlet weak var segment: UISegmentedControl!
+    
     @IBOutlet weak var productTable: UITableView!
     
     
 
     override func viewDidLoad() {
+        
+        productTable.delegate = self
+        productTable.delegate = self
+        
+        attemptFetch()
         
         setupMenubar()
         menuLeadingConstraint.constant = 0
@@ -85,13 +96,14 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         DataService.ds.REF_Products.observe(.value, with: { (snapshot) in
             
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                self.products.removeAll()
                 for snap in snapshot {
                     print("SNAP: \(snap)")
                     if let productDict = snap.value as? Dictionary<String, AnyObject> {
                         //                        let productName = productDict["productName"]
                         let key = snap.key
                         let product = AddProductModel(productKey: key, productData: productDict)
-                        self.products.append(product)
+                        self.products.insert(product, at: 0)
                         
                         //                        self.produtsArray.append(productName as! String)
                         //                        print(self.produtsArray)
@@ -196,13 +208,12 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
                     }
                 }
                 
-                print("what was my image")
                 
             }
             
             
         } else {
-            print("JESS: A valid image wasn't selected")
+            
         }
         imagePicker.dismiss(animated: true, completion: nil)
     }
@@ -223,25 +234,37 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return products.count
+      return products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let product = products[indexPath.row]
-        if let cell = productTable.dequeueReusableCell(withIdentifier: "PlistCell") as? ProductListTableCell {
+        
+        let product = products.reversed()[indexPath.row]
             
-            if let img = EmployeeHomeVC.imageCache.object(forKey: product.productimageUrl as NSString) {
+            if let cell = productTable.dequeueReusableCell(withIdentifier: "PlistCell") as? ProductListTableCell {
                 
-                cell.configureCell(product: product, img: img)
-            } else {
-                cell.configureCell(product: product, img: nil)
+                
+                if let img = EmployeeHomeVC.imageCache.object(forKey: product.productimageUrl as NSString) {
+                    
+                    cell.configureCell(product: product, img: img)
+                    
+                } else {
+                    cell.configureCell(product: product, img: nil)
+                }
+                
+                let bgColorView = UIView()
+                bgColorView.backgroundColor = UIColor.brown
+                cell.selectedBackgroundView = bgColorView
+                
+                return cell
+                
             }
-            return cell
-        } else {
+
             return ProductListTableCell()
+            
         }
-    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -306,5 +329,116 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
             self.view.layoutIfNeeded()
         }
     }
+    
+    
+    func attemptFetch() {
+      
+        
+        if segment.selectedSegmentIndex == 0 {
+            
+            DataService.ds.REF_Products.observe(.value, with: { (snapshot) in
+                
+                if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                    self.products.removeAll()
+                    for snap in snapshot {
+                        print("SNAP: \(snap)")
+                        if let productDict = snap.value as? Dictionary<String, AnyObject> {
+                            
+                            let key = snap.key
+                            let product = AddProductModel(productKey: key, productData: productDict)
+                            self.products.append(product)
+                            
+
+                           
+                        }
+                        
+                    }
+                    
+                }
+                self.productTable.reloadData()
+                
+            })
+            
+            
+        
+          self.productTable.reloadData()
+         
+            
+        } else if segment.selectedSegmentIndex == 1 {
+            
+            DataService.ds.REF_Products.queryOrdered(byChild: "productPrice").observe(.value, with: { (snapshot) in
+                
+                if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                    self.products.removeAll()
+                    
+                    for snap in snapshot {
+                        print("SNAP: \(snap)")
+                        if let productDict = snap.value as? Dictionary<String, AnyObject> {
+                            
+                            let key = snap.key
+                            let product = AddProductModel(productKey: key, productData: productDict)
+                            self.products.insert(product , at: 0)
+                            
+                          
+                            
+                            
+                      
+                        }
+                        
+                    }
+                    
+                }
+                self.productTable.reloadData()
+                
+            })
+            
+           self.viewDidAppear(true)
+            
+        } else if segment.selectedSegmentIndex == 2 {
+            
+            
+            
+            DataService.ds.REF_Products.queryOrdered(byChild: "productType").observe(.value, with: { (snapshot) in
+                
+                if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                    self.products.removeAll()
+                    
+                    for snap in snapshot {
+                        print("SNAP: \(snap)")
+                        if let productDict = snap.value as? Dictionary<String, AnyObject> {
+                            
+                            let key = snap.key
+                            let product = AddProductModel(productKey: key, productData: productDict)
+                            self.products.insert(product , at: 0)
+                            
+                            
+                            
+                            
+                            
+                        }
+                        
+                    }
+                    
+                }
+                self.productTable.reloadData()
+                
+            })
+            
+            
+  
+        
+    }
+
+    }
+    
+    @IBAction func segmentedControllerSHifted(_ sender: Any) {
+        
+        attemptFetch()
+      
+    }
+    
+    
+    
+    
 
     }

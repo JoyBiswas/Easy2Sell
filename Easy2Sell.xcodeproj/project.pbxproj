@@ -60,6 +60,7 @@
 		CEB4971C2064CB7400C2E1DA /* ProductRequestTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4971B2064CB7400C2E1DA /* ProductRequestTableCell.swift */; };
 		CEB4971E2064F33200C2E1DA /* heptazinc.jpg.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB4971D2064F33100C2E1DA /* heptazinc.jpg.png */; };
 		CEB497202064F3FF00C2E1DA /* AddToOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4971F2064F3FF00C2E1DA /* AddToOrderVC.swift */; };
+		CEE2AEBF206B61C80032BFDE /* AddVisitedCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2AEBE206B61C80032BFDE /* AddVisitedCompany.swift */; };
 		CEF71BA3201F575600B82C5F /* loginbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF71BA1201F575600B82C5F /* loginbutton.png */; };
 		CEF71BA4201F575600B82C5F /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF71BA2201F575600B82C5F /* register.png */; };
 /* End PBXBuildFile section */
@@ -121,6 +122,7 @@
 		CEB4971B2064CB7400C2E1DA /* ProductRequestTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductRequestTableCell.swift; sourceTree = "<group>"; };
 		CEB4971D2064F33100C2E1DA /* heptazinc.jpg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heptazinc.jpg.png; sourceTree = "<group>"; };
 		CEB4971F2064F3FF00C2E1DA /* AddToOrderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToOrderVC.swift; sourceTree = "<group>"; };
+		CEE2AEBE206B61C80032BFDE /* AddVisitedCompany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVisitedCompany.swift; sourceTree = "<group>"; };
 		CEF71BA1201F575600B82C5F /* loginbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginbutton.png; sourceTree = "<group>"; };
 		CEF71BA2201F575600B82C5F /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
 		F48494F7B6A81492615AC19A /* Pods-Easy2Sell.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy2Sell.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Easy2Sell/Pods-Easy2Sell.debug.xcconfig"; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 		CEB49703205E388500C2E1DA /* Employee-panel */ = {
 			isa = PBXGroup;
 			children = (
+				CEE2AEBE206B61C80032BFDE /* AddVisitedCompany.swift */,
 			);
 			name = "Employee-panel";
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				CEB4970A2060085C00C2E1DA /* DataService.swift in Sources */,
 				CE39CA122046780800A7B506 /* AdminHomeVC.swift in Sources */,
 				CEB496FB205D04F200C2E1DA /* MyVisitedComVC.swift in Sources */,
+				CEE2AEBF206B61C80032BFDE /* AddVisitedCompany.swift in Sources */,
 				CEB497142062B01700C2E1DA /* ProductListTableCell.swift in Sources */,
 				CE695568205A93BB00529BB6 /* FancyView.swift in Sources */,
 				CEB4971620635A6400C2E1DA /* AddProductModel.swift in Sources */,

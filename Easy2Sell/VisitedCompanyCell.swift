@@ -16,6 +16,9 @@ class VisitedCompanyCell: UITableViewCell {
     
     @IBOutlet weak var companyCellNo: UILabel!
     
+    @IBOutlet weak var visitedDate: UILabel!
+    
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
