@@ -284,7 +284,7 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         if (segue.identifier == "toAddToChart") {
             if  let viewController = segue.destination as? AddToOrderVC  {
                 
-            let product = products[indexPath.row]
+            let product = products.reversed()[indexPath.row]
                
             viewController.productName = product.productName
             viewController.productCode = product.productCode

@@ -1069,7 +1069,7 @@
                                                                                 <constraint firstAttribute="height" constant="100" id="86r-3w-vwx"/>
                                                                             </constraints>
                                                                         </stackView>
-                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do " translatesAutoresizingMaskIntoConstraints="NO" id="vFA-eG-ZuB">
+                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do " translatesAutoresizingMaskIntoConstraints="NO" id="vFA-eG-ZuB">
                                                                             <rect key="frame" x="2" y="104" width="172" height="80.5"/>
                                                                             <color key="backgroundColor" red="0.46427152579159803" green="1" blue="0.50500943193632608" alpha="0.45368685787671231" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="11"/>
@@ -2469,7 +2469,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPv-l9-flW" customClass="FancyView" customModule="Easy2Sell" customModuleProvider="target">
                                 <rect key="frame" x="124" y="64" width="196" height="504"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active Employee" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lI-3r-B3b">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active Representatives " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lI-3r-B3b">
                                         <rect key="frame" x="0.0" y="0.0" width="196" height="25"/>
                                         <color key="backgroundColor" red="0.77924740314483643" green="0.76790899038314819" blue="0.74620145559310913" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -2849,7 +2849,7 @@
         <image name="signupbtn.png" width="159" height="38"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DXe-aJ-Coo"/>
+        <segue reference="CuQ-uY-D63"/>
         <segue reference="SvL-1f-0Ba"/>
     </inferredMetricsTieBreakers>
 </document>

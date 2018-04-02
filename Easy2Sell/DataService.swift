@@ -23,6 +23,8 @@ class DataService {
     private var _REF_Products = DB_BASE.child("Products")
     private var _REF_USERS = DB_BASE.child("users")
     
+    private var _REf_ORDER_REQUEST_LIST = DB_BASE.child("productOrderReqList")
+    
     // Storage references
     private var _Ref_Emp_ProFile_Images = STORAGE_BASE.child("AdMinprofile-Pics")
     private var _Ref_Product_Images = STORAGE_BASE.child("ProductsImages")
@@ -52,6 +54,11 @@ class DataService {
     var Ref_Product_Images:StorageReference {
         
         return _Ref_Product_Images
+    }
+    
+    var REf_ORDER_REQUEST_LIST:DatabaseReference {
+        
+        return _REf_ORDER_REQUEST_LIST
     }
     
     

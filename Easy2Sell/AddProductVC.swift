@@ -85,6 +85,149 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
         }
     }
     
+    
+    
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //getting the selected artist
+        let product  = products[indexPath.row]
+        
+        //building an alert
+        let alertController = UIAlertController(title: product.productName, message: "Give new values to update ", preferredStyle: .alert)
+        
+        alertController.view.tintColor = UIColor.brown  // change text color of the buttons
+        alertController.view.backgroundColor = UIColor.cyan  // change background color
+        alertController.view.layer.cornerRadius = 25
+        
+        //the confirm action taking the inputs
+        let confirmAction = UIAlertAction(title: "Save", style: .default) { (_) in
+            
+            //getting artist id
+            let id = product.productKey
+            let imageUrl = product.productimageUrl
+            
+            //getting new values
+            let productName = alertController.textFields?[0].text
+            let productCode = alertController.textFields?[1].text
+            let productType = alertController.textFields?[2].text
+            let productprice = alertController.textFields?[3].text
+            let productDescription = alertController.textFields?[4].text
+            let productQuantityPrice = alertController.textFields?[5].text
+            
+            
+            //calling the update method to update artist
+            self.updateecompany(id: id, productName: productName!, productCode: productCode!, productPrice: productprice!, productImgUrl: imageUrl, productType: productType!, ProductDescription: productDescription!, productQuantityPrice: productQuantityPrice!)
+        }
+        
+        //the cancel action doing nothing
+        let cancelAction = UIAlertAction(title: "Delete", style: .cancel) { (_) in
+            self.deleteeCompany(id: product.productKey)
+            
+        }
+        
+        //adding two textfields to alert
+        alertController.addTextField { (textField) in
+            textField.text = product.productName
+            
+            textField.keyboardAppearance = .dark
+            textField.placeholder = "Type product name"
+            textField.textColor = UIColor.blue
+            textField.font = UIFont(name: "AmericanTypewriter", size: 14)
+        
+        }
+        
+        alertController.addTextField { (textField) in
+            textField.text = product.productCode
+            textField.keyboardAppearance = .dark
+            textField.placeholder = "Type product Code"
+            textField.textColor = UIColor.red
+            textField.font = UIFont(name: "AmericanTypewriter", size: 14)
+
+        }
+        
+        alertController.addTextField { (textField) in
+            
+            textField.text = product.productType
+            
+            textField.keyboardAppearance = .dark
+            textField.placeholder = "Type product Type"
+            textField.textColor = UIColor.brown
+            textField.font = UIFont(name: "AmericanTypewriter", size: 14)
+        }
+        
+        alertController.addTextField { (textField) in
+            
+            textField.text = product.productPrice
+            
+            textField.keyboardAppearance = .dark
+            textField.placeholder = "Type product price"
+            textField.textColor = UIColor.green
+            textField.font = UIFont(name: "AmericanTypewriter", size: 14)
+        }
+        alertController.addTextField { (textField) in
+            
+            textField.text = product.productDescription
+            textField.keyboardAppearance = .dark
+            textField.placeholder = "Type product Description"
+            textField.textColor = UIColor.blue
+            textField.font = UIFont(name: "AmericanTypewriter", size: 10)
+        }
+        alertController.addTextField { (textField) in
+            
+            textField.text = product.pricePerQuantity
+            textField.keyboardAppearance = .dark
+            textField.placeholder = "Type product pricePerQuantity"
+            textField.textColor = UIColor.red
+            textField.font = UIFont(name: "AmericanTypewriter", size: 14)
+        }
+        
+      
+        
+        //adding action
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        //presenting dialog
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func updateecompany(id:String, productName:String, productCode:String,productPrice:String,productImgUrl:String,productType:String,ProductDescription:String,productQuantityPrice:String){
+        //creating artist with the new given values
+        let product: Dictionary<String, AnyObject> = [
+            "productName": productName as AnyObject,
+            "productimageUrl": productImgUrl as AnyObject,
+            "productCode": productCode as AnyObject,
+            "productType": productType as AnyObject,
+            "productPrice":productPrice as AnyObject,
+            "productDescription":ProductDescription as AnyObject,
+            "pricePerQuantity":productQuantityPrice as AnyObject
+        ]
+        
+        //updating the artist using the key of the artist
+        DataService.ds.REF_Products.child(id).setValue(product)
+        
+        
+        
+        
+       
+        
+        AlertController.showAlert(self, title: "Product Added", message: "Your product are in list you can edit also")
+        
+    }
+    
+    func deleteeCompany(id:String){
+        DataService.ds.REF_Products.child(id).setValue(nil)
+        
+        
+        //displaying message
+        AlertController.showAlert(self, title: "Product are Removed", message: "Your Product are in list you can edit also")
+    }
+    
+    
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             addproductImg.image = image
@@ -193,6 +336,7 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
         DataService.ds.REF_Products.observe(.value, with: { (snapshot) in
             
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                self.products.removeAll()
                 for snap in snapshot {
                     print("SNAP: \(snap)")
                     if let productDict = snap.value as? Dictionary<String, AnyObject> {
