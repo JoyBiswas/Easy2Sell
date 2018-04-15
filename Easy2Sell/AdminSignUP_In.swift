@@ -47,11 +47,13 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
        navigationItem.hidesBackButton = true
        userNameTF.isHidden = true
-        emailTF.isHidden = true
-        adminKeyTF.isHidden = true
-        passwordTF.isHidden = true
+        emailTF.isHidden = false
+        adminKeyTF.isHidden = false
+        passwordTF.isHidden = false
         confirmPasswordTF.isHidden = true
-        forgetPasswordBTn.isHidden = true
+        bottomView.isHidden = true
+        loginBTN.isHidden = false
+        signUpbtn.isHidden = true
         
         databaseRef=Database.database().reference()
         
@@ -107,8 +109,6 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
         adminKeyTF.isHidden = false
         passwordTF.isHidden = false
         confirmPasswordTF.isHidden = false
-        signUpbtn.backgroundColor = UIColor.red
-        loginBTN.backgroundColor = nil
         forgetPasswordBTn.isHidden = true
         loginBTN.isHidden = true
         signUpbtn.isHidden = false
@@ -123,8 +123,6 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
         adminKeyTF.isHidden = false
         passwordTF.isHidden = false
         confirmPasswordTF.isHidden = true
-        loginBTN.backgroundColor = UIColor.red
-        signUpbtn.backgroundColor = nil
         forgetPasswordBTn.isHidden = false
         signUpbtn.isHidden = true
         loginBTN.isHidden = false

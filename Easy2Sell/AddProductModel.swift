@@ -106,6 +106,15 @@ class AddProductModel {
         _productRef = DataService.ds.REF_Products.child(_productKey)
         
 }
+//    
+//    class func generateModelArray() -> [AddProductModel]{
+//        let modelAry = [AddProductModel]()
+//        
+//       
+//        
+//        return modelAry
+//    }
+
     
 
 }

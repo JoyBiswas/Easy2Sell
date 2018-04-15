@@ -21,7 +21,10 @@ class DataService {
     // DB references
     private var _REF_BASE = DB_BASE
     private var _REF_Products = DB_BASE.child("Products")
+    private var _REF_USER_LOCATION = DB_BASE.child("activeEmployee")
     private var _REF_USERS = DB_BASE.child("users")
+    private var _REF_PRODUCT_ORDER_REQUEST = DB_BASE.child("productOrderReqList")
+    
     
     private var _REf_ORDER_REQUEST_LIST = DB_BASE.child("productOrderReqList")
     
@@ -39,6 +42,16 @@ class DataService {
     
     var REF_USERS: DatabaseReference {
         return _REF_USERS
+    }
+    
+    var  REF_PRODUCT_ORDER_REQUEST:DatabaseReference {
+        
+        return _REF_PRODUCT_ORDER_REQUEST
+    }
+    
+    var REF_USER_LOCATION: DatabaseReference {
+        
+        return _REF_USER_LOCATION
     }
     
     var REF_USER_CURRENT: DatabaseReference {

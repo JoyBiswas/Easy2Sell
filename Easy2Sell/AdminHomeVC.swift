@@ -10,11 +10,13 @@ import UIKit
 import Firebase
 import SwiftKeychainWrapper
 
-class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+
+class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource{
 
     @IBOutlet weak var activeEmployeeBtn: UIButton!
     var menuShow = false
     var imagePicker:UIImagePickerController!
+    static var imageCache:NSCache<NSString, UIImage> = NSCache()
     
     @IBOutlet weak var adminProfileImg: CircleView!
     
@@ -25,10 +27,119 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
     
     @IBOutlet weak var productReguestBtn: FancyBtn!
     
+   // @IBOutlet weak var mapView: MKMapView!
+    
+    
+    //let locationManager = CLLocationManager()
+    
     
     var imageSelected = false
+    
+    var activeRepresentative = [ActiveRepresentativeModel]()
+    
+    @IBOutlet weak var activeRepresentativeTable: UITableView!
+    
+    
+    
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        
+//        let annotation = MKPointAnnotation()
+//        let location = locations[0]
+//        
+//        
+//        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+//        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+//        
+//        let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+//        mapView.setRegion(region, animated: true)
+//        
+//        
+//        
+//        annotation.coordinate = myLocation
+//        annotation.title = "joys home"
+//        mapView.addAnnotation(annotation)
+//        
+//        
+//        self.mapView.showsUserLocation = true
+//        
+//        
+//        
+//        
+//        
+//    }
+
    
     override func viewDidLoad() {
+        
+        
+//       locationManager.delegate = self
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        locationManager.requestWhenInUseAuthorization()
+//       locationManager.startUpdatingLocation()
+//        
+//        
+//        
+        DataService.ds.REF_USER_LOCATION.queryOrdered(byChild: "employeeName").observe(DataEventType.value, with: { (snapshot) in
+            
+            //if the reference have some values
+            if snapshot.childrenCount > 0 {
+                
+                //clearing the list
+                self.activeRepresentative.removeAll()
+                
+                //iterating through all the values
+                for location in snapshot.children.allObjects as! [DataSnapshot] {
+                    
+                    //getting values
+                    
+                    
+                    let locationObject = location.value as? [String: AnyObject]
+                    let employeeName  = locationObject?["employeeName"]
+                    let locationId  = locationObject?["id"]
+                    let employeeAddress = locationObject?["employeeAddress"]
+                    let locationLatitude = locationObject?["locationlatitute"]
+                    let locationLongitude = locationObject?["locationLongitute"]
+                    let nearestPlaceLocation = locationObject?["employeeNearestPlace"]
+                    let profileImageUrl = locationObject?["employeePhotoUrl"]
+                    let visitedDate = locationObject?["visitedDate"]
+
+                    
+                    let repLocation = ActiveRepresentativeModel(profileName: employeeName as! String, profileimageUrl: profileImageUrl as! String, profileEmail: employeeAddress as! String, repLocationPlace: nearestPlaceLocation as! String, repLocationLat: locationLatitude as! Double, repLocationLong: locationLongitude as! Double, repCurrentTime: visitedDate as! String)
+                    
+                   
+                    self.activeRepresentative.insert(repLocation, at: 0)
+                    
+                    
+                }
+                
+                //reloading the tableview
+                self.activeRepresentativeTable.reloadData()
+            }
+        })
+
+        
+        
+        //DataService.ds.REF_USER_LOCATION.child("54kMhLd1e7WBkSSv2KvmIVVIfR53").observe(.value, with: { (snapshot) in
+//            
+//           
+//                
+//                
+//                
+//            
+//                    
+//                    //getting values
+//            if  let locationObject = snapshot.value as? [String: AnyObject] {
+//
+//                    print(locationLatitude!)
+//                    
+//                    
+//                
+//            }
+//
+//            
+//            
+//            
+//        })
         
         setupMenubar()
         menuLeadingConstraint.constant = 0
@@ -86,6 +197,47 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
         
         
     }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return activeRepresentative.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let representative = activeRepresentative.reversed()[indexPath.row]
+        
+        if let cell = activeRepresentativeTable.dequeueReusableCell(withIdentifier: "ActiveCell") as? ActiveRepresentativesCell {
+            
+            
+            if let img = AdminHomeVC.imageCache.object(forKey:representative.profileimageUrl  as NSString) {
+                
+                cell.configureCell(representative: representative, img: img)
+            } else {
+                cell.configureCell(representative: representative, img: nil)
+            }
+            
+           
+            
+            return cell
+            
+        }
+        
+        return ActiveRepresentativesCell()
+
+    }
+    
+    
+    
+    
+    
+    
     
     func setupMenubar(){
         let barImage = UIImage(named: "menu.png")?.withRenderingMode(.alwaysOriginal)

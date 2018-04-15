@@ -28,6 +28,9 @@ class EmployeeSignUp_In: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var forgetPasswordBtn: UIButton!
     
+    @IBOutlet weak var underBorderView: UIView!
+    
+    
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     var databaseRef:DatabaseReference?
@@ -42,11 +45,14 @@ class EmployeeSignUp_In: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         userNameTF.isHidden = true
-        emailTF.isHidden = true
-        employeeKeyTF.isHidden = true
-        passwordTF.isHidden = true
+        emailTF.isHidden = false
+        employeeKeyTF.isHidden = false
+        passwordTF.isHidden = false
         confirmPasswordTF.isHidden = true
-        forgetPasswordBtn.isHidden = true
+        underBorderView.isHidden = true
+        loginBTN.isHidden = false
+        signUpbtn.isHidden = true
+       
         
 
         refemployee = Database.database().reference().child("employees");
@@ -108,11 +114,10 @@ class EmployeeSignUp_In: UIViewController,UITextFieldDelegate {
         employeeKeyTF.isHidden = false
         passwordTF.isHidden = false
         confirmPasswordTF.isHidden = false
-        signUpbtn.backgroundColor = UIColor.red
-        loginBTN.backgroundColor = nil
         forgetPasswordBtn.isHidden = true
         loginBTN.isHidden = true
         signUpbtn.isHidden = false
+        underBorderView.isHidden = false
         
         
     }
@@ -123,11 +128,10 @@ class EmployeeSignUp_In: UIViewController,UITextFieldDelegate {
         employeeKeyTF.isHidden = false
         passwordTF.isHidden = false
         confirmPasswordTF.isHidden = true
-        loginBTN.backgroundColor = UIColor.red
-        signUpbtn.backgroundColor = nil
         forgetPasswordBtn.isHidden = false
         signUpbtn.isHidden = true
         loginBTN.isHidden = false
+        underBorderView.isHidden = true
 
         
     }

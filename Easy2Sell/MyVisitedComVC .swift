@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class MyVisitedComVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class MyVisitedComVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
     
     @IBOutlet weak var visitedCompanyTable: UITableView!
     
@@ -236,5 +236,20 @@ class MyVisitedComVC: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         addVisitedCompany()
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        return true
+        
+    }
+
     
    }

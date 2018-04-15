@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		32B1AB7F60E1AF67E8EF0FD6 /* Pods_Easy2Sell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D0E7E9A2B6984E20ACD9FF /* Pods_Easy2Sell.framework */; };
 		CE1315702018467000005956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE13156F2018467000005956 /* AppDelegate.swift */; };
 		CE1315722018467000005956 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1315712018467000005956 /* HomeVC.swift */; };
 		CE1315782018467000005956 /* Easy2Sell.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE1315762018467000005956 /* Easy2Sell.xcdatamodeld */; };
@@ -28,7 +27,6 @@
 		CE39CA8F20582A1200A7B506 /* MySellHistory.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39CA8C20582A1200A7B506 /* MySellHistory.png */; };
 		CE39CA9020582A1200A7B506 /* MyVisitedCompany.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39CA8D20582A1200A7B506 /* MyVisitedCompany.png */; };
 		CE39CA9120582A1200A7B506 /* productList.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39CA8E20582A1200A7B506 /* productList.png */; };
-		CE39CA93205831EE00A7B506 /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = CE39CA92205831EE00A7B506 /* logout.png */; };
 		CE695568205A93BB00529BB6 /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE695567205A93BB00529BB6 /* FancyView.swift */; };
 		CE69556A205A93C500529BB6 /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE695569205A93C500529BB6 /* RoundBtn.swift */; };
 		CE69556C205A93CB00529BB6 /* FancyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69556B205A93CB00529BB6 /* FancyField.swift */; };
@@ -36,15 +34,20 @@
 		CE695570205A93D700529BB6 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69556F205A93D700529BB6 /* CircleView.swift */; };
 		CE695573205A946B00529BB6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE695572205A946B00529BB6 /* Constants.swift */; };
 		CE6C0AEA2020C16600FF6AB6 /* EmployeeSignUp_In.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6C0AE92020C16600FF6AB6 /* EmployeeSignUp_In.swift */; };
+		CE7089C5207CC68300953975 /* LoG-Innn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7089C4207CC68300953975 /* LoG-Innn.png */; };
+		CE7089C7207CC7B700953975 /* signupp.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7089C6207CC7B700953975 /* signupp.png */; };
+		CE83A5512073DCEE00437BF8 /* OrderProductRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83A5502073DCEE00437BF8 /* OrderProductRequest.swift */; };
 		CE85B983201F5D9C00F806E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE85B981201F5D9C00F806E8 /* Main.storyboard */; };
-		CE85B986201F618800F806E8 /* loginbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE85B984201F618800F806E8 /* loginbtn.png */; };
-		CE85B987201F618800F806E8 /* signupbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE85B985201F618800F806E8 /* signupbtn.png */; };
 		CE85B98E201F83C800F806E8 /* AdminSignUP_In.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85B98D201F83C800F806E8 /* AdminSignUP_In.swift */; };
+		CE8C43CB20830EA00034C925 /* ActiveRepresentativesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C43CA20830EA00034C925 /* ActiveRepresentativesCell.swift */; };
+		CE8C43CD208314560034C925 /* ActiveRepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C43CC208314560034C925 /* ActiveRepModel.swift */; };
+		CE8C43D42083353C0034C925 /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8C43D2208335150034C925 /* SwiftKeychainWrapper.framework */; };
+		CE8C43D62083353C0034C925 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1BDDE9207696BA0042B540 /* CoreLocation.framework */; };
 		CE903F8A20458E6D00FAAEA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE903F8920458E6D00FAAEA0 /* GoogleService-Info.plist */; };
 		CEB496F1205CFD6F00C2E1DA /* AddEmployeeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB496F0205CFD6F00C2E1DA /* AddEmployeeVC.swift */; };
 		CEB496F5205D02E600C2E1DA /* AddProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB496F4205D02E600C2E1DA /* AddProductVC.swift */; };
 		CEB496F7205D03A700C2E1DA /* ProductRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB496F6205D03A700C2E1DA /* ProductRequestVC.swift */; };
-		CEB496FB205D04F200C2E1DA /* MyVisitedComVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB496FA205D04F200C2E1DA /* MyVisitedComVC.swift */; };
+		CEB496FB205D04F200C2E1DA /* MyVisitedComVC .swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB496FA205D04F200C2E1DA /* MyVisitedComVC .swift */; };
 		CEB496FD205D052700C2E1DA /* CellHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB496FC205D052700C2E1DA /* CellHistoryVC.swift */; };
 		CEB49701205E33C700C2E1DA /* AddEmployeeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB49700205E33C700C2E1DA /* AddEmployeeTableCell.swift */; };
 		CEB49705205E38D100C2E1DA /* AddEmployeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB49704205E38D100C2E1DA /* AddEmployeeModel.swift */; };
@@ -63,6 +66,7 @@
 		CEE2AEBF206B61C80032BFDE /* AddVisitedCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2AEBE206B61C80032BFDE /* AddVisitedCompany.swift */; };
 		CEF71BA3201F575600B82C5F /* loginbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF71BA1201F575600B82C5F /* loginbutton.png */; };
 		CEF71BA4201F575600B82C5F /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF71BA2201F575600B82C5F /* register.png */; };
+		CEFFA1262073420900891D5E /* MySellHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFFA1252073420800891D5E /* MySellHistory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +82,7 @@
 		CE1315AE201E3B8C00005956 /* selectuser1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = selectuser1.png; path = ../selectuser1.png; sourceTree = "<group>"; };
 		CE1315B0201E426200005956 /* admin1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = admin1.png; path = ../admin1.png; sourceTree = "<group>"; };
 		CE1315B1201E426200005956 /* employeebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = employeebutton.png; path = ../employeebutton.png; sourceTree = "<group>"; };
+		CE1BDDE9207696BA0042B540 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CE39CA112046780800A7B506 /* AdminHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminHomeVC.swift; sourceTree = "<group>"; };
 		CE39CA132046782000A7B506 /* EmployeeHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeHomeVC.swift; sourceTree = "<group>"; };
 		CE39CA152046795A00A7B506 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
@@ -90,7 +95,6 @@
 		CE39CA8C20582A1200A7B506 /* MySellHistory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MySellHistory.png; sourceTree = "<group>"; };
 		CE39CA8D20582A1200A7B506 /* MyVisitedCompany.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyVisitedCompany.png; sourceTree = "<group>"; };
 		CE39CA8E20582A1200A7B506 /* productList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = productList.png; sourceTree = "<group>"; };
-		CE39CA92205831EE00A7B506 /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
 		CE695567205A93BB00529BB6 /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
 		CE695569205A93C500529BB6 /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
 		CE69556B205A93CB00529BB6 /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
@@ -98,15 +102,19 @@
 		CE69556F205A93D700529BB6 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		CE695572205A946B00529BB6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE6C0AE92020C16600FF6AB6 /* EmployeeSignUp_In.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeSignUp_In.swift; sourceTree = "<group>"; };
+		CE7089C4207CC68300953975 /* LoG-Innn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoG-Innn.png"; sourceTree = "<group>"; };
+		CE7089C6207CC7B700953975 /* signupp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signupp.png; sourceTree = "<group>"; };
+		CE83A5502073DCEE00437BF8 /* OrderProductRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderProductRequest.swift; sourceTree = "<group>"; };
 		CE85B982201F5D9C00F806E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CE85B984201F618800F806E8 /* loginbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginbtn.png; sourceTree = "<group>"; };
-		CE85B985201F618800F806E8 /* signupbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signupbtn.png; sourceTree = "<group>"; };
 		CE85B98D201F83C800F806E8 /* AdminSignUP_In.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminSignUP_In.swift; sourceTree = "<group>"; };
+		CE8C43CA20830EA00034C925 /* ActiveRepresentativesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveRepresentativesCell.swift; sourceTree = "<group>"; };
+		CE8C43CC208314560034C925 /* ActiveRepModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveRepModel.swift; sourceTree = "<group>"; };
+		CE8C43D2208335150034C925 /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftKeychainWrapper.framework; path = "../../../Library/Developer/Xcode/DerivedData/Easy2Sell-ghuvwycinyxqaydcwstsnjlynzpg/Build/Products/Debug-iphoneos/SwiftKeychainWrapper/SwiftKeychainWrapper.framework"; sourceTree = "<group>"; };
 		CE903F8920458E6D00FAAEA0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CEB496F0205CFD6F00C2E1DA /* AddEmployeeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEmployeeVC.swift; sourceTree = "<group>"; };
 		CEB496F4205D02E600C2E1DA /* AddProductVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductVC.swift; sourceTree = "<group>"; };
 		CEB496F6205D03A700C2E1DA /* ProductRequestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductRequestVC.swift; sourceTree = "<group>"; };
-		CEB496FA205D04F200C2E1DA /* MyVisitedComVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVisitedComVC.swift; sourceTree = "<group>"; };
+		CEB496FA205D04F200C2E1DA /* MyVisitedComVC .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MyVisitedComVC .swift"; sourceTree = "<group>"; };
 		CEB496FC205D052700C2E1DA /* CellHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellHistoryVC.swift; sourceTree = "<group>"; };
 		CEB49700205E33C700C2E1DA /* AddEmployeeTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEmployeeTableCell.swift; sourceTree = "<group>"; };
 		CEB49704205E38D100C2E1DA /* AddEmployeeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEmployeeModel.swift; sourceTree = "<group>"; };
@@ -125,6 +133,7 @@
 		CEE2AEBE206B61C80032BFDE /* AddVisitedCompany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVisitedCompany.swift; sourceTree = "<group>"; };
 		CEF71BA1201F575600B82C5F /* loginbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginbutton.png; sourceTree = "<group>"; };
 		CEF71BA2201F575600B82C5F /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
+		CEFFA1252073420800891D5E /* MySellHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySellHistory.swift; sourceTree = "<group>"; };
 		F48494F7B6A81492615AC19A /* Pods-Easy2Sell.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Easy2Sell.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Easy2Sell/Pods-Easy2Sell.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,7 +142,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32B1AB7F60E1AF67E8EF0FD6 /* Pods_Easy2Sell.framework in Frameworks */,
+				CE8C43D42083353C0034C925 /* SwiftKeychainWrapper.framework in Frameworks */,
+				CE8C43D62083353C0034C925 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +162,8 @@
 		4401095551D4A1BF0AF12B04 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE8C43D2208335150034C925 /* SwiftKeychainWrapper.framework */,
+				CE1BDDE9207696BA0042B540 /* CoreLocation.framework */,
 				65D0E7E9A2B6984E20ACD9FF /* Pods_Easy2Sell.framework */,
 			);
 			name = Frameworks;
@@ -203,8 +215,6 @@
 			children = (
 				CEB4971D2064F33100C2E1DA /* heptazinc.jpg.png */,
 				CEB4970D2062213C00C2E1DA /* prod_1692756812.jpeg */,
-				CE85B984201F618800F806E8 /* loginbtn.png */,
-				CE85B985201F618800F806E8 /* signupbtn.png */,
 				CE1315B0201E426200005956 /* admin1.png */,
 				CE1315B1201E426200005956 /* employeebutton.png */,
 				CEF71BA1201F575600B82C5F /* loginbutton.png */,
@@ -216,8 +226,9 @@
 				CE39CA842057AD6100A7B506 /* addProBtn.png */,
 				CE39CA852057AD6100A7B506 /* proreqstBTN.png */,
 				CEF71BA2201F575600B82C5F /* register.png */,
+				CE7089C6207CC7B700953975 /* signupp.png */,
+				CE7089C4207CC68300953975 /* LoG-Innn.png */,
 				CE39CA8A2057B67D00A7B506 /* MapView.png */,
-				CE39CA92205831EE00A7B506 /* logout.png */,
 				CE39CA37204ADB4800A7B506 /* logout-button-md.png */,
 				CE1315AE201E3B8C00005956 /* selectuser1.png */,
 			);
@@ -291,7 +302,7 @@
 			children = (
 				CE6C0AE92020C16600FF6AB6 /* EmployeeSignUp_In.swift */,
 				CE39CA132046782000A7B506 /* EmployeeHomeVC.swift */,
-				CEB496FA205D04F200C2E1DA /* MyVisitedComVC.swift */,
+				CEB496FA205D04F200C2E1DA /* MyVisitedComVC .swift */,
 				CEB496FC205D052700C2E1DA /* CellHistoryVC.swift */,
 				CEB4971F2064F3FF00C2E1DA /* AddToOrderVC.swift */,
 			);
@@ -304,6 +315,7 @@
 				CEB49700205E33C700C2E1DA /* AddEmployeeTableCell.swift */,
 				CEB4971120622F5B00C2E1DA /* AddProductTableCell.swift */,
 				CEB4971B2064CB7400C2E1DA /* ProductRequestTableCell.swift */,
+				CE8C43CA20830EA00034C925 /* ActiveRepresentativesCell.swift */,
 			);
 			name = "Admin-panel";
 			sourceTree = "<group>";
@@ -323,6 +335,8 @@
 			children = (
 				CEB49704205E38D100C2E1DA /* AddEmployeeModel.swift */,
 				CEB4971520635A6400C2E1DA /* AddProductModel.swift */,
+				CE83A5502073DCEE00437BF8 /* OrderProductRequest.swift */,
+				CE8C43CC208314560034C925 /* ActiveRepModel.swift */,
 			);
 			name = "Admin-panel";
 			sourceTree = "<group>";
@@ -331,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				CEE2AEBE206B61C80032BFDE /* AddVisitedCompany.swift */,
+				CEFFA1252073420800891D5E /* MySellHistory.swift */,
 			);
 			name = "Employee-panel";
 			sourceTree = "<group>";
@@ -413,21 +428,20 @@
 				CE13157A2018467000005956 /* Assets.xcassets in Resources */,
 				CE39CA8F20582A1200A7B506 /* MySellHistory.png in Resources */,
 				CE39CA872057AD6100A7B506 /* addEplyBTN.png in Resources */,
+				CE7089C5207CC68300953975 /* LoG-Innn.png in Resources */,
 				CE1315B3201E426200005956 /* employeebutton.png in Resources */,
 				CE39CA8B2057B67D00A7B506 /* MapView.png in Resources */,
 				CE39CA892057AD6100A7B506 /* proreqstBTN.png in Resources */,
 				CE1315AF201E3B8C00005956 /* selectuser1.png in Resources */,
-				CE85B986201F618800F806E8 /* loginbtn.png in Resources */,
-				CE39CA93205831EE00A7B506 /* logout.png in Resources */,
 				CE39CA9020582A1200A7B506 /* MyVisitedCompany.png in Resources */,
 				CEB4970E2062213C00C2E1DA /* prod_1692756812.jpeg in Resources */,
 				CE85B983201F5D9C00F806E8 /* Main.storyboard in Resources */,
-				CE85B987201F618800F806E8 /* signupbtn.png in Resources */,
 				CE39CA38204ADB4800A7B506 /* logout-button-md.png in Resources */,
 				CEF71BA4201F575600B82C5F /* register.png in Resources */,
 				CE903F8A20458E6D00FAAEA0 /* GoogleService-Info.plist in Resources */,
 				CE39CA882057AD6100A7B506 /* addProBtn.png in Resources */,
 				CEF71BA3201F575600B82C5F /* loginbutton.png in Resources */,
+				CE7089C7207CC7B700953975 /* signupp.png in Resources */,
 				CE39CA9120582A1200A7B506 /* productList.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,16 +515,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE83A5512073DCEE00437BF8 /* OrderProductRequest.swift in Sources */,
 				CEB496F5205D02E600C2E1DA /* AddProductVC.swift in Sources */,
 				CEB496FD205D052700C2E1DA /* CellHistoryVC.swift in Sources */,
 				CE85B98E201F83C800F806E8 /* AdminSignUP_In.swift in Sources */,
 				CEB49701205E33C700C2E1DA /* AddEmployeeTableCell.swift in Sources */,
 				CEB4971220622F5B00C2E1DA /* AddProductTableCell.swift in Sources */,
 				CEB497202064F3FF00C2E1DA /* AddToOrderVC.swift in Sources */,
+				CE8C43CB20830EA00034C925 /* ActiveRepresentativesCell.swift in Sources */,
 				CE69556A205A93C500529BB6 /* RoundBtn.swift in Sources */,
 				CEB4970A2060085C00C2E1DA /* DataService.swift in Sources */,
 				CE39CA122046780800A7B506 /* AdminHomeVC.swift in Sources */,
-				CEB496FB205D04F200C2E1DA /* MyVisitedComVC.swift in Sources */,
+				CEB496FB205D04F200C2E1DA /* MyVisitedComVC .swift in Sources */,
 				CEE2AEBF206B61C80032BFDE /* AddVisitedCompany.swift in Sources */,
 				CEB497142062B01700C2E1DA /* ProductListTableCell.swift in Sources */,
 				CE695568205A93BB00529BB6 /* FancyView.swift in Sources */,
@@ -518,9 +534,11 @@
 				CE1315722018467000005956 /* HomeVC.swift in Sources */,
 				CE39CA142046782000A7B506 /* EmployeeHomeVC.swift in Sources */,
 				CE69556E205A93D100529BB6 /* FancyBtn.swift in Sources */,
+				CE8C43CD208314560034C925 /* ActiveRepModel.swift in Sources */,
 				CEB49710206225BF00C2E1DA /* CornerRadiousView.swift in Sources */,
 				CE39CA162046795A00A7B506 /* AlertController.swift in Sources */,
 				CEB496F1205CFD6F00C2E1DA /* AddEmployeeVC.swift in Sources */,
+				CEFFA1262073420900891D5E /* MySellHistory.swift in Sources */,
 				CE695570205A93D700529BB6 /* CircleView.swift in Sources */,
 				CEB4970C20621A7A00C2E1DA /* MaterialView.swift in Sources */,
 				CEB496F7205D03A700C2E1DA /* ProductRequestVC.swift in Sources */,

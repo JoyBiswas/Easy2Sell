@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 
-class AddToOrderVC: UIViewController {
+class AddToOrderVC: UIViewController,UITextFieldDelegate {
     
     
     
@@ -20,6 +20,7 @@ class AddToOrderVC: UIViewController {
     var productType: String = String()
     var productPrice: String = String()
     var productDetails: String = String()
+    var quantityPerPrice:String = String()
     var apropriatePrice:Double!
     
     
@@ -53,6 +54,8 @@ class AddToOrderVC: UIViewController {
     
     @IBOutlet weak var productDeliveryDate: FancyField!
     
+    @IBOutlet weak var quantityPrice: UILabel!
+    
     var orderBy:String!
     var orderName:String!
     
@@ -70,6 +73,7 @@ class AddToOrderVC: UIViewController {
         self.orderProductType.text = productType
         self.orderProductPrice.text = productPrice
         self.orderProductDetails.text = productDetails
+        self.quantityPrice.text = quantityPerPrice
         
         if productPrice != " " {
             
@@ -150,7 +154,7 @@ class AddToOrderVC: UIViewController {
         let key = refProductAddByEMployee.childByAutoId().key
         
         
-        guard  orderProductName.text != "",orderProductType.text != "",productCodeToOrder.text != "",orderProductPrice.text != "",orderProductType.text != "",productQntToOrder.text != "",totalPriceToOrder.text != "",orderBy != "",OrderFrom.text != "",ordererPhn.text != "",ordererAddress.text != "",productDeliveryDate.text != ""
+        guard  orderProductName.text != "",orderProductType.text != "",productCodeToOrder.text != "",orderProductPrice.text != "",orderProductType.text != "",productQntToOrder.text != "",totalPriceToOrder.text != "",orderBy != "",OrderFrom.text != "",ordererPhn.text != "",ordererAddress.text != "",productDeliveryDate.text != "", quantityPerPrice != ""
          else{
             
             let alertController = UIAlertController(title: "Missing info", message: "Mr: \(self.orderName!) please check each and every fields clearly.", preferredStyle: .alert)
@@ -183,8 +187,10 @@ class AddToOrderVC: UIViewController {
                               "productOrderFrom":OrderFrom.text! as String,
                               "productOrdererAdress":ordererAddress.text! as String,
                               "productOrdererPhn":ordererPhn.text! as String,
+                              "quantityPerPrice":quantityPerPrice as String,
                               "productDeliveryDate":productDeliveryDate.text! as String,
                               "orderDate":dateInFormat] as [String : Any]
+        
         
         //adding the artist inside the generated unique key
         refProductAddByEMployee.child(key).setValue(ProductAddByEMployee)
@@ -241,6 +247,20 @@ class AddToOrderVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        return true
+        
+    }
+
 
     
 

@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate{
     
     
     @IBOutlet weak var addproductImg: CornerRadiousView!
@@ -359,6 +359,22 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
 
 
     }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        return true
+        
+    }
+
     
     
 }

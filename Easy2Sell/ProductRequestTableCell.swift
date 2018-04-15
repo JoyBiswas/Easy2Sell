@@ -29,6 +29,9 @@ class ProductRequestTableCell: UITableViewCell {
     
     @IBOutlet weak var deliberyDate: UITextView!
     
+    
+    @IBOutlet weak var orderDate: UITextView!
+    
     @IBOutlet weak var deliveyMarkImg: UIImageView!
 
     @IBOutlet weak var orderPhnNumber: UITextView!
@@ -37,7 +40,18 @@ class ProductRequestTableCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(deliveryMarkTapped))
+        tap.numberOfTapsRequired = 3
+        deliveyMarkImg.addGestureRecognizer(tap)
+        deliveyMarkImg.isUserInteractionEnabled = true
+        
+    }
+    
+    
+    func deliveryMarkTapped(sender: UITapGestureRecognizer) {
+        tapOnDeliveryMark = true
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -9,14 +9,17 @@
 import UIKit
 import Firebase
 import SwiftKeychainWrapper
+import MapKit
 
-class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource {
+class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,MKMapViewDelegate {
         var menuShow = false
         var imageSelected = false
         var products = [AddProductModel]()
     
         var productType = [String]()
         var productPrice = [String]()
+        let locationManager = CLLocationManager()
+        var nearestPlace:String = ""
     
     
     static var imageCache:NSCache<NSString, UIImage> = NSCache()
@@ -36,6 +39,10 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
 
     override func viewDidLoad() {
         
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         productTable.delegate = self
         productTable.delegate = self
         
@@ -120,6 +127,121 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
 
         
     }
+    
+    
+    
+    
+    //location integriting
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let location = locations[0]
+        
+
+
+        
+        if Auth.auth().currentUser != nil {
+            
+            if let currentUser = Auth.auth().currentUser {
+                
+                let name = currentUser.displayName!
+                let email = currentUser.email!
+                let uid = currentUser.uid
+                if let photoUrl:String = (currentUser.photoURL?.absoluteString) {
+                    
+                   
+                    
+                    
+                    CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
+                        
+                        if error != nil {
+                            print(error!)
+                        }else {
+                            if (placemarks?[0]) != nil {
+                                
+                                let placemark = placemarks?[0]
+                                var adress = ""
+                                
+                                if placemark?.subThoroughfare != nil {
+                                    
+                                    adress += (placemark?.subThoroughfare)! + " "
+                                }
+                                if placemark?.thoroughfare != nil {
+                                    
+                                    adress += (placemark?.thoroughfare)! + "\n"
+                                }
+                                if placemark?.subLocality != nil {
+                                    
+                                    adress += (placemark?.subLocality)! + "\n"
+                                }
+                                if placemark?.subAdministrativeArea != nil {
+                                    
+                                    adress += (placemark?.subAdministrativeArea)! + "\n"
+                                }
+                                if placemark?.postalCode != nil {
+                                    
+                                    adress += (placemark?.postalCode)! + "\n"
+                                }
+                                if placemark?.country != nil {
+                                    
+                                    adress += (placemark?.country)! + "\n"
+                                }
+                                
+                                self.nearestPlace = adress
+                                
+                                
+                                
+                            }
+                            
+                            
+                            
+                        }
+                    }
+                    
+                    
+                
+                self.employeeLocationUpdate(employeeUid: uid, employeeName: name, employeeEmail: email, employeePhotoUrl: photoUrl, employeeNearestPlace: nearestPlace, locationLatitude: location.coordinate.latitude,locationLongitude: location.coordinate.longitude)
+                }
+            }
+            
+            
+        }
+        
+
+        
+    }
+    
+    
+    func employeeLocationUpdate(employeeUid:String,employeeName:String,employeeEmail:String,employeePhotoUrl:String,employeeNearestPlace:String,locationLatitude:Double,locationLongitude:Double) {
+        
+        let key = DataService.ds.REF_USER_LOCATION.child(employeeUid).key
+        
+        
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+        let dateInFormat = dateFormatter.string(from: Date())
+        
+        
+        let employeeLocation = ["id":key,
+                              "employeeName": employeeName,
+                              "employeeAddress":employeeEmail,
+                              "locationlatitute":locationLatitude,
+                              "locationLongitute":locationLongitude,
+                              "employeePhotoUrl":employeePhotoUrl,
+                              "employeeNearestPlace":employeeNearestPlace,
+                              "visitedDate":dateInFormat] as [String : Any]
+        
+        
+        
+        DataService.ds.REF_USER_LOCATION.child(employeeUid).setValue(employeeLocation)
+        
+        
+    }
+    
+    
+    
+    
     
     func setupMenubar(){
         let barImage = UIImage(named: "menu.png")?.withRenderingMode(.alwaysOriginal)
@@ -292,6 +414,7 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
             viewController.productPrice = product.productPrice
             viewController.productDetails = product.productDescription
             viewController.pImageUrl = product.productimageUrl
+            viewController.quantityPerPrice = product.pricePerQuantity
             
             
             
@@ -307,6 +430,14 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBAction func onLogoutTapped(_ sender: Any)
     {
         
+        if Auth.auth().currentUser != nil {
+            
+            let employeeUid = Auth.auth().currentUser?.uid
+            DataService.ds.REF_USER_LOCATION.child(employeeUid!).setValue(nil)
+            
+        }
+
+        
         do {
             
             
@@ -317,6 +448,8 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         } catch {
             print(error)
         }
+        
+        
         
     }
     
