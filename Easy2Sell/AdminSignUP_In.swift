@@ -27,9 +27,7 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var signUpbtn: UIButton!
     
-    
     @IBOutlet weak var bottomView: UIView!
-    
     
     @IBOutlet weak var forgetPasswordBTn: UIButton!
     
@@ -42,11 +40,11 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
     
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       navigationItem.hidesBackButton = true
-       userNameTF.isHidden = true
+        navigationItem.hidesBackButton = true
+        userNameTF.isHidden = true
         emailTF.isHidden = false
         adminKeyTF.isHidden = false
         passwordTF.isHidden = false
@@ -75,32 +73,14 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
                 
             })
         }
- 
-//        Timer.scheduledTimer(withTimeInterval:
-//            2, repeats: false) { (timer) in
-//                
-//                    self.performSegue(withIdentifier: "toAdminHome", sender: nil)
-//                    
-//                
-//                
-//                
-//        }
-//        
         
         
-
-      
     }
     override func viewDidAppear(_ animated: Bool) {
         
         self.activityIndicator.stopAnimating()
         
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     @IBAction func registerSelectionPressed(_ sender: Any) {
@@ -127,7 +107,7 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
         signUpbtn.isHidden = true
         loginBTN.isHidden = false
         bottomView.isHidden = true
-       
+        
     }
     
     
@@ -136,8 +116,6 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
         if let username=userNameTF.text,username == "",let email = emailTF.text,email == "",let password=passwordTF.text,password == "",let admnkey=adminKeyTF.text,admnkey == ""  {
             
             AlertController.showAlert(self, title: "Missing InFo", message: "Please fill up your field")
-            
-            
             
             
             return
@@ -159,7 +137,7 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
                     
                     guard error == nil else {
                         AlertController.showAlert(self, title: "Error", message: error!.localizedDescription)
- 
+                        
                         self.activityIndicator.stopAnimating()
                         return
                     }
@@ -198,7 +176,7 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
             self.activityIndicator.stopAnimating()
             
         }
-
+        
     }
     
     @IBAction func loginBTnPressed(_ sender: Any) {
@@ -207,34 +185,34 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
             email == "",
             let password = passwordTF.text,
             password == "", let admnkey=adminKeyTF.text,admnkey == ""
-            {
-                AlertController.showAlert(self, title: "Missing Info", message: "Please fill out all required fields")
-                return
-                
-                
+        {
+            AlertController.showAlert(self, title: "Missing Info", message: "Please fill out all required fields")
+            return
+            
+            
         }
         if adminKey.contains(adminKeyTF.text!){
             
             
-                activityIndicator.center = self.view.center
-                activityIndicator.hidesWhenStopped = true
-                activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
-                view.addSubview(activityIndicator)
-                activityIndicator.startAnimating()
-
-        Auth.auth().signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion: { (user, error) in
-            guard error == nil else {
-                AlertController.showAlert(self, title: "Error", message: error!.localizedDescription)
-                
-                self.activityIndicator.stopAnimating()
-                return
-            }
-            self.completeSignIn(id: (user?.email)!)
-            print("saved")
-            self.performSegue(withIdentifier: "toAdminHome", sender: nil)
+            activityIndicator.center = self.view.center
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+            view.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
             
-                      })
-         
+            Auth.auth().signIn(withEmail: emailTF.text!, password: passwordTF.text!, completion: { (user, error) in
+                guard error == nil else {
+                    AlertController.showAlert(self, title: "Error", message: error!.localizedDescription)
+                    
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                self.completeSignIn(id: (user?.email)!)
+                
+                self.performSegue(withIdentifier: "toAdminHome", sender: nil)
+                
+            })
+            
         }else {
             
             AlertController.showAlert(self, title: "Missing InFo", message: "Admin key didnt match")
@@ -242,16 +220,18 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
             self.activityIndicator.stopAnimating()
             
         }
-
+        
     }
+    
     
     func completeSignIn(id: String) {
         
-        let keychainResult = KeychainWrapper.standard.set(id, forKey: "adminuid")
+        _ = KeychainWrapper.standard.set(id, forKey: "adminuid")
         
-        print("JESS: Data saved to keychain \(keychainResult)")
+        
         performSegue(withIdentifier: "toAdminHome", sender: nil)
     }
+    
     
     @IBAction func forgetPasswordPressed(_ sender: Any) {
         
@@ -295,11 +275,7 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
                 })
                 
                 
-                
             }
-
-            
-            
             
         }
         alert.addAction(cancel)
@@ -325,5 +301,5 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
         return true
         
     }
-
+    
 }

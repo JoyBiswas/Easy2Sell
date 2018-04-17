@@ -43,6 +43,7 @@ class EmployeeSignUp_In: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationItem.hidesBackButton = true
         userNameTF.isHidden = true
         emailTF.isHidden = false
@@ -52,48 +53,48 @@ class EmployeeSignUp_In: UIViewController,UITextFieldDelegate {
         underBorderView.isHidden = true
         loginBTN.isHidden = false
         signUpbtn.isHidden = true
-       
         
-
+        
+        
         refemployee = Database.database().reference().child("employees");
         
         refemployee?.observe(DataEventType.value, with: { (snapshot) in
             
             //if the reference have some values
             if snapshot.childrenCount > 0 {
-           
+                
                 
                 //iterating through all the values
                 for employees in snapshot.children.allObjects as! [DataSnapshot] {
                     //getting values
                     let employeeObject = employees.value as? [String: AnyObject]
-                   
+                    
                     if let employeeKey = employeeObject?["employeeKey"] as? String{
                         
                         self.employeeKey.append(employeeKey)
                         
                     }
                     
-                   
+                    
                     
                 }
             }
         })
         
         
-
         
-                if let _ = KeychainWrapper.standard.string(forKey: "uid") {
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
-            
+        
+        if let _ = KeychainWrapper.standard.string(forKey: "uid") {
+            Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
+                
                 self.performSegue(withIdentifier: "toEmployeeHome", sender: nil)
-            
-            
-        })
-    }
+                
+                
+            })
+        }
         
-      
-
+        
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         
@@ -106,7 +107,7 @@ class EmployeeSignUp_In: UIViewController,UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-   
+    
     
     @IBAction func registerSelectionPressed(_ sender: Any) {
         userNameTF.isHidden = false
@@ -132,7 +133,7 @@ class EmployeeSignUp_In: UIViewController,UITextFieldDelegate {
         signUpbtn.isHidden = true
         loginBTN.isHidden = false
         underBorderView.isHidden = true
-
+        
         
     }
     
@@ -218,7 +219,7 @@ class EmployeeSignUp_In: UIViewController,UITextFieldDelegate {
         }
         
         
-
+        
     }
     
     @IBAction func loginBTnPressed(_ sender: Any) {
@@ -247,13 +248,13 @@ class EmployeeSignUp_In: UIViewController,UITextFieldDelegate {
                 guard error == nil else {
                     AlertController.showAlert(self, title: "Error", message: error!.localizedDescription)
                     self.activityIndicator.stopAnimating()
-                
+                    
                     return
                 }
                 self.completeSignIn(id: (user?.email)!)
-              
+                
                 self.performSegue(withIdentifier: "toEmployeeHome", sender: nil)
-              
+                
                 
                 
             })
@@ -351,5 +352,5 @@ class EmployeeSignUp_In: UIViewController,UITextFieldDelegate {
         return true
         
     }
-
+    
 }

@@ -39,10 +39,9 @@
 		CE83A5512073DCEE00437BF8 /* OrderProductRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83A5502073DCEE00437BF8 /* OrderProductRequest.swift */; };
 		CE85B983201F5D9C00F806E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE85B981201F5D9C00F806E8 /* Main.storyboard */; };
 		CE85B98E201F83C800F806E8 /* AdminSignUP_In.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85B98D201F83C800F806E8 /* AdminSignUP_In.swift */; };
+		CE8BD1FF2084DF080075ECD2 /* MapViewForLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8BD1FE2084DF080075ECD2 /* MapViewForLocationVC.swift */; };
 		CE8C43CB20830EA00034C925 /* ActiveRepresentativesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C43CA20830EA00034C925 /* ActiveRepresentativesCell.swift */; };
 		CE8C43CD208314560034C925 /* ActiveRepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C43CC208314560034C925 /* ActiveRepModel.swift */; };
-		CE8C43D42083353C0034C925 /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8C43D2208335150034C925 /* SwiftKeychainWrapper.framework */; };
-		CE8C43D62083353C0034C925 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1BDDE9207696BA0042B540 /* CoreLocation.framework */; };
 		CE903F8A20458E6D00FAAEA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE903F8920458E6D00FAAEA0 /* GoogleService-Info.plist */; };
 		CEB496F1205CFD6F00C2E1DA /* AddEmployeeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB496F0205CFD6F00C2E1DA /* AddEmployeeVC.swift */; };
 		CEB496F5205D02E600C2E1DA /* AddProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB496F4205D02E600C2E1DA /* AddProductVC.swift */; };
@@ -107,6 +106,7 @@
 		CE83A5502073DCEE00437BF8 /* OrderProductRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderProductRequest.swift; sourceTree = "<group>"; };
 		CE85B982201F5D9C00F806E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE85B98D201F83C800F806E8 /* AdminSignUP_In.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminSignUP_In.swift; sourceTree = "<group>"; };
+		CE8BD1FE2084DF080075ECD2 /* MapViewForLocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewForLocationVC.swift; sourceTree = "<group>"; };
 		CE8C43CA20830EA00034C925 /* ActiveRepresentativesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveRepresentativesCell.swift; sourceTree = "<group>"; };
 		CE8C43CC208314560034C925 /* ActiveRepModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveRepModel.swift; sourceTree = "<group>"; };
 		CE8C43D2208335150034C925 /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftKeychainWrapper.framework; path = "../../../Library/Developer/Xcode/DerivedData/Easy2Sell-ghuvwycinyxqaydcwstsnjlynzpg/Build/Products/Debug-iphoneos/SwiftKeychainWrapper/SwiftKeychainWrapper.framework"; sourceTree = "<group>"; };
@@ -142,8 +142,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE8C43D42083353C0034C925 /* SwiftKeychainWrapper.framework in Frameworks */,
-				CE8C43D62083353C0034C925 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,9 +193,9 @@
 				CE85B98B201F82E300F806E8 /* Controller */,
 				CE85B98A201F82D600F806E8 /* View */,
 				CE85B989201F82CE00F806E8 /* Model */,
-				CE1315792018467000005956 /* Assets.xcassets */,
 				CE85B988201F82B900F806E8 /* images */,
 				CE85B98C201F830500F806E8 /* SupportingFiels */,
+				CE1315792018467000005956 /* Assets.xcassets */,
 			);
 			path = Easy2Sell;
 			sourceTree = "<group>";
@@ -293,6 +291,7 @@
 				CEB496F0205CFD6F00C2E1DA /* AddEmployeeVC.swift */,
 				CEB496F4205D02E600C2E1DA /* AddProductVC.swift */,
 				CEB496F6205D03A700C2E1DA /* ProductRequestVC.swift */,
+				CE8BD1FE2084DF080075ECD2 /* MapViewForLocationVC.swift */,
 			);
 			name = AdminVC;
 			sourceTree = "<group>";
@@ -538,6 +537,7 @@
 				CEB49710206225BF00C2E1DA /* CornerRadiousView.swift in Sources */,
 				CE39CA162046795A00A7B506 /* AlertController.swift in Sources */,
 				CEB496F1205CFD6F00C2E1DA /* AddEmployeeVC.swift in Sources */,
+				CE8BD1FF2084DF080075ECD2 /* MapViewForLocationVC.swift in Sources */,
 				CEFFA1262073420900891D5E /* MySellHistory.swift in Sources */,
 				CE695570205A93D700529BB6 /* CircleView.swift in Sources */,
 				CEB4970C20621A7A00C2E1DA /* MaterialView.swift in Sources */,
@@ -675,10 +675,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F48494F7B6A81492615AC19A /* Pods-Easy2Sell.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8MBSDR4W6C;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				INFOPLIST_FILE = Easy2Sell/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = universal.Easy2Sell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -691,10 +693,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 83E363CF90F6F80DCA6E0EE4 /* Pods-Easy2Sell.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8MBSDR4W6C;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				INFOPLIST_FILE = Easy2Sell/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = universal.Easy2Sell;
 				PRODUCT_NAME = "$(TARGET_NAME)";

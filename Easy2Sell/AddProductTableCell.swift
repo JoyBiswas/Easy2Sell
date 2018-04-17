@@ -62,14 +62,6 @@ class AddProductTableCell: UITableViewCell {
         }
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()

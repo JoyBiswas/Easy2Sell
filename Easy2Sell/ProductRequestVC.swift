@@ -12,6 +12,7 @@ import Firebase
 var tapOnDeliveryMark:Bool = false
 
 class ProductRequestVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    
     var currentRow = 0;
     @IBOutlet weak var requestedProductTable: UITableView!
     
@@ -19,13 +20,9 @@ class ProductRequestVC: UIViewController,UITableViewDelegate,UITableViewDataSour
     
     var requestedProduct = [OrderProductRequset]()
     
-
+    
     override func viewDidLoad() {
-        
-        
         super.viewDidLoad()
-        
-        
         
         
         DataService.ds.REf_ORDER_REQUEST_LIST.queryOrdered(byChild: "orderDate").observe(DataEventType.value, with: { (snapshot) in
@@ -53,10 +50,10 @@ class ProductRequestVC: UIViewController,UITableViewDelegate,UITableViewDataSour
                     let totalPrice = productOrderObject?["productTotalPrice"]
                     let ordererPhn = productOrderObject?["productOrdererPhn"]
                     let productOrdererAdress = productOrderObject?["productOrdererAdress"]
-                   let productOrderBy = productOrderObject?["productOrderBy"]
-                   let productQuantity = productOrderObject?["productQuantity"]
-                   //let productType = productOrderObject?["productType"]
-
+                    let productOrderBy = productOrderObject?["productOrderBy"]
+                    let productQuantity = productOrderObject?["productQuantity"]
+                    //let productType = productOrderObject?["productType"]
+                    
                     
                     
                     let productPricewithQunt = "\(String(describing: productPrice!))\(String(describing: quantityPerPrice!))"
@@ -77,7 +74,7 @@ class ProductRequestVC: UIViewController,UITableViewDelegate,UITableViewDataSour
                 self.requestedProductTable.reloadData()
             }
         })
-
+        
         
     }
     
@@ -97,8 +94,8 @@ class ProductRequestVC: UIViewController,UITableViewDelegate,UITableViewDataSour
         
         let cell = requestedProductTable.dequeueReusableCell(withIdentifier: "PreqCell") as! ProductRequestTableCell
         let orderProduct:OrderProductRequset!
-            orderProduct = requestedProduct[indexPath.row]
-            
+        orderProduct = requestedProduct[indexPath.row]
+        
         cell.productName.text = orderProduct.productName
         cell.productCode.text = orderProduct.productCode
         cell.productQuantity.text = orderProduct.productQuantity
@@ -139,10 +136,5 @@ class ProductRequestVC: UIViewController,UITableViewDelegate,UITableViewDataSour
     }
     
     
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 }

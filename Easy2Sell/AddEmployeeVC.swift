@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class AddEmployeeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
-
+    
     
     
     @IBOutlet weak var employeeTableView: UITableView!
@@ -95,10 +95,10 @@ class AddEmployeeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
                 self.employeeTableView.reloadData()
             }
         })
-
+        
         
     }
-
+    
     
     func addemployees(){
         //generating a new key inside artists node
@@ -107,15 +107,15 @@ class AddEmployeeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
         
         
         guard  employeeKey.text != "",employeeName.text != "",employeeEmail.text != "",employeeCon_No.text != "" else{
-          
+            
             AlertController.showAlert(self, title: "Missing InFo", message: "Please fill up your field")
             return
             
         }
         
         let employee = ["id":key,
-                      "employeeName": employeeName.text! as String,
-                      "employeeKey": employeeKey.text! as String,"employeeEmail":employeeEmail.text! as String,"employeeCon_No":employeeCon_No.text! as String]
+                        "employeeName": employeeName.text! as String,
+                        "employeeKey": employeeKey.text! as String,"employeeEmail":employeeEmail.text! as String,"employeeCon_No":employeeCon_No.text! as String]
         
         //adding the artist inside the generated unique key
         refemployee.child(key).setValue(employee)
@@ -127,7 +127,7 @@ class AddEmployeeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
         
         AlertController.showAlert(self, title: "Employee Added", message: "Your employee are in list you can edit also")
         
-       
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -157,8 +157,8 @@ class AddEmployeeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
         
         //the cancel action doing nothing
         let cancelAction = UIAlertAction(title: "Delete", style: .cancel) { (_) in
-        self.deleteemployee(id: employee.id!)
-        
+            self.deleteemployee(id: employee.id!)
+            
         }
         
         //adding two textfields to alert
@@ -185,26 +185,26 @@ class AddEmployeeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
         present(alertController, animated: true, completion: nil)
         
     }
-
+    
     func updateemployee(id:String, name:String, key:String,email:String,phn:String){
         //creating artist with the new given values
         let employee = ["id":id,
-                      "employeeName": name,
-                      "employeeKey": key,
-                      "employeeEmail":email,
-                      "employeeCon_No":phn
+                        "employeeName": name,
+                        "employeeKey": key,
+                        "employeeEmail":email,
+                        "employeeCon_No":phn
         ]
         
         //updating the artist using the key of the artist
         refemployee.child(id).setValue(employee)
         
-         AlertController.showAlert(self, title: "Employee Added", message: "Your employee are in list you can edit also")
+        AlertController.showAlert(self, title: "Employee Added", message: "Your employee are in list you can edit also")
         
     }
     
     func deleteemployee(id:String){
         refemployee.child(id).setValue(nil)
-
+        
         
         //displaying message
         AlertController.showAlert(self, title: "Employee are Removed", message: "Your employee are in list you can edit also")
@@ -229,6 +229,6 @@ class AddEmployeeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
         return true
         
     }
-
+    
     
 }

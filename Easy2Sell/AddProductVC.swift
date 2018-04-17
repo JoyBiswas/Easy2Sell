@@ -34,6 +34,7 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
     var imagePicker:UIImagePickerController!
     var imageSelected = false
     var productImagesUrl:String!
+    
     var products = [AddProductModel]()
     
     var produtsArray = [String]()
@@ -43,6 +44,36 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
     
     
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        
+        
+        DataService.ds.REF_Products.observe(.value, with: { (snapshot) in
+            
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                self.products.removeAll()
+                for snap in snapshot {
+                    if let productDict = snap.value as? Dictionary<String, AnyObject> {
+                        // let productName = productDict["productName"]
+                        let key = snap.key
+                        let product = AddProductModel(productKey: key, productData: productDict)
+                        self.products.insert(product, at: 0)
+                        
+                        
+                    }
+                    
+                }
+                self.productTable.reloadData()
+            }
+            
+            
+        })
+        
+    }
     
     
     
@@ -58,9 +89,9 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
             return produtsArray.count
         }
         else {
-        
-        return products.count
-    }
+            
+            return products.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,11 +101,11 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
         
         if let cell = productTable.dequeueReusableCell(withIdentifier: "ProductCell") as? AddProductTableCell {
             
-
+            
             
             
             if let img = AddProductVC.imageCache.object(forKey: product.productimageUrl as NSString) {
-      
+                
                 cell.configureCell(product: product, img: img)
             } else {
                 cell.configureCell(product: product, img: nil)
@@ -135,7 +166,7 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
             textField.placeholder = "Type product name"
             textField.textColor = UIColor.blue
             textField.font = UIFont(name: "AmericanTypewriter", size: 14)
-        
+            
         }
         
         alertController.addTextField { (textField) in
@@ -144,7 +175,7 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
             textField.placeholder = "Type product Code"
             textField.textColor = UIColor.red
             textField.font = UIFont(name: "AmericanTypewriter", size: 14)
-
+            
         }
         
         alertController.addTextField { (textField) in
@@ -183,7 +214,7 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
             textField.font = UIFont(name: "AmericanTypewriter", size: 14)
         }
         
-      
+        
         
         //adding action
         alertController.addAction(confirmAction)
@@ -210,10 +241,6 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
         DataService.ds.REF_Products.child(id).setValue(product)
         
         
-        
-        
-       
-        
         AlertController.showAlert(self, title: "Product Added", message: "Your product are in list you can edit also")
         
     }
@@ -235,7 +262,7 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
             imageSelected = true
             
             guard let img = addproductImg.image, imageSelected == true else {
-                print("JESS: An image must be selected")
+                
                 return
             }
             
@@ -249,17 +276,17 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
                     if error != nil {
                         print("JESS: Unable to upload image to Firebasee torage")
                     } else {
-                        print("JESS: Successfully uploaded image to Firebase storage")
+                        
                         let downloadURL = metadata?.downloadURL()?.absoluteString
                         if let url = downloadURL {
                             
-                         self.productImagesUrl = url
-                          print(self.productImagesUrl!)
+                            self.productImagesUrl = url
+                            print(self.productImagesUrl!)
                         }
                     }
                 }
                 
-                print("what was my image")
+                
                 
             } else {
                 print("JESS: A valid image wasn't selected")
@@ -267,7 +294,7 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
             imagePicker.dismiss(animated: true, completion: nil)
         }
     }
-
+    
     
     
     @IBAction func tappedOnProductImg(_ sender: AnyObject) {
@@ -319,45 +346,7 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
         productDescriptionTF.text = ""
         pricePerQuantity.text = ""
         
-
-    }
-    
-    
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
-        imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = true
-        imagePicker.delegate = self
-        
-        
-        DataService.ds.REF_Products.observe(.value, with: { (snapshot) in
-            
-            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
-                self.products.removeAll()
-                for snap in snapshot {
-                    print("SNAP: \(snap)")
-                    if let productDict = snap.value as? Dictionary<String, AnyObject> {
-                       // let productName = productDict["productName"]
-                        let key = snap.key
-                        let product = AddProductModel(productKey: key, productData: productDict)
-                        self.products.insert(product, at: 0)
-                        
-
-                     }
-                    
-                }
-                self.productTable.reloadData()
-            }
-            
-            
-        })
-        
-        
-
-
     }
     
     
@@ -374,7 +363,7 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
         return true
         
     }
-
+    
     
     
 }

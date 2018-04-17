@@ -2526,18 +2526,19 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active Representatives " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lI-3r-B3b">
                                         <rect key="frame" x="0.0" y="0.0" width="196" height="25"/>
-                                        <color key="backgroundColor" red="0.36017113346454183" green="0.94892215940552915" blue="0.89553880832696076" alpha="0.90194242294520544" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.18271246552467346" green="0.24345067143440247" blue="0.3294377326965332" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="OYU-jH-g54"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.16210699081420898" green="0.21577867865562439" blue="0.29451483488082886" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="15"/>
+                                        <color key="textColor" red="0.38098055124282837" green="0.79243177175521851" blue="0.26081609725952148" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="146" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="glx-tu-Zeu">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="3" rowHeight="146" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="glx-tu-Zeu">
                                         <rect key="frame" x="0.0" y="26" width="320" height="478"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.18271246552467346" green="0.24345067143440247" blue="0.3294377326965332" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.1827124655" green="0.24345067140000001" blue="0.32943773269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ActiveCell" rowHeight="146" id="7p2-ok-z7m" customClass="ActiveRepresentativesCell" customModule="Easy2Sell" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="320" height="146"/>
@@ -2564,18 +2565,18 @@
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="t9a-vN-hGk">
                                                                                     <rect key="frame" x="50" y="0.0" width="242" height="50"/>
                                                                                     <subviews>
-                                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Joyadrota" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghI-LJ-X1z">
+                                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Joyadrota" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghI-LJ-X1z">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="242" height="24"/>
-                                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                            <color key="backgroundColor" red="0.16210699081420898" green="0.21577867865562439" blue="0.29451483488082886" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                             <color key="textColor" red="0.31133344769477844" green="0.71224242448806763" blue="0.65834426879882812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                                         </textView>
                                                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="cjoybc@gmail.com" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTf-YW-evi">
                                                                                             <rect key="frame" x="0.0" y="26" width="242" height="24"/>
-                                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                            <color key="backgroundColor" red="0.16210699081420898" green="0.21577867865562439" blue="0.29451483488082886" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                             <color key="textColor" red="0.31133344769477844" green="0.71224242448806763" blue="0.65834426879882812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
                                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                                         </textView>
                                                                                     </subviews>
@@ -2597,16 +2598,16 @@
                                                                                     <subviews>
                                                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="lat" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9L-UQ-LUH">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="145" height="25"/>
-                                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                            <color key="backgroundColor" red="0.16210699081420898" green="0.21577867865562439" blue="0.29451483488082886" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                             <color key="textColor" red="0.31133344769477844" green="0.71224242448806763" blue="0.65834426879882812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
                                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                                         </textView>
                                                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="lon" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nlm-Ok-3UX">
                                                                                             <rect key="frame" x="147" y="0.0" width="145" height="25"/>
-                                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                            <color key="backgroundColor" red="0.16210699081420898" green="0.21577867865562439" blue="0.29451483488082886" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                             <color key="textColor" red="0.31133344769477844" green="0.71224242448806763" blue="0.65834426879882812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
                                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                                         </textView>
                                                                                     </subviews>
@@ -2626,17 +2627,17 @@
                                                                             <subviews>
                                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="NearestPlace" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrU-QT-Q6E">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="145" height="37.5"/>
-                                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                    <color key="backgroundColor" red="0.16210699081420898" green="0.21577867865562439" blue="0.29451483488082886" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <color key="textColor" red="0.31133344769477844" green="0.71224242448806763" blue="0.65834426879882812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                                 </textView>
                                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FHm-jQ-DlF">
                                                                                     <rect key="frame" x="147" y="0.0" width="145" height="37.5"/>
-                                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                    <color key="backgroundColor" red="0.16210699081420898" green="0.21577867865562439" blue="0.29451483488082886" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                                     <color key="textColor" red="0.31133344769477844" green="0.71224242448806763" blue="0.65834426879882812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
                                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                                 </textView>
                                                                             </subviews>
@@ -2679,6 +2680,9 @@
                                                         <constraint firstAttribute="trailingMargin" secondItem="gvd-ub-XAo" secondAttribute="trailing" constant="2" id="gxx-XS-EBa"/>
                                                         <constraint firstItem="gvd-ub-XAo" firstAttribute="leading" secondItem="vg4-5u-t4X" secondAttribute="leadingMargin" constant="2" id="r3u-Dn-BYW"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="profileEmail" destination="CTf-YW-evi" id="Yr6-BM-eI1"/>
@@ -2719,6 +2723,7 @@
                     <navigationItem key="navigationItem" id="L8n-LM-GC0"/>
                     <connections>
                         <outlet property="activeEmployeeBtn" destination="zzg-XV-TGN" id="01n-RZ-EwM"/>
+                        <outlet property="activeRepresentativeNumber" destination="0lI-3r-B3b" id="Wof-nU-XRF"/>
                         <outlet property="activeRepresentativeTable" destination="glx-tu-Zeu" id="fJ2-km-YnX"/>
                         <outlet property="addProductBtn" destination="4zI-Q7-576" id="SgI-dW-nCl"/>
                         <outlet property="addemployeeBtn" destination="Ro9-GG-Zv0" id="zGh-b0-eda"/>
@@ -2727,6 +2732,7 @@
                         <outlet property="menuLeadingConstraint" destination="TrQ-1r-GWN" id="x4U-MX-qbB"/>
                         <outlet property="productReguestBtn" destination="mLZ-Y2-id5" id="cHv-2y-9CH"/>
                         <segue destination="wDg-71-mfZ" kind="show" identifier="signOutSegue" id="CuQ-uY-D63"/>
+                        <segue destination="okm-QS-Ak0" kind="show" identifier="toMapView" id="3CO-Yy-bOg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7Y-YG-Csn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2737,6 +2743,51 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-2051.25" y="1407.0422535211267"/>
+        </scene>
+        <!--Map View For LocationVC-->
+        <scene sceneID="rEB-AD-SM0">
+            <objects>
+                <viewController id="okm-QS-Ak0" customClass="MapViewForLocationVC" customModule="Easy2Sell" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F52-y8-P6z"/>
+                        <viewControllerLayoutGuide type="bottom" id="fLt-Qf-RmX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DfK-kY-Iy1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="j8L-6c-TwE">
+                                <rect key="frame" x="0.0" y="89" width="320" height="479"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Representative Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZC-4E-gcE">
+                                <rect key="frame" x="0.0" y="64" width="320" height="25"/>
+                                <color key="backgroundColor" red="0.23049303918547726" green="0.31004937156357554" blue="0.42449183361179332" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Z1R-5C-Vrb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="15"/>
+                                <color key="textColor" red="0.38098055124282837" green="0.79243177175521851" blue="0.26081609725952148" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="5ZC-4E-gcE" secondAttribute="trailing" id="3pt-hT-CCT"/>
+                            <constraint firstItem="j8L-6c-TwE" firstAttribute="top" secondItem="5ZC-4E-gcE" secondAttribute="bottom" id="7xq-ql-RIN"/>
+                            <constraint firstItem="j8L-6c-TwE" firstAttribute="leading" secondItem="DfK-kY-Iy1" secondAttribute="leading" id="frM-vZ-vh5"/>
+                            <constraint firstItem="5ZC-4E-gcE" firstAttribute="top" secondItem="F52-y8-P6z" secondAttribute="bottom" id="hFE-1C-96u"/>
+                            <constraint firstItem="5ZC-4E-gcE" firstAttribute="leading" secondItem="DfK-kY-Iy1" secondAttribute="leading" id="sF8-mR-AGY"/>
+                            <constraint firstItem="fLt-Qf-RmX" firstAttribute="top" secondItem="j8L-6c-TwE" secondAttribute="bottom" id="sdm-7m-SzT"/>
+                            <constraint firstAttribute="trailing" secondItem="j8L-6c-TwE" secondAttribute="trailing" id="z4a-SP-8HQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="j8L-6c-TwE" id="YsB-Lr-Hep"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tWM-2a-n6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1254.375" y="1405.9859154929577"/>
         </scene>
         <!--Admin SignUP In-->
         <scene sceneID="ncn-Xe-kqF">

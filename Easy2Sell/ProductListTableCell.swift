@@ -29,12 +29,6 @@ class ProductListTableCell: UITableViewCell {
     
     
     
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     var product:AddProductModel!
     
     
@@ -58,7 +52,7 @@ class ProductListTableCell: UITableViewCell {
                     print("JESS: Unable to download image from Firebase storage")
                     print(error!)
                 } else {
-                    print("JESS: Image downloaded from Firebase storage")
+                    
                     if let imgData = data {
                         if let img = UIImage(data: imgData) {
                             self.productImage.image = img
@@ -67,7 +61,7 @@ class ProductListTableCell: UITableViewCell {
                     }
                 }
             })
-        
-}
-}
+            
+        }
+    }
 }

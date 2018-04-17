@@ -12,20 +12,20 @@ import SwiftKeychainWrapper
 import MapKit
 
 class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,MKMapViewDelegate {
-        var menuShow = false
-        var imageSelected = false
-        var products = [AddProductModel]()
+    var menuShow = false
+    var imageSelected = false
+    var products = [AddProductModel]()
     
-        var productType = [String]()
-        var productPrice = [String]()
-        let locationManager = CLLocationManager()
-        var nearestPlace:String = ""
+    var productType = [String]()
+    var productPrice = [String]()
+    let locationManager = CLLocationManager()
+    var nearestPlace:String = ""
     
     
     static var imageCache:NSCache<NSString, UIImage> = NSCache()
     
     var imagePicker:UIImagePickerController!
-
+    
     var selectedIndexPath: NSIndexPath = NSIndexPath()
     
     
@@ -35,8 +35,11 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     @IBOutlet weak var productTable: UITableView!
     
+    @IBOutlet weak var menuLeadingConstraint: NSLayoutConstraint!
     
-
+    @IBOutlet weak var mainView: UIView!
+    
+    
     override func viewDidLoad() {
         
         locationManager.delegate = self
@@ -46,14 +49,15 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         productTable.delegate = self
         productTable.delegate = self
         
+        
         attemptFetch()
         
         setupMenubar()
+        
         menuLeadingConstraint.constant = 0
         
         guard let username = Auth.auth().currentUser?.displayName else { return }
         
-        //successLbl.text = "Hello \(username)"
         navigationItem.title = username
         
         imagePicker = UIImagePickerController()
@@ -71,11 +75,9 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         }
         
         func downloadImage(url: URL) {
-            print("Download Started")
             getDataFromUrl(url: url) { data, response, error in
                 guard let data = data, error == nil else { return }
-                print(response?.suggestedFilename ?? url.lastPathComponent)
-                print("Download Finished")
+                
                 DispatchQueue.main.async() {
                     self.employeeProfileImg.image = UIImage(data: data)
                 }
@@ -87,12 +89,9 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
             
             if let url = user?.photoURL {
                 
-                
                 downloadImage(url: url)
                 
-                
             }
-            
             
         }
         
@@ -105,15 +104,13 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
                 self.products.removeAll()
                 for snap in snapshot {
-                    print("SNAP: \(snap)")
                     if let productDict = snap.value as? Dictionary<String, AnyObject> {
-                        //                        let productName = productDict["productName"]
+                        
                         let key = snap.key
                         let product = AddProductModel(productKey: key, productData: productDict)
                         self.products.insert(product, at: 0)
                         
-                        //                        self.produtsArray.append(productName as! String)
-                        //                        print(self.produtsArray)
+                        
                     }
                     
                 }
@@ -124,11 +121,45 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         })
         
         
-
-        
     }
     
     
+    
+    
+    func manuBtn() {
+        
+        if(menuShow)
+        {
+            menuLeadingConstraint.constant = 0
+            handelanimation()
+            
+        }
+        else{
+            menuLeadingConstraint.constant = 125
+            handelanimation()
+            
+            
+        }
+        menuShow = !menuShow
+    }
+    
+    func handelanimation()
+    {
+        UIView.animate(withDuration: 0.9, animations: {
+            self.view.layoutIfNeeded()
+        })
+        mainView.layer.shadowOpacity = 1
+        mainView.layer.shadowRadius = 5
+        
+        
+    }
+    
+    func setupMenubar(){
+        let barImage = UIImage(named: "menu.png")?.withRenderingMode(.alwaysOriginal)
+        let menuBarbutton = UIBarButtonItem(image: barImage, style: .plain, target: self,action: #selector(manuBtn))
+        navigationItem.leftBarButtonItems = [menuBarbutton]
+        
+    }
     
     
     //location integriting
@@ -137,8 +168,6 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
         let location = locations[0]
         
-
-
         
         if Auth.auth().currentUser != nil {
             
@@ -149,7 +178,7 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
                 let uid = currentUser.uid
                 if let photoUrl:String = (currentUser.photoURL?.absoluteString) {
                     
-                   
+                    
                     
                     
                     CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
@@ -190,24 +219,19 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
                                 self.nearestPlace = adress
                                 
                                 
-                                
                             }
-                            
-                            
                             
                         }
                     }
                     
                     
-                
-                self.employeeLocationUpdate(employeeUid: uid, employeeName: name, employeeEmail: email, employeePhotoUrl: photoUrl, employeeNearestPlace: nearestPlace, locationLatitude: location.coordinate.latitude,locationLongitude: location.coordinate.longitude)
+                    
+                    self.employeeLocationUpdate(employeeUid: uid, employeeName: name, employeeEmail: email, employeePhotoUrl: photoUrl, employeeNearestPlace: nearestPlace, locationLatitude: location.coordinate.latitude,locationLongitude: location.coordinate.longitude)
                 }
             }
             
             
         }
-        
-
         
     }
     
@@ -224,13 +248,13 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
         
         let employeeLocation = ["id":key,
-                              "employeeName": employeeName,
-                              "employeeAddress":employeeEmail,
-                              "locationlatitute":locationLatitude,
-                              "locationLongitute":locationLongitude,
-                              "employeePhotoUrl":employeePhotoUrl,
-                              "employeeNearestPlace":employeeNearestPlace,
-                              "visitedDate":dateInFormat] as [String : Any]
+                                "employeeName": employeeName,
+                                "employeeAddress":employeeEmail,
+                                "locationlatitute":locationLatitude,
+                                "locationLongitute":locationLongitude,
+                                "employeePhotoUrl":employeePhotoUrl,
+                                "employeeNearestPlace":employeeNearestPlace,
+                                "visitedDate":dateInFormat] as [String : Any]
         
         
         
@@ -240,49 +264,6 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     
     
-    
-    
-    
-    func setupMenubar(){
-        let barImage = UIImage(named: "menu.png")?.withRenderingMode(.alwaysOriginal)
-        let menuBarbutton = UIBarButtonItem(image: barImage, style: .plain, target: self,action: #selector(manuBtn))
-        navigationItem.leftBarButtonItems = [menuBarbutton]
-        
-    }
-    @IBOutlet weak var menuLeadingConstraint: NSLayoutConstraint!
-
-    @IBOutlet weak var mainView: UIView!
-    
-    
-    
-    func manuBtn() {
-        
-        if(menuShow)
-        {
-            menuLeadingConstraint.constant = 0
-            handelanimation()
-            
-        }
-        else{
-            menuLeadingConstraint.constant = 125
-            handelanimation()
-            
-            
-        }
-        menuShow = !menuShow
-    }
-
-    func handelanimation()
-    {
-        UIView.animate(withDuration: 0.9, animations: {
-            self.view.layoutIfNeeded()
-        })
-        mainView.layer.shadowOpacity = 1
-        mainView.layer.shadowRadius = 5
-        
-        
-    }
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             employeeProfileImg.image = image
@@ -290,7 +271,7 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
             imageSelected = true
             
             guard let img = employeeProfileImg.image, imageSelected == true else {
-                print("JESS: An image must be selected")
+                
                 return
             }
             
@@ -302,9 +283,9 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
                 
                 DataService.ds.Ref_Emp_ProFile_Images.child(imgUid!).putData(imgData, metadata: metadata) { (metadata, error) in
                     if error != nil {
-                        print("JESS: Unable to upload image to Firebasee torage")
+                        
                     } else {
-                        print("JESS: Successfully uploaded image to Firebase storage")
+                        
                         let downloadURL = metadata?.downloadURL()?.absoluteString
                         if let url = downloadURL {
                             
@@ -340,6 +321,7 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
+    
     @IBAction func addImageTapped(_ sender: AnyObject) {
         present(imagePicker, animated: true, completion: nil)
     }
@@ -356,36 +338,36 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-      return products.count
+        return products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         let product = products.reversed()[indexPath.row]
+        
+        if let cell = productTable.dequeueReusableCell(withIdentifier: "PlistCell") as? ProductListTableCell {
             
-            if let cell = productTable.dequeueReusableCell(withIdentifier: "PlistCell") as? ProductListTableCell {
+            
+            if let img = EmployeeHomeVC.imageCache.object(forKey: product.productimageUrl as NSString) {
                 
+                cell.configureCell(product: product, img: img)
                 
-                if let img = EmployeeHomeVC.imageCache.object(forKey: product.productimageUrl as NSString) {
-                    
-                    cell.configureCell(product: product, img: img)
-                    
-                } else {
-                    cell.configureCell(product: product, img: nil)
-                }
-                
-                let bgColorView = UIView()
-                bgColorView.backgroundColor = UIColor.brown
-                cell.selectedBackgroundView = bgColorView
-                
-                return cell
-                
+            } else {
+                cell.configureCell(product: product, img: nil)
             }
-
-            return ProductListTableCell()
+            
+            let bgColorView = UIView()
+            bgColorView.backgroundColor = UIColor.brown
+            cell.selectedBackgroundView = bgColorView
+            
+            return cell
             
         }
+        
+        return ProductListTableCell()
+        
+    }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -397,7 +379,7 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     
     
-     open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let indexPath = self.selectedIndexPath
         
@@ -406,22 +388,20 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         if (segue.identifier == "toAddToChart") {
             if  let viewController = segue.destination as? AddToOrderVC  {
                 
-            let product = products.reversed()[indexPath.row]
-               
-            viewController.productName = product.productName
-            viewController.productCode = product.productCode
-            viewController.productType = product.productType
-            viewController.productPrice = product.productPrice
-            viewController.productDetails = product.productDescription
-            viewController.pImageUrl = product.productimageUrl
-            viewController.quantityPerPrice = product.pricePerQuantity
-            
-            
-            
-            
+                let product = products.reversed()[indexPath.row]
+                
+                viewController.productName = product.productName
+                viewController.productCode = product.productCode
+                viewController.productType = product.productType
+                viewController.productPrice = product.productPrice
+                viewController.productDetails = product.productDescription
+                viewController.pImageUrl = product.productimageUrl
+                viewController.quantityPerPrice = product.pricePerQuantity
+                
+                
+            }
         }
-    }
-    
+        
     }
     
     
@@ -436,13 +416,13 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
             DataService.ds.REF_USER_LOCATION.child(employeeUid!).setValue(nil)
             
         }
-
+        
         
         do {
             
             
             try Auth.auth().signOut()
-          _ = KeychainWrapper.standard.removeObject(forKey: "uid")
+            _ = KeychainWrapper.standard.removeObject(forKey: "uid")
             dismiss(animated: true, completion: nil)
             
         } catch {
@@ -461,11 +441,13 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
+        
+        menuShow = !menuShow
     }
     
     
     func attemptFetch() {
-      
+        
         
         if segment.selectedSegmentIndex == 0 {
             
@@ -474,15 +456,13 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
                 if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
                     self.products.removeAll()
                     for snap in snapshot {
-                        print("SNAP: \(snap)")
+                        
                         if let productDict = snap.value as? Dictionary<String, AnyObject> {
                             
                             let key = snap.key
                             let product = AddProductModel(productKey: key, productData: productDict)
                             self.products.append(product)
                             
-
-                           
                         }
                         
                     }
@@ -493,9 +473,9 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
             })
             
             
-        
-          self.productTable.reloadData()
-         
+            
+            self.productTable.reloadData()
+            
             
         } else if segment.selectedSegmentIndex == 1 {
             
@@ -505,17 +485,14 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
                     self.products.removeAll()
                     
                     for snap in snapshot {
-                        print("SNAP: \(snap)")
+                        
                         if let productDict = snap.value as? Dictionary<String, AnyObject> {
                             
                             let key = snap.key
                             let product = AddProductModel(productKey: key, productData: productDict)
                             self.products.insert(product , at: 0)
                             
-                          
                             
-                            
-                      
                         }
                         
                     }
@@ -525,7 +502,7 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
                 
             })
             
-           self.viewDidAppear(true)
+            self.viewDidAppear(true)
             
         } else if segment.selectedSegmentIndex == 2 {
             
@@ -537,14 +514,12 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
                     self.products.removeAll()
                     
                     for snap in snapshot {
-                        print("SNAP: \(snap)")
+                        
                         if let productDict = snap.value as? Dictionary<String, AnyObject> {
                             
                             let key = snap.key
                             let product = AddProductModel(productKey: key, productData: productDict)
                             self.products.insert(product , at: 0)
-                            
-                            
                             
                             
                             
@@ -558,20 +533,14 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
             })
             
             
-  
+        }
         
-    }
-
     }
     
     @IBAction func segmentedControllerSHifted(_ sender: Any) {
         
         attemptFetch()
-      
+        
     }
     
-    
-    
-    
-
-    }
+}

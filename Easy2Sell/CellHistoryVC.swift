@@ -13,14 +13,14 @@ class CellHistoryVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
     @IBOutlet weak var cellProductTable: UITableView!
     
     
-     var refProductAddByEMployee:DatabaseReference!
+    var refProductAddByEMployee:DatabaseReference!
     
-     var productListOrderByMe = [MySellHistory]()
+    var productListOrderByMe = [MySellHistory]()
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         cellProductTable.delegate = self
         cellProductTable.dataSource = self
         
@@ -50,7 +50,7 @@ class CellHistoryVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
                     
                     //getting values
                     
-
+                    
                     let productOrderObject = productOrder.value as? [String: AnyObject]
                     let productName  = productOrderObject?["productName"]
                     let productId  = productOrderObject?["id"]
@@ -72,20 +72,13 @@ class CellHistoryVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
                     self.productListOrderByMe.insert(orderProduct, at: 0)
                     
                     
-                    
                 }
                 
-                //reloading the tableview
                 self.cellProductTable.reloadData()
             }
         })
         
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -111,9 +104,9 @@ class CellHistoryVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
         cell.toCompanyDeliverd.text = prodctOrder.tocompany
         cell.totalPrice.text = prodctOrder.totalPrice
         cell.deliverdDate.text = prodctOrder.orderDate
-       
+        
         return cell
     }
     
-
+    
 }

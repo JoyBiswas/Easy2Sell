@@ -30,7 +30,7 @@ class AddToOrderVC: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var orderProductCode: UILabel!
     
-
+    
     @IBOutlet weak var orderProductType: UILabel!
     
     @IBOutlet weak var orderProductPrice: UILabel!
@@ -44,10 +44,10 @@ class AddToOrderVC: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var totalPriceToOrder: FancyField!
     
- 
+    
     @IBOutlet weak var OrderFrom: FancyField!
     
-
+    
     @IBOutlet weak var ordererPhn: FancyField!
     
     @IBOutlet weak var ordererAddress: FancyField!
@@ -62,7 +62,7 @@ class AddToOrderVC: UIViewController,UITextFieldDelegate {
     
     var refProductAddByEMployee:DatabaseReference!
     
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +82,7 @@ class AddToOrderVC: UIViewController,UITextFieldDelegate {
             if dataString.count > 0 {
                 
                 self.apropriatePrice = Double(dataString[0])
-                print(self.apropriatePrice)
+               
                 
             }
         }
@@ -92,10 +92,10 @@ class AddToOrderVC: UIViewController,UITextFieldDelegate {
         ref.getData(maxSize: 2*1024*1024, completion: { (data, error) in
             
             if error != nil {
-                print("JESS: Unable to download image from Firebase storage")
+                
                 print(error!)
             } else {
-                print("JESS: Image downloaded from Firebase storage")
+                
                 if let imgData = data {
                     if let img = UIImage(data: imgData) {
                         self.orderProductImage.image = img
@@ -121,10 +121,6 @@ class AddToOrderVC: UIViewController,UITextFieldDelegate {
                 
             }
         }
-        
-        
-        
-        
     }
     
     
@@ -135,17 +131,13 @@ class AddToOrderVC: UIViewController,UITextFieldDelegate {
             
             if let productQuantity = Double(productQntToOrder.text!) {
                 
-               let totalprice = productQuantity*apropriatePrice
+                let totalprice = productQuantity*apropriatePrice
                 
                 self.totalPriceToOrder.text = "\(totalprice)Tk"
                 
                 
             }
-            
-            
         }
-        
-        
     }
     
     func addProductToOrder(){
@@ -155,21 +147,21 @@ class AddToOrderVC: UIViewController,UITextFieldDelegate {
         
         
         guard  orderProductName.text != "",orderProductType.text != "",productCodeToOrder.text != "",orderProductPrice.text != "",orderProductType.text != "",productQntToOrder.text != "",totalPriceToOrder.text != "",orderBy != "",OrderFrom.text != "",ordererPhn.text != "",ordererAddress.text != "",productDeliveryDate.text != "", quantityPerPrice != ""
-         else{
-            
-            let alertController = UIAlertController(title: "Missing info", message: "Mr: \(self.orderName!) please check each and every fields clearly.", preferredStyle: .alert)
-            alertController.view.backgroundColor = UIColor.red// change background color
-            alertController.view.layer.cornerRadius = 25
-            let confirmAction = UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+            else{
                 
+                let alertController = UIAlertController(title: "Missing info", message: "Mr: \(self.orderName!) please check each and every fields clearly.", preferredStyle: .alert)
+                alertController.view.backgroundColor = UIColor.red// change background color
+                alertController.view.layer.cornerRadius = 25
+                let confirmAction = UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+                    
+                    
+                })
+                alertController.addAction(confirmAction)
                 
-            })
-            alertController.addAction(confirmAction)
-
-            present(alertController, animated: true, completion: nil)
-
-            return
-            
+                present(alertController, animated: true, completion: nil)
+                
+                return
+                
         }
         
         let dateFormatter = DateFormatter()
@@ -177,19 +169,19 @@ class AddToOrderVC: UIViewController,UITextFieldDelegate {
         let dateInFormat = dateFormatter.string(from: Date())
         
         let ProductAddByEMployee = ["id":key,
-                              "productName": orderProductName.text! as String,
-                              "productType": orderProductType.text! as String,
-                              "productCode":productCodeToOrder.text! as String,
-                              "productPrice":orderProductPrice.text! as String,
-                              "productQuantity":productQntToOrder.text! as String,
-                              "productTotalPrice":totalPriceToOrder.text! as String,
-                              "productOrderBy":self.orderBy as String,
-                              "productOrderFrom":OrderFrom.text! as String,
-                              "productOrdererAdress":ordererAddress.text! as String,
-                              "productOrdererPhn":ordererPhn.text! as String,
-                              "quantityPerPrice":quantityPerPrice as String,
-                              "productDeliveryDate":productDeliveryDate.text! as String,
-                              "orderDate":dateInFormat] as [String : Any]
+                                    "productName": orderProductName.text! as String,
+                                    "productType": orderProductType.text! as String,
+                                    "productCode":productCodeToOrder.text! as String,
+                                    "productPrice":orderProductPrice.text! as String,
+                                    "productQuantity":productQntToOrder.text! as String,
+                                    "productTotalPrice":totalPriceToOrder.text! as String,
+                                    "productOrderBy":self.orderBy as String,
+                                    "productOrderFrom":OrderFrom.text! as String,
+                                    "productOrdererAdress":ordererAddress.text! as String,
+                                    "productOrdererPhn":ordererPhn.text! as String,
+                                    "quantityPerPrice":quantityPerPrice as String,
+                                    "productDeliveryDate":productDeliveryDate.text! as String,
+                                    "orderDate":dateInFormat] as [String : Any]
         
         
         //adding the artist inside the generated unique key
@@ -198,7 +190,7 @@ class AddToOrderVC: UIViewController,UITextFieldDelegate {
         
         
         
-       let alertController = UIAlertController(title: orderProductName.text, message: "Product are added to the orderList", preferredStyle: .alert)
+        let alertController = UIAlertController(title: orderProductName.text, message: "Product are added to the orderList", preferredStyle: .alert)
         
         
         alertController.view.backgroundColor = UIColor.orange// change background color
@@ -211,40 +203,30 @@ class AddToOrderVC: UIViewController,UITextFieldDelegate {
         
         present(alertController, animated: true, completion: nil)
         
-
-      productCodeToOrder.text = ""
         
-      productQntToOrder.text = ""
+        productCodeToOrder.text = ""
         
-      totalPriceToOrder.text = ""
+        productQntToOrder.text = ""
         
-        
-      OrderFrom.text = ""
+        totalPriceToOrder.text = ""
         
         
-      ordererPhn.text = ""
-      ordererAddress.text = ""
-    productDeliveryDate.text = ""
+        OrderFrom.text = ""
+        
+        
+        ordererPhn.text = ""
+        ordererAddress.text = ""
+        productDeliveryDate.text = ""
         
     }
-
     
     
-    
- 
     
     @IBAction func addToOrderListProduct(_ sender: Any) {
         
         addProductToOrder()
         
         
-    }
-    
-
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -260,8 +242,8 @@ class AddToOrderVC: UIViewController,UITextFieldDelegate {
         return true
         
     }
-
-
     
-
+    
+    
+    
 }

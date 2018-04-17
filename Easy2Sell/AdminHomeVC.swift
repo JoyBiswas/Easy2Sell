@@ -12,7 +12,7 @@ import SwiftKeychainWrapper
 
 
 class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource{
-
+    
     @IBOutlet weak var activeEmployeeBtn: UIButton!
     var menuShow = false
     var imagePicker:UIImagePickerController!
@@ -27,59 +27,27 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
     
     @IBOutlet weak var productReguestBtn: FancyBtn!
     
-   // @IBOutlet weak var mapView: MKMapView!
-    
-    
-    //let locationManager = CLLocationManager()
+    @IBOutlet weak var activeRepresentativeNumber: UILabel!
     
     
     var imageSelected = false
     
     var activeRepresentative = [ActiveRepresentativeModel]()
     
+    var selectedIndexPath: NSIndexPath = NSIndexPath()
+    
     @IBOutlet weak var activeRepresentativeTable: UITableView!
     
+    @IBOutlet weak var menuLeadingConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var mainView: UIView!
     
     
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        
-//        let annotation = MKPointAnnotation()
-//        let location = locations[0]
-//        
-//        
-//        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-//        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-//        
-//        let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
-//        mapView.setRegion(region, animated: true)
-//        
-//        
-//        
-//        annotation.coordinate = myLocation
-//        annotation.title = "joys home"
-//        mapView.addAnnotation(annotation)
-//        
-//        
-//        self.mapView.showsUserLocation = true
-//        
-//        
-//        
-//        
-//        
-//    }
-
-   
+    
+    
     override func viewDidLoad() {
         
-        
-//       locationManager.delegate = self
-//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        locationManager.requestWhenInUseAuthorization()
-//       locationManager.startUpdatingLocation()
-//        
-//        
-//        
-        DataService.ds.REF_USER_LOCATION.queryOrdered(byChild: "employeeName").observe(DataEventType.value, with: { (snapshot) in
+        DataService.ds.REF_USER_LOCATION.queryOrdered(byChild: "visitedDate").observe(DataEventType.value, with: { (snapshot) in
             
             //if the reference have some values
             if snapshot.childrenCount > 0 {
@@ -102,12 +70,12 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
                     let nearestPlaceLocation = locationObject?["employeeNearestPlace"]
                     let profileImageUrl = locationObject?["employeePhotoUrl"]
                     let visitedDate = locationObject?["visitedDate"]
-
+                    
                     
                     let repLocation = ActiveRepresentativeModel(profileName: employeeName as! String, profileimageUrl: profileImageUrl as! String, profileEmail: employeeAddress as! String, repLocationPlace: nearestPlaceLocation as! String, repLocationLat: locationLatitude as! Double, repLocationLong: locationLongitude as! Double, repCurrentTime: visitedDate as! String)
                     
-                   
-                    self.activeRepresentative.insert(repLocation, at: 0)
+                    
+                    self.activeRepresentative.append(repLocation)
                     
                     
                 }
@@ -116,30 +84,8 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
                 self.activeRepresentativeTable.reloadData()
             }
         })
-
         
         
-        //DataService.ds.REF_USER_LOCATION.child("54kMhLd1e7WBkSSv2KvmIVVIfR53").observe(.value, with: { (snapshot) in
-//            
-//           
-//                
-//                
-//                
-//            
-//                    
-//                    //getting values
-//            if  let locationObject = snapshot.value as? [String: AnyObject] {
-//
-//                    print(locationLatitude!)
-//                    
-//                    
-//                
-//            }
-//
-//            
-//            
-//            
-//        })
         
         setupMenubar()
         menuLeadingConstraint.constant = 0
@@ -148,7 +94,7 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
         
         
         navigationItem.title = username
-         //_ = KeychainWrapper.standard.removeObject(forKey: "adminuid")
+        //_ = KeychainWrapper.standard.removeObject(forKey: "adminuid")
         
         //activeEmployeeBtn.backgroundColor = UIColor.cyan
         
@@ -169,11 +115,10 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
         }
         
         func downloadImage(url: URL) {
-            print("Download Started")
+            
             getDataFromUrl(url: url) { data, response, error in
                 guard let data = data, error == nil else { return }
                 print(response?.suggestedFilename ?? url.lastPathComponent)
-                print("Download Finished")
                 DispatchQueue.main.async() {
                     self.adminProfileImg.image = UIImage(data: data)
                 }
@@ -199,44 +144,6 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
     }
     
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return activeRepresentative.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let representative = activeRepresentative.reversed()[indexPath.row]
-        
-        if let cell = activeRepresentativeTable.dequeueReusableCell(withIdentifier: "ActiveCell") as? ActiveRepresentativesCell {
-            
-            
-            if let img = AdminHomeVC.imageCache.object(forKey:representative.profileimageUrl  as NSString) {
-                
-                cell.configureCell(representative: representative, img: img)
-            } else {
-                cell.configureCell(representative: representative, img: nil)
-            }
-            
-           
-            
-            return cell
-            
-        }
-        
-        return ActiveRepresentativesCell()
-
-    }
-    
-    
-    
-    
-    
     
     
     func setupMenubar(){
@@ -245,9 +152,6 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
         navigationItem.leftBarButtonItems = [menuBarbutton]
         
     }
-    @IBOutlet weak var menuLeadingConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var mainView: UIView!
     
     
     
@@ -279,14 +183,92 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
         
     }
     
-     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        self.activeRepresentativeNumber.text = "Active Representatives( \(activeRepresentative.count) )"
+        
+        return activeRepresentative.count
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let representative = activeRepresentative.reversed()[indexPath.row]
+        
+        if let cell = activeRepresentativeTable.dequeueReusableCell(withIdentifier: "ActiveCell") as? ActiveRepresentativesCell {
+            
+            
+            if let img = AdminHomeVC.imageCache.object(forKey:representative.profileimageUrl  as NSString) {
+                
+                cell.configureCell(representative: representative, img: img)
+            } else {
+                cell.configureCell(representative: representative, img: nil)
+            }
+            
+            
+            
+            return cell
+            
+        }
+        
+        return ActiveRepresentativesCell()
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.selectedIndexPath = indexPath as NSIndexPath
+        
+        performSegue(withIdentifier: "toMapView", sender: nil)
+    }
+    
+    
+    
+    open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let indexPath = self.selectedIndexPath
+        
+        
+        
+        if (segue.identifier == "toMapView") {
+            if  let viewController = segue.destination as? MapViewForLocationVC  {
+                
+                let representative = activeRepresentative.reversed()[indexPath.row]
+                
+                viewController.representativeName = representative.profileName
+                viewController.representativeEmail = representative.profileEmail
+                viewController.representativeLocation = representative.repLocationPlace
+                viewController.representativeCurrentTime = representative.repCurrentTime
+                viewController.representativeLat = representative.repLocationLat
+                viewController.representativeLong = representative.repLocationLong
+                
+                
+                
+                
+            }
+        }
+        
+        
+        
+    }
+    
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             adminProfileImg.image = image
             
             imageSelected = true
             
             guard let img = adminProfileImg.image, imageSelected == true else {
-                print("JESS: An image must be selected")
+                
                 return
             }
             
@@ -298,45 +280,45 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
                 
                 DataService.ds.Ref_Emp_ProFile_Images.child(imgUid!).putData(imgData, metadata: metadata) { (metadata, error) in
                     if error != nil {
-                        print("JESS: Unable to upload image to Firebasee torage")
+                        
                     } else {
-                        print("JESS: Successfully uploaded image to Firebase storage")
+                        
                         let downloadURL = metadata?.downloadURL()?.absoluteString
                         if let url = downloadURL {
                             
                             let user = Auth.auth().currentUser
                             if let user = user {
                                 let changeRequest = user.createProfileChangeRequest()
-        
-                                            changeRequest.photoURL =
-                                                NSURL(string: url) as URL?
-                                            changeRequest.commitChanges { error in
-                                                if let error = error {
-                                                    
-                                                    AlertController.showAlert(self, title: "Error", message: "\(error.localizedDescription)")
-                                                    return
-                                                    
-                                                } else {
-                                                    AlertController.showAlert(self, title: "Profile Picture Set", message: "You can change again")
-                                                    return
-                                                }
-                                            }
+                                
+                                changeRequest.photoURL =
+                                    NSURL(string: url) as URL?
+                                changeRequest.commitChanges { error in
+                                    if let error = error {
+                                        
+                                        AlertController.showAlert(self, title: "Error", message: "\(error.localizedDescription)")
+                                        return
+                                        
+                                    } else {
+                                        AlertController.showAlert(self, title: "Profile Picture Set", message: "You can change again")
+                                        return
+                                    }
+                                }
+                            }
                         }
                     }
                 }
+                
+               
+                
+            } else {
+                print("JESS: A valid image wasn't selected")
             }
-
-            print("what was my image")
-            
-        } else {
-            print("JESS: A valid image wasn't selected")
+            imagePicker.dismiss(animated: true, completion: nil)
         }
-        imagePicker.dismiss(animated: true, completion: nil)
-    }
     }
     @IBAction func addImageTapped(_ sender: AnyObject) {
         present(imagePicker, animated: true, completion: nil)
-      
+        
     }
     
     
@@ -346,13 +328,15 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
         menuLeadingConstraint.constant = 0
         
         UIView.animate(withDuration:
-            0.3) {
-                
-                self.view.layoutIfNeeded()
+        0.3) {
+            
+            self.view.layoutIfNeeded()
         }
+        menuShow = !menuShow
+        
         
     }
-        
+    
     @IBAction func onLogoutTapped(_ sender: Any)
     {
         
@@ -360,15 +344,19 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
             
             
             try Auth.auth().signOut()
-          _ = KeychainWrapper.standard.removeObject(forKey: "adminuid")
+            _ = KeychainWrapper.standard.removeObject(forKey: "adminuid")
             dismiss(animated: true, completion: nil)
-             
+            
         } catch {
             print(error)
         }
         
     }
-
     
-  
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.activeRepresentativeTable.reloadData()
+    }
+    
+    
 }

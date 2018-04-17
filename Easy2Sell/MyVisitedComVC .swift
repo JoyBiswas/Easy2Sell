@@ -13,17 +13,76 @@ class MyVisitedComVC: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     @IBOutlet weak var visitedCompanyTable: UITableView!
     
-
+    
     @IBOutlet weak var companyName: UITextField!
     
     @IBOutlet weak var companyAdress: UITextField!
     
-    
     @IBOutlet weak var companyContact: UITextField!
+    
     
     var refVisitedCompany:DatabaseReference!
     
     var companyList = [AddVisitedcompany]()
+    
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if Auth.auth().currentUser != nil {
+            
+            if let currentUser = Auth.auth().currentUser {
+                
+                let userVisitedCompany = currentUser.uid+"VisitedCompany"
+                
+                
+                self.refVisitedCompany = Database.database().reference().child(userVisitedCompany)
+                
+            }
+        }
+        
+        
+        refVisitedCompany.queryOrdered(byChild: "visitedDate").observe(DataEventType.value, with: { (snapshot) in
+            
+            //if the reference have some values
+            if snapshot.childrenCount > 0 {
+                
+                //clearing the list
+                self.companyList.removeAll()
+                
+                //iterating through all the values
+                for company in snapshot.children.allObjects as! [DataSnapshot] {
+                    
+                    //getting values
+                    let companyObject = company.value as? [String: AnyObject]
+                    let companyName  = companyObject?["companyName"]
+                    let companyId  = companyObject?["id"]
+                    let companyAddress = companyObject?["companyAddress"]
+                    let companyContact = companyObject?["companyContact"]
+                    let visitedDate = companyObject?["visitedDate"]
+                    
+                    
+                    
+                    //creating artist object with model and fetched values
+                    let company = AddVisitedcompany(id: companyId as? String, companyName: companyName as? String, companyAddress: companyAddress as? String, companyContact: companyContact as? String, date: (visitedDate as? String)! )
+                    
+                    //appending it to list
+                    self.companyList.insert(company , at: 0)
+                    
+                    
+                    
+                }
+                
+                //reloading the tableview
+                self.visitedCompanyTable.reloadData()
+            }
+        })
+        
+        
+        // Do any additional setup after loading the view.
+    }
     
     
     
@@ -42,7 +101,7 @@ class MyVisitedComVC: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         let companyees:AddVisitedcompany!
         
-         companyees = companyList[indexPath.row]
+        companyees = companyList[indexPath.row]
         
         cell.companyName.text = companyees.companyName
         cell.companyAdress.text = companyees.companyAddress
@@ -113,10 +172,10 @@ class MyVisitedComVC: UIViewController,UITableViewDataSource,UITableViewDelegate
     func updateecompany(id:String, companyName:String, companyAddress:String,phn:String,visitedDate:String){
         //creating artist with the new given values
         let company = ["id":id,
-                        "companyName": companyName,
-                        "companyAddress": companyAddress,
-                        "companyContact":phn,
-                        "visitedDate":visitedDate
+                       "companyName": companyName,
+                       "companyAddress": companyAddress,
+                       "companyContact":phn,
+                       "visitedDate":visitedDate
         ]
         
         //updating the artist using the key of the artist
@@ -132,67 +191,6 @@ class MyVisitedComVC: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         //displaying message
         AlertController.showAlert(self, title: "Employee are Removed", message: "Your employee are in list you can edit also")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if Auth.auth().currentUser != nil {
-            
-            if let currentUser = Auth.auth().currentUser {
-                
-                let userVisitedCompany = currentUser.uid+"VisitedCompany"
-        
-        
-        self.refVisitedCompany = Database.database().reference().child(userVisitedCompany)
-            
-            }
-        }
-        
-        
-        refVisitedCompany.queryOrdered(byChild: "visitedDate").observe(DataEventType.value, with: { (snapshot) in
-            
-            //if the reference have some values
-            if snapshot.childrenCount > 0 {
-                
-                //clearing the list
-                self.companyList.removeAll()
-                
-                //iterating through all the values
-                for company in snapshot.children.allObjects as! [DataSnapshot] {
-                    
-                    //getting values
-                    let companyObject = company.value as? [String: AnyObject]
-                    let companyName  = companyObject?["companyName"]
-                    let companyId  = companyObject?["id"]
-                    let companyAddress = companyObject?["companyAddress"]
-                    let companyContact = companyObject?["companyContact"]
-                    let visitedDate = companyObject?["visitedDate"]
-                    
-                    
-                    
-                    //creating artist object with model and fetched values
-                    let company = AddVisitedcompany(id: companyId as? String, companyName: companyName as? String, companyAddress: companyAddress as? String, companyContact: companyContact as? String, date: (visitedDate as? String)! )
-                    
-                    //appending it to list
-                    self.companyList.insert(company , at: 0)
-                    
-                        
-                    
-                }
-                
-                //reloading the tableview
-                self.visitedCompanyTable.reloadData()
-            }
-        })
-
-       
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -214,8 +212,8 @@ class MyVisitedComVC: UIViewController,UITableViewDataSource,UITableViewDelegate
         let dateInFormat = dateFormatter.string(from: Date())
         
         let visitedCompany = ["id":key,
-                        "companyName": companyName.text! as String,
-                        "companyAddress": companyAdress.text! as String,"companyContact":companyContact.text! as String,"visitedDate":dateInFormat] as [String : Any]
+                              "companyName": companyName.text! as String,
+                              "companyAddress": companyAdress.text! as String,"companyContact":companyContact.text! as String,"visitedDate":dateInFormat] as [String : Any]
         
         //adding the artist inside the generated unique key
         refVisitedCompany.child(key).setValue(visitedCompany)
@@ -223,12 +221,12 @@ class MyVisitedComVC: UIViewController,UITableViewDataSource,UITableViewDelegate
         self.companyName.text = ""
         self.companyAdress.text = ""
         self.companyContact.text = ""
-                
+        
         AlertController.showAlert(self, title: "Companies Added", message: "Your visited Companies are in list you can edit also")
         
         
     }
-
+    
     
     
     @IBAction func tappedVisitedComSave(_ sender: Any) {
@@ -250,6 +248,6 @@ class MyVisitedComVC: UIViewController,UITableViewDataSource,UITableViewDelegate
         return true
         
     }
-
     
-   }
+    
+}
