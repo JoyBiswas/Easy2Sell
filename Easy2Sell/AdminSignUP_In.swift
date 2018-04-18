@@ -65,14 +65,14 @@ class AdminSignUP_In: UIViewController,UITextFieldDelegate {
             }
         })
         
-        if let _ = KeychainWrapper.standard.string(forKey: "adminuid") {
-            Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
-                
-                self.performSegue(withIdentifier: "toAdminHome", sender: nil)
-                
-                
-            })
-        }
+//        if let _ = KeychainWrapper.standard.string(forKey: "adminuid") {
+//            Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
+//                
+//                self.performSegue(withIdentifier: "toAdminHome", sender: nil)
+//                
+//                
+//            })
+//        }
         
         
     }

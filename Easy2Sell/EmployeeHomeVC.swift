@@ -11,15 +11,17 @@ import Firebase
 import SwiftKeychainWrapper
 import MapKit
 
-class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,MKMapViewDelegate {
+class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,MKMapViewDelegate,UISearchBarDelegate {
     var menuShow = false
     var imageSelected = false
     var products = [AddProductModel]()
+    var filteredObject:[AddProductModel]?
     
     var productType = [String]()
     var productPrice = [String]()
     let locationManager = CLLocationManager()
     var nearestPlace:String = ""
+    var inSearchMode = false
     
     
     static var imageCache:NSCache<NSString, UIImage> = NSCache()
@@ -39,8 +41,11 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     @IBOutlet weak var mainView: UIView!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     
     override func viewDidLoad() {
+        searchBar.delegate = self
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -121,6 +126,10 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         })
         
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.productTable.reloadData()
     }
     
     
@@ -331,6 +340,51 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     // table view implementing Start
     
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.searchBar.endEditing(true)
+        
+    }
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchBar.text == nil || searchBar.text == "" {
+            
+            inSearchMode = false
+            self.productTable.reloadData()
+            view.endEditing(true)
+            
+        } else {
+            
+            inSearchMode = true
+            let lowerCase = searchBar.text!.lowercased()
+            
+            if segment.selectedSegmentIndex == 0 {
+                filteredObject = products.filter({$0.productName.lowercased().hasPrefix(lowerCase) })
+                self.productTable.reloadData()
+            }else  if segment.selectedSegmentIndex == 1{
+                
+                filteredObject = products.filter({$0.productPrice.lowercased().hasPrefix(lowerCase) })
+                self.productTable.reloadData()
+                
+                
+            }else  if segment.selectedSegmentIndex == 2{
+                
+                filteredObject = products.filter({$0.productType.lowercased().hasPrefix(lowerCase) })
+                self.productTable.reloadData()
+                
+                
+            }
+            
+            
+            
+        }
+        
+    }
+    
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
@@ -338,34 +392,49 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if inSearchMode {
+            
+            return (filteredObject?.count)!
+        }
+        
         return products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        let product = products.reversed()[indexPath.row]
-        
-        if let cell = productTable.dequeueReusableCell(withIdentifier: "PlistCell") as? ProductListTableCell {
+        if  let cell = tableView.dequeueReusableCell(withIdentifier: "PlistCell", for: indexPath) as? ProductListTableCell {
             
             
-            if let img = EmployeeHomeVC.imageCache.object(forKey: product.productimageUrl as NSString) {
+            let fill: AddProductModel!
+            let img:UIImage!
+            if inSearchMode {
                 
-                cell.configureCell(product: product, img: img)
+                
+                fill = filteredObject?[indexPath.row]
+                img = AdminHomeVC.imageCache.object(forKey:fill.productimageUrl  as NSString)
                 
             } else {
-                cell.configureCell(product: product, img: nil)
+                
+                
+                
+                
+                fill = products.reversed()[indexPath.row]
+                img = AdminHomeVC.imageCache.object(forKey:fill.productimageUrl  as NSString)
             }
-            
-            let bgColorView = UIView()
-            bgColorView.backgroundColor = UIColor.brown
-            cell.selectedBackgroundView = bgColorView
-            
+            if img != nil {
+                cell.configureCell(product: fill, img: img)
+            }else {
+                cell.configureCell(product: fill, img: nil)
+            }
             return cell
+            
+        }else {
+            return ProductListTableCell()
             
         }
         
-        return ProductListTableCell()
+        
         
     }
     
@@ -388,16 +457,28 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         if (segue.identifier == "toAddToChart") {
             if  let viewController = segue.destination as? AddToOrderVC  {
                 
-                let product = products.reversed()[indexPath.row]
                 
-                viewController.productName = product.productName
-                viewController.productCode = product.productCode
-                viewController.productType = product.productType
-                viewController.productPrice = product.productPrice
-                viewController.productDetails = product.productDescription
-                viewController.pImageUrl = product.productimageUrl
-                viewController.quantityPerPrice = product.pricePerQuantity
-                
+                if inSearchMode {
+                    let product = filteredObject?[indexPath.row]
+                    viewController.productName = (product?.productName)!
+                    viewController.productCode = (product?.productCode)!
+                    viewController.productType = (product?.productType)!
+                    viewController.productPrice = (product?.productPrice)!
+                    viewController.productDetails = (product?.productDescription)!
+                    viewController.pImageUrl = (product?.productimageUrl)!
+                    viewController.quantityPerPrice = (product?.pricePerQuantity)!
+                }else {
+                    
+                    let product = products.reversed()[indexPath.row]
+                    
+                    viewController.productName = product.productName
+                    viewController.productCode = product.productCode
+                    viewController.productType = product.productType
+                    viewController.productPrice = product.productPrice
+                    viewController.productDetails = product.productDescription
+                    viewController.pImageUrl = product.productimageUrl
+                    viewController.quantityPerPrice = product.pricePerQuantity
+                }
                 
             }
         }

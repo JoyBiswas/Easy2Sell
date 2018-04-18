@@ -11,12 +11,22 @@ import Firebase
 import SwiftKeychainWrapper
 
 
-class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource{
+class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
     
-    @IBOutlet weak var activeEmployeeBtn: UIButton!
     var menuShow = false
     var imagePicker:UIImagePickerController!
     static var imageCache:NSCache<NSString, UIImage> = NSCache()
+    var selectedIndexPath: NSIndexPath = NSIndexPath()
+    
+    var imageSelected = false
+    var inSearchMode = false
+    
+    
+    var activeRepresentative = [ActiveRepresentativeModel]()
+    
+    var filteredObject:[ActiveRepresentativeModel]?
+    
+    @IBOutlet weak var activeEmployeeBtn: UIButton!
     
     @IBOutlet weak var adminProfileImg: CircleView!
     
@@ -24,17 +34,9 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
     
     @IBOutlet weak var addProductBtn: FancyBtn!
     
-    
     @IBOutlet weak var productReguestBtn: FancyBtn!
     
     @IBOutlet weak var activeRepresentativeNumber: UILabel!
-    
-    
-    var imageSelected = false
-    
-    var activeRepresentative = [ActiveRepresentativeModel]()
-    
-    var selectedIndexPath: NSIndexPath = NSIndexPath()
     
     @IBOutlet weak var activeRepresentativeTable: UITableView!
     
@@ -43,9 +45,13 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
     @IBOutlet weak var mainView: UIView!
     
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     
     
     override func viewDidLoad() {
+        
+        searchBar.delegate = self
         
         DataService.ds.REF_USER_LOCATION.queryOrdered(byChild: "visitedDate").observe(DataEventType.value, with: { (snapshot) in
             
@@ -183,6 +189,33 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
         
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.searchBar.endEditing(true)
+    }
+    
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchBar.text == nil || searchBar.text == "" {
+            
+            inSearchMode = false
+            self.activeRepresentativeTable.reloadData()
+            view.endEditing(true)
+            
+        } else {
+            
+            inSearchMode = true
+            let lowerCase = searchBar.text!.lowercased()
+            filteredObject = activeRepresentative.filter({$0.profileName.lowercased().hasPrefix(lowerCase) })
+            self.activeRepresentativeTable.reloadData()
+            
+            
+        }
+        
+    }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
@@ -193,32 +226,47 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
         
         self.activeRepresentativeNumber.text = "Active Representatives( \(activeRepresentative.count) )"
         
+        if inSearchMode {
+            
+            return filteredObject!.count
+            
+        }
+        
         return activeRepresentative.count
+        
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let representative = activeRepresentative.reversed()[indexPath.row]
         
-        if let cell = activeRepresentativeTable.dequeueReusableCell(withIdentifier: "ActiveCell") as? ActiveRepresentativesCell {
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "ActiveCell", for: indexPath) as? ActiveRepresentativesCell {
             
-            
-            if let img = AdminHomeVC.imageCache.object(forKey:representative.profileimageUrl  as NSString) {
+            let fill: ActiveRepresentativeModel!
+            let img:UIImage!
+            if inSearchMode {
                 
-                cell.configureCell(representative: representative, img: img)
+                
+                fill = filteredObject?[indexPath.row]
+                img = AdminHomeVC.imageCache.object(forKey:fill.profileimageUrl  as NSString)
+                
             } else {
-                cell.configureCell(representative: representative, img: nil)
+                
+                
+                fill = activeRepresentative.reversed()[indexPath.row]
+                img = AdminHomeVC.imageCache.object(forKey:fill.profileimageUrl  as NSString)
             }
-            
-            
-            
+            if img != nil {
+                cell.configureCell(representative: fill, img: img)
+            }else {
+                cell.configureCell(representative: fill, img: nil)
+            }
             return cell
             
+        }else {
+            return ActiveRepresentativesCell()
         }
-        
-        return ActiveRepresentativesCell()
-        
     }
     
     
@@ -236,20 +284,31 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
         let indexPath = self.selectedIndexPath
         
         
-        
         if (segue.identifier == "toMapView") {
             if  let viewController = segue.destination as? MapViewForLocationVC  {
                 
-                let representative = activeRepresentative.reversed()[indexPath.row]
-                
-                viewController.representativeName = representative.profileName
-                viewController.representativeEmail = representative.profileEmail
-                viewController.representativeLocation = representative.repLocationPlace
-                viewController.representativeCurrentTime = representative.repCurrentTime
-                viewController.representativeLat = representative.repLocationLat
-                viewController.representativeLong = representative.repLocationLong
-                
-                
+                if inSearchMode {
+                    let representative = filteredObject?[indexPath.row]
+                    
+                    viewController.representativeName = (representative?.profileName)!
+                    viewController.representativeEmail = (representative?.profileEmail)!
+                    viewController.representativeLocation = (representative?.repLocationPlace)!
+                    viewController.representativeCurrentTime = (representative?.repCurrentTime)!
+                    viewController.representativeLat = (representative?.repLocationLat)!
+                    viewController.representativeLong = (representative?.repLocationLong)!
+                    
+                }else {
+                    
+                    let representative = activeRepresentative.reversed()[indexPath.row]
+                    
+                    viewController.representativeName = representative.profileName
+                    viewController.representativeEmail = representative.profileEmail
+                    viewController.representativeLocation = representative.repLocationPlace
+                    viewController.representativeCurrentTime = representative.repCurrentTime
+                    viewController.representativeLat = representative.repLocationLat
+                    viewController.representativeLong = representative.repLocationLong
+                    
+                }
                 
                 
             }
@@ -308,7 +367,7 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
                     }
                 }
                 
-               
+                
                 
             } else {
                 print("JESS: A valid image wasn't selected")

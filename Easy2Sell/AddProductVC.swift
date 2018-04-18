@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate{
+class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,UISearchBarDelegate{
     
     
     @IBOutlet weak var addproductImg: CornerRadiousView!
@@ -29,16 +29,18 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
     
     @IBOutlet weak var productTable: UITableView!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var searchController = UISearchController()
     var resultController = UITableViewController()
     var imagePicker:UIImagePickerController!
     var imageSelected = false
+    var inSearchMode = false
     var productImagesUrl:String!
     
     var products = [AddProductModel]()
+    var filteredObject:[AddProductModel]?
     
-    var produtsArray = [String]()
-    var filterdArray = [String]()
     
     static var imageCache:NSCache<NSString, UIImage> = NSCache()
     
@@ -50,6 +52,7 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
+        searchBar.delegate = self
         
         
         DataService.ds.REF_Products.observe(.value, with: { (snapshot) in
@@ -77,6 +80,32 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
     
     
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchBar.text == nil || searchBar.text == "" {
+            
+            inSearchMode = false
+            self.productTable.reloadData()
+            view.endEditing(true)
+            
+        } else {
+            
+            inSearchMode = true
+            let lowerCase = searchBar.text!.lowercased()
+            
+            
+                filteredObject = products.filter({$0.productName.lowercased().hasPrefix(lowerCase) })
+                self.productTable.reloadData()
+            
+                
+            
+            
+        }
+        
+    }
+    
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
@@ -84,38 +113,51 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if tableView == resultController.tableView {
+        if inSearchMode {
             
-            return produtsArray.count
+            return (filteredObject?.count)!
         }
-        else {
-            
-            return products.count
-        }
+        
+        return products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let product = products[indexPath.row]
         
-        
-        if let cell = productTable.dequeueReusableCell(withIdentifier: "ProductCell") as? AddProductTableCell {
+        if  let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath) as? AddProductTableCell {
             
             
-            
-            
-            if let img = AddProductVC.imageCache.object(forKey: product.productimageUrl as NSString) {
+            let fill: AddProductModel!
+            let img:UIImage!
+            if inSearchMode {
                 
-                cell.configureCell(product: product, img: img)
+                
+                fill = filteredObject?[indexPath.row]
+                img = AdminHomeVC.imageCache.object(forKey:fill.productimageUrl  as NSString)
+                
             } else {
-                cell.configureCell(product: product, img: nil)
+                
+                
+                
+                
+                fill = products.reversed()[indexPath.row]
+                img = AdminHomeVC.imageCache.object(forKey:fill.productimageUrl  as NSString)
+            }
+            if img != nil {
+                cell.configureCell(product: fill, img: img)
+            }else {
+                cell.configureCell(product: fill, img: nil)
             }
             return cell
-        } else {
+            
+        }else {
             return AddProductTableCell()
+            
         }
+        
+        
+        
     }
-    
     
     
     
@@ -123,7 +165,14 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //getting the selected artist
-        let product  = products[indexPath.row]
+        var product  = products[indexPath.row]
+        
+        if inSearchMode {
+            product = (filteredObject?[indexPath.row])!
+            
+        }else {
+            product = products.reversed()[indexPath.row]
+        }
         
         //building an alert
         let alertController = UIAlertController(title: product.productName, message: "Give new values to update ", preferredStyle: .alert)
@@ -190,7 +239,7 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
         
         alertController.addTextField { (textField) in
             
-            textField.text = product.productPrice
+            textField.text = String(product.productPrice)
             
             textField.keyboardAppearance = .dark
             textField.placeholder = "Type product price"
@@ -353,6 +402,7 @@ class AddProductVC: UIViewController,UITableViewDelegate,UITableViewDataSource,U
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.view.endEditing(true)
+        self.searchBar.endEditing(true)
         
     }
     

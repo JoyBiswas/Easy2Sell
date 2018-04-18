@@ -83,15 +83,15 @@ class EmployeeSignUp_In: UIViewController,UITextFieldDelegate {
         
         
         
-        
-        if let _ = KeychainWrapper.standard.string(forKey: "uid") {
-            Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
-                
-                self.performSegue(withIdentifier: "toEmployeeHome", sender: nil)
-                
-                
-            })
-        }
+//        
+//        if let _ = KeychainWrapper.standard.string(forKey: "uid") {
+//            Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
+//                
+//                self.performSegue(withIdentifier: "toEmployeeHome", sender: nil)
+//                
+//                
+//            })
+//        }
         
         
         

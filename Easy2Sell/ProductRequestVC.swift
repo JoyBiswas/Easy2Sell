@@ -11,19 +11,24 @@ import Firebase
 
 var tapOnDeliveryMark:Bool = false
 
-class ProductRequestVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class ProductRequestVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
     
     var currentRow = 0;
     @IBOutlet weak var requestedProductTable: UITableView!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var refProductOrderRequest:DatabaseReference?
+    var inSearchMode:Bool = false
     
     var requestedProduct = [OrderProductRequset]()
+    var filteredObject:[OrderProductRequset]?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar.delegate = self
         
         DataService.ds.REf_ORDER_REQUEST_LIST.queryOrdered(byChild: "orderDate").observe(DataEventType.value, with: { (snapshot) in
             
@@ -78,12 +83,37 @@ class ProductRequestVC: UIViewController,UITableViewDelegate,UITableViewDataSour
         
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchBar.text == nil || searchBar.text == "" {
+            
+            inSearchMode = false
+            self.requestedProductTable.reloadData()
+            view.endEditing(true)
+            
+        } else {
+            
+            inSearchMode = true
+            let lowerCase = searchBar.text!.lowercased()
+            filteredObject = requestedProduct.filter({($0.orderDate?.lowercased().hasPrefix(lowerCase))! })
+            self.requestedProductTable.reloadData()
+            
+            
+        }
+        
+    }
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if inSearchMode {
+            return (filteredObject?.count)!
+        }
         
         return requestedProduct.count
     }
@@ -92,40 +122,62 @@ class ProductRequestVC: UIViewController,UITableViewDelegate,UITableViewDataSour
         
         
         
-        let cell = requestedProductTable.dequeueReusableCell(withIdentifier: "PreqCell") as! ProductRequestTableCell
-        let orderProduct:OrderProductRequset!
-        orderProduct = requestedProduct[indexPath.row]
+        //        let cell = requestedProductTable.dequeueReusableCell(withIdentifier: "PreqCell") as! ProductRequestTableCell
+        //        let orderProduct:OrderProductRequset!
+        //        orderProduct = requestedProduct[indexPath.row]
+        //
         
-        cell.productName.text = orderProduct.productName
-        cell.productCode.text = orderProduct.productCode
-        cell.productQuantity.text = orderProduct.productQuantity
-        cell.productPrice.text = orderProduct.productPrice
-        cell.orderBy.text = orderProduct.productOrderBy
-        cell.orderFrom.text = orderProduct.tocompany
-        cell.orderAdress.text = orderProduct.productOrdererAdress
-        cell.orderPhnNumber.text = orderProduct.productOrdererPhn
-        cell.totalPrice.text = orderProduct.totalPrice
-        cell.orderDate.text = orderProduct.orderDate
-        cell.deliberyDate.text = orderProduct.productDeliveryDate
+        //
         
         
-        
-        if indexPath.row == currentRow {
-            if tapOnDeliveryMark == true {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "PreqCell", for: indexPath) as? ProductRequestTableCell {
+            
+            let fill: OrderProductRequset!
+            
+            if inSearchMode {
                 
-                cell.deliveyMarkImg.image = UIImage(named: "fillTicMark")
                 
-                tapOnDeliveryMark = false
+                fill = filteredObject?[indexPath.row]
+                
+                
             } else {
-                cell.deliveyMarkImg.image = UIImage(named: "ticMark")
                 
-                tapOnDeliveryMark = true
+                
+                fill = requestedProduct.reversed()[indexPath.row]
+                
             }
+            cell.productName.text = fill.productName
+            cell.productCode.text = fill.productCode
+            cell.productQuantity.text = fill.productQuantity
+            cell.productPrice.text = fill.productPrice
+            cell.orderBy.text = fill.productOrderBy
+            cell.orderFrom.text = fill.tocompany
+            cell.orderAdress.text = fill.productOrdererAdress
+            cell.orderPhnNumber.text = fill.productOrdererPhn
+            cell.totalPrice.text = fill.totalPrice
+            cell.orderDate.text = fill.orderDate
+            cell.deliberyDate.text = fill.productDeliveryDate
+            
+            if indexPath.row == currentRow {
+                if tapOnDeliveryMark == true {
+                    
+                    cell.deliveyMarkImg.image = UIImage(named: "fillTicMark")
+                    
+                    tapOnDeliveryMark = false
+                } else {
+                    cell.deliveyMarkImg.image = UIImage(named: "ticMark")
+                    
+                    tapOnDeliveryMark = true
+                }
+            }
+            
+            
+            
+            return cell
+            
+        }else {
+            return ActiveRepresentativesCell()
         }
-        
-        
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -135,6 +187,10 @@ class ProductRequestVC: UIViewController,UITableViewDelegate,UITableViewDataSour
         requestedProductTable.reloadData()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.searchBar.endEditing(true)
+    }
     
     
 }
