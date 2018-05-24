@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AddEmployeeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
+class AddEmployeeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UISearchBarDelegate {
     
     
     
@@ -23,45 +23,25 @@ class AddEmployeeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
     
     @IBOutlet weak var employeeCon_No: FancyField!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var inSearchMode:Bool = false
+    
+    
     
     var refemployee: DatabaseReference!
     
     
     var employeeList = [AddEmployeeModel]()
+    var filteredObject:[AddEmployeeModel]?
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return employeeList.count
-    }
-    
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        //creating a cell using the custom class
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! AddEmployeeTableCell
-        
-        //the artist object
-        let employees: AddEmployeeModel
-        
-        //getting the artist of selected position
-        employees = employeeList[indexPath.row]
-        
-        //adding values to labels
-        cell.employeeName.text = employees.name
-        cell.employeeKey.text = employees.key
-        cell.employeeEmail.text = employees.email
-        cell.employeePhn.text = employees.phn
-        cell.lblKey.text = "Key"
-        cell.lblName.text = "Name"
-        cell.emaillbl.text = "Email"
-        cell.phnlbl.text = "Phn:"
-        
-        //returning cell
-        return cell
-    }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchBar.delegate = self
         
         refemployee = Database.database().reference().child("employees");
         
@@ -100,6 +80,94 @@ class AddEmployeeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
     }
     
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        
+        if searchBar.text == nil || searchBar.text == "" {
+            
+            inSearchMode = false
+            self.employeeTableView.reloadData()
+            view.endEditing(true)
+            
+        } else {
+            
+            inSearchMode = true
+            let lowerCase = searchBar.text!.lowercased()
+            
+            
+            filteredObject = employeeList.filter({($0.name?.lowercased().hasPrefix(lowerCase))! })
+            self.employeeTableView.reloadData()
+            
+            
+            
+            
+        }
+        
+    }
+    
+ 
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        
+        if inSearchMode {
+            return (filteredObject?.count)!
+        }
+        return employeeList.count
+    }
+    
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        //creating a cell using the custom class
+        
+        let fill: AddEmployeeModel!
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? AddEmployeeTableCell {
+            
+            
+            
+            
+            if inSearchMode {
+                
+                
+                fill = filteredObject?[indexPath.row]
+                
+                
+            } else {
+                
+                
+                
+                
+                fill = employeeList.reversed()[indexPath.row]
+                
+            }
+            
+            //adding values to labels
+            cell.employeeName.text = fill.name
+            cell.employeeKey.text = fill.key
+            cell.employeeEmail.text = fill.email
+            cell.employeePhn.text = fill.phn
+            cell.lblKey.text = "Key"
+            cell.lblName.text = "Name"
+            cell.emaillbl.text = "Email"
+            cell.phnlbl.text = "Phn:"
+            
+            //returning cell
+            return cell
+            
+            
+            
+        }else {
+            return AddEmployeeTableCell()
+            
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
     func addemployees(){
         //generating a new key inside artists node
         //and also getting the generated key
@@ -132,8 +200,19 @@ class AddEmployeeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        
+        
+        var employee  = employeeList[indexPath.row]
+        
+        if inSearchMode {
+            employee = (filteredObject?[indexPath.row])!
+            
+        }else {
+            employee = employeeList.reversed()[indexPath.row]
+        }
+        
         //getting the selected artist
-        let employee  = employeeList[indexPath.row]
+        
         
         //building an alert
         let alertController = UIAlertController(title: employee.name, message: "Give new values to update ", preferredStyle: .alert)
@@ -183,6 +262,7 @@ class AddEmployeeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
         
         //presenting dialog
         present(alertController, animated: true, completion: nil)
+    
         
     }
     
@@ -219,6 +299,7 @@ class AddEmployeeVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.view.endEditing(true)
+        self.searchBar.endEditing(true)
         
     }
     

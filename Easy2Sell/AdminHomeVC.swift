@@ -48,10 +48,18 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
     @IBOutlet weak var searchBar: UISearchBar!
     
     
-    
     override func viewDidLoad() {
         
         searchBar.delegate = self
+        
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(AdminHomeVC.swiped(gesture:)))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(AdminHomeVC.swiped(gesture:)))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
         
         DataService.ds.REF_USER_LOCATION.queryOrdered(byChild: "visitedDate").observe(DataEventType.value, with: { (snapshot) in
             
@@ -188,6 +196,46 @@ class AdminHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigation
         
         
     }
+    
+    func swiped(gesture: UIGestureRecognizer) {
+        
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            
+            switch swipeGesture.direction {
+                
+            case UISwipeGestureRecognizerDirection.right:
+                menuLeadingConstraint.constant = 125
+                
+                UIView.animate(withDuration:
+                0.1) {
+                    
+                    self.view.layoutIfNeeded()
+                }
+                menuShow = !menuShow
+                
+                
+            case UISwipeGestureRecognizerDirection.left:
+                menuLeadingConstraint.constant = 0
+                
+                UIView.animate(withDuration:
+                0.1) {
+                    
+                    self.view.layoutIfNeeded()
+                }
+                menuShow = !menuShow
+                
+            default:
+                break
+                
+            }
+            
+            
+        }
+        
+        
+    }
+    
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         

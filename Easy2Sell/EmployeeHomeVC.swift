@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-import SwiftKeychainWrapper
+//import SwiftKeychainWrapper
 import MapKit
 
 class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,MKMapViewDelegate,UISearchBarDelegate {
@@ -46,6 +46,17 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     override func viewDidLoad() {
         searchBar.delegate = self
+        
+        
+            
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(AdminHomeVC.swiped(gesture:)))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(AdminHomeVC.swiped(gesture:)))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -102,6 +113,28 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
         
         //products from database
+        
+        
+        if Auth.auth().currentUser?.photoURL == nil {
+            
+            let userName =  Auth.auth().currentUser?.displayName
+            let alertController = UIAlertController(title: "Set Profile Pictures", message: "Mr: \(userName!) please set your profile picture to go", preferredStyle: .alert)
+            alertController.view.backgroundColor = UIColor.red// change background color
+            alertController.view.layer.cornerRadius = 25
+            let confirmAction = UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+                
+                self.setP()
+                
+                
+            })
+            alertController.addAction(confirmAction)
+            
+            present(alertController, animated: true, completion: nil)
+            
+            return
+        }
+        
+
         
         
         DataService.ds.REF_Products.observe(.value, with: { (snapshot) in
@@ -171,6 +204,47 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     
     
+    func swiped(gesture: UIGestureRecognizer) {
+        
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            
+            switch swipeGesture.direction {
+                
+            case UISwipeGestureRecognizerDirection.right:
+                menuLeadingConstraint.constant = 124
+                
+                UIView.animate(withDuration:
+                0.1) {
+                    
+                    self.view.layoutIfNeeded()
+                }
+                menuShow = !menuShow
+                
+                
+            case UISwipeGestureRecognizerDirection.left:
+                menuLeadingConstraint.constant = 0
+                
+                UIView.animate(withDuration:
+                0.1) {
+                    
+                    self.view.layoutIfNeeded()
+                }
+                menuShow = !menuShow
+                
+            default:
+                break
+                
+            }
+            
+            
+        }
+        
+        
+    }
+    
+
+    
+    
     //location integriting
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -185,7 +259,7 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
                 let name = currentUser.displayName!
                 let email = currentUser.email!
                 let uid = currentUser.uid
-                if let photoUrl:String = (currentUser.photoURL?.absoluteString) {
+                if let photoUrl:String = (currentUser.photoURL?.absoluteString),name != "",email != "",uid != "" {
                     
                     
                     
@@ -336,6 +410,11 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     
     
+    func setP()  {
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
     
     // table view implementing Start
     
@@ -365,10 +444,16 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
                 self.productTable.reloadData()
             }else  if segment.selectedSegmentIndex == 1{
                 
-                filteredObject = products.filter({$0.productPrice.lowercased().hasPrefix(lowerCase) })
+                searchBar.keyboardType = UIKeyboardType.numberPad
+                
+                if let doubleLowercase = lowerCase.doubleValue{
+                    
+                    
+                
+                filteredObject = products.filter({(Double($0.productPrice)?.isLessThanOrEqualTo(Double(doubleLowercase) ))!})
                 self.productTable.reloadData()
                 
-                
+                }
             }else  if segment.selectedSegmentIndex == 2{
                 
                 filteredObject = products.filter({$0.productType.lowercased().hasPrefix(lowerCase) })
@@ -530,7 +615,9 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
     func attemptFetch() {
         
         
+        
         if segment.selectedSegmentIndex == 0 {
+            searchBar.keyboardType = UIKeyboardType.alphabet
             
             DataService.ds.REF_Products.observe(.value, with: { (snapshot) in
                 
@@ -560,6 +647,9 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
             
         } else if segment.selectedSegmentIndex == 1 {
             
+            searchBar.keyboardType = UIKeyboardType.numberPad
+
+            
             DataService.ds.REF_Products.queryOrdered(byChild: "productPrice").observe(.value, with: { (snapshot) in
                 
                 if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
@@ -586,6 +676,8 @@ class EmployeeHomeVC: UIViewController,UIImagePickerControllerDelegate,UINavigat
             self.viewDidAppear(true)
             
         } else if segment.selectedSegmentIndex == 2 {
+            
+            searchBar.keyboardType = UIKeyboardType.alphabet
             
             
             

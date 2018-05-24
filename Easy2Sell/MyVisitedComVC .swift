@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class MyVisitedComVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate {
+class MyVisitedComVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UISearchBarDelegate {
     
     @IBOutlet weak var visitedCompanyTable: UITableView!
     
@@ -21,15 +21,23 @@ class MyVisitedComVC: UIViewController,UITableViewDataSource,UITableViewDelegate
     @IBOutlet weak var companyContact: UITextField!
     
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var inSearchMode:Bool = false
+    
+    
     var refVisitedCompany:DatabaseReference!
     
     var companyList = [AddVisitedcompany]()
+    var filteredObject:[AddVisitedcompany]?
     
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchBar.delegate = self
         
         if Auth.auth().currentUser != nil {
             
@@ -86,38 +94,111 @@ class MyVisitedComVC: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     
     
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        
+        if searchBar.text == nil || searchBar.text == "" {
+            
+            inSearchMode = false
+            self.visitedCompanyTable.reloadData()
+            view.endEditing(true)
+            
+        } else {
+            
+            inSearchMode = true
+            let lowerCase = searchBar.text!.lowercased()
+            
+            
+            filteredObject = companyList.filter({($0.companyName!.lowercased().hasPrefix(lowerCase)) })
+            self.visitedCompanyTable.reloadData()
+            
+            
+            
+        }
+        
+    }
+    
+    
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if inSearchMode {
+            return (filteredObject?.count)!
+        }
+        
         return companyList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = visitedCompanyTable.dequeueReusableCell(withIdentifier:"ComCell") as! VisitedCompanyCell
-        
-        let companyees:AddVisitedcompany!
-        
-        companyees = companyList[indexPath.row]
-        
-        cell.companyName.text = companyees.companyName
-        cell.companyAdress.text = companyees.companyAddress
-        cell.companyCellNo.text = companyees.companyContact
-        cell.visitedDate.text = companyees.visitedDate
         
         
+        let fill: AddVisitedcompany!
         
-        return cell
+        if let cell = visitedCompanyTable.dequeueReusableCell(withIdentifier: "ComCell", for: indexPath) as? VisitedCompanyCell {
+            
+            
+            
+            
+            if inSearchMode {
+                
+                
+                fill = filteredObject?[indexPath.row]
+                
+                
+            } else {
+                
+                
+                
+                
+                fill = companyList.reversed()[indexPath.row]
+                
+            }
+            
+            //adding values to labels
+            
+            cell.companyName.text = fill.companyName
+            cell.companyAdress.text = fill.companyAddress
+            cell.companyCellNo.text = fill.companyContact
+            cell.visitedDate.text = fill.visitedDate
+            //returning cell
+            return cell
+            
+            
+            
+        }else {
+            return VisitedCompanyCell()
+            
+        }
+        
+        
     }
+    
+    
+    
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //getting the selected artist
-        let company  = companyList[indexPath.row]
+        
+        
+        
+        var company  = companyList[indexPath.row]
+        
+        if inSearchMode {
+            company = (filteredObject?[indexPath.row])!
+            
+        }else {
+            company = companyList.reversed()[indexPath.row]
+        }
+        
         
         //building an alert
         let alertController = UIAlertController(title: company.companyName, message: "Give new values to update ", preferredStyle: .alert)

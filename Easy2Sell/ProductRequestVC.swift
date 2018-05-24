@@ -11,7 +11,12 @@ import Firebase
 
 var tapOnDeliveryMark:Bool = false
 
+var tapOnEmailCell:Bool = false
+
 class ProductRequestVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
+    
+    
+    
     
     var currentRow = 0;
     @IBOutlet weak var requestedProductTable: UITableView!
@@ -83,6 +88,8 @@ class ProductRequestVC: UIViewController,UITableViewDelegate,UITableViewDataSour
         
     }
     
+   
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchBar.text == nil || searchBar.text == "" {
@@ -119,18 +126,10 @@ class ProductRequestVC: UIViewController,UITableViewDelegate,UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      
         
         
-        
-        //        let cell = requestedProductTable.dequeueReusableCell(withIdentifier: "PreqCell") as! ProductRequestTableCell
-        //        let orderProduct:OrderProductRequset!
-        //        orderProduct = requestedProduct[indexPath.row]
-        //
-        
-        //
-        
-        
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "PreqCell", for: indexPath) as? ProductRequestTableCell {
+        if let cell = requestedProductTable.dequeueReusableCell(withIdentifier: "PreqCell", for: indexPath) as? ProductRequestTableCell {
             
             let fill: OrderProductRequset!
             
@@ -169,6 +168,8 @@ class ProductRequestVC: UIViewController,UITableViewDelegate,UITableViewDataSour
                     
                     tapOnDeliveryMark = true
                 }
+                
+                
             }
             
             
@@ -187,10 +188,14 @@ class ProductRequestVC: UIViewController,UITableViewDelegate,UITableViewDataSour
         requestedProductTable.reloadData()
     }
     
+   
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.searchBar.endEditing(true)
     }
+    
+    
+    
     
     
 }

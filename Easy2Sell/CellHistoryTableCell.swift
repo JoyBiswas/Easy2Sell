@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CellHistoryTableCell: UITableViewCell {
+class CellHistoryTableCell: UITableViewCell,UITextFieldDelegate {
     
     @IBOutlet weak var ProductName: UILabel!
     

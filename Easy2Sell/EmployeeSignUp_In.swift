@@ -172,8 +172,6 @@ class EmployeeSignUp_In: UIViewController,UITextFieldDelegate {
                         return
                     }
                     guard let user = user else { return }
-                    print(user.email ?? "MISSING EMAIL")
-                    print(user.uid)
                     
                     let changeRequest = user.createProfileChangeRequest()
                     changeRequest.displayName = self.userNameTF.text!

@@ -188,14 +188,14 @@
 		CE13156E2018467000005956 /* Easy2Sell */ = {
 			isa = PBXGroup;
 			children = (
-				CEB497082060083D00C2E1DA /* Services */,
-				CE695571205A945F00529BB6 /* Util */,
 				CE85B98B201F82E300F806E8 /* Controller */,
 				CE85B98A201F82D600F806E8 /* View */,
 				CE85B989201F82CE00F806E8 /* Model */,
 				CE85B988201F82B900F806E8 /* images */,
 				CE85B98C201F830500F806E8 /* SupportingFiels */,
+				CE695571205A945F00529BB6 /* Util */,
 				CE1315792018467000005956 /* Assets.xcassets */,
+				CEB497082060083D00C2E1DA /* Services */,
 			);
 			path = Easy2Sell;
 			sourceTree = "<group>";
@@ -680,7 +680,7 @@
 				DEVELOPMENT_TEAM = 8MBSDR4W6C;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				INFOPLIST_FILE = Easy2Sell/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = universal.Easy2Sell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -698,7 +698,7 @@
 				DEVELOPMENT_TEAM = 8MBSDR4W6C;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				INFOPLIST_FILE = Easy2Sell/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = universal.Easy2Sell;
 				PRODUCT_NAME = "$(TARGET_NAME)";

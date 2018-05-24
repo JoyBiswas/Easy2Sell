@@ -8,19 +8,25 @@
 
 import UIKit
 import Firebase
-class CellHistoryVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class CellHistoryVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
     
     @IBOutlet weak var cellProductTable: UITableView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     
     
     var refProductAddByEMployee:DatabaseReference!
     
     var productListOrderByMe = [MySellHistory]()
+    var filteredObject:[MySellHistory]?
+    var inSearchMode:Bool = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar.delegate = self
         cellProductTable.delegate = self
         cellProductTable.dataSource = self
         
@@ -81,6 +87,34 @@ class CellHistoryVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
         
     }
     
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        
+        if searchBar.text == nil || searchBar.text == "" {
+            
+            inSearchMode = false
+            self.cellProductTable.reloadData()
+            view.endEditing(true)
+            
+        } else {
+            
+            inSearchMode = true
+            let lowerCase = searchBar.text!.lowercased()
+            
+            
+            filteredObject = productListOrderByMe.filter({($0.orderDate!.lowercased().hasPrefix(lowerCase)) })
+            self.cellProductTable.reloadData()
+            
+            
+            
+            
+        }
+        
+    }
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
@@ -88,25 +122,65 @@ class CellHistoryVC: UIViewController,UITableViewDelegate,UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if inSearchMode {
+            return (filteredObject?.count)!
+        }
+        
         return productListOrderByMe.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = cellProductTable.dequeueReusableCell(withIdentifier: "CellHistory") as! CellHistoryTableCell
+        
+        let fill: MySellHistory!
+        
+        if let cell = cellProductTable.dequeueReusableCell(withIdentifier: "CellHistory", for: indexPath) as? CellHistoryTableCell {
+            
+            
+            
+            
+            if inSearchMode {
+                
+                
+                fill = filteredObject?[indexPath.row]
+                
+                
+            } else {
+                
+                
+                
+                
+                fill = productListOrderByMe.reversed()[indexPath.row]
+                
+            }
+            
+            //adding values to labels
+            
+            cell.ProductName.text = fill.productName
+            cell.productCode.text = fill.productCode
+            cell.productPrice.text = fill.productPrice
+            cell.toCompanyDeliverd.text = fill.tocompany
+            cell.totalPrice.text = fill.totalPrice
+            cell.deliverdDate.text = fill.orderDate
+            
+            
+            
+            //returning cell
+            return cell
+            
+            
+            
+        }else {
+            return CellHistoryTableCell()
+            
+        }
         
         
-        let prodctOrder:MySellHistory!
-        prodctOrder = productListOrderByMe[indexPath.row]
-        
-        cell.ProductName.text = prodctOrder.productName
-        cell.productCode.text = prodctOrder.productCode
-        cell.productPrice.text = prodctOrder.productPrice
-        cell.toCompanyDeliverd.text = prodctOrder.tocompany
-        cell.totalPrice.text = prodctOrder.totalPrice
-        cell.deliverdDate.text = prodctOrder.orderDate
-        
-        return cell
     }
+  
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.searchBar.endEditing(true)
+    }
     
 }
